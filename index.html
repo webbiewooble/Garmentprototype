@@ -1,0 +1,1797 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>URBN | Everyday But Better</title>
+  <meta name="description" content="A modern USA-based fashion and lifestyle brand showcase." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            lime: {
+              400: '#d9f845',
+              500: '#ccff00',
+              600: '#aadd00',
+            },
+            gray: {
+              50: '#f9f9f9',
+              100: '#f5f5f5',
+              200: '#e5e5e5',
+              800: '#222222',
+              900: '#111111',
+            }
+          },
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: #ffffff;
+      color: #111111;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Product Card Hover Enhancements */
+    .product-card {
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    @media (min-width: 1024px) {
+      .product-card:hover {
+        box-shadow: 0 12px 32px -12px rgba(0,0,0,0.1);
+        transform: translateY(-4px);
+      }
+      .product-card .save-btn {
+        opacity: 0;
+      }
+      .product-card:hover .save-btn {
+        opacity: 1;
+      }
+      .product-card .view-product-btn {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      .product-card:hover .view-product-btn {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .product-card .secondary-img {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .product-card:hover .secondary-img {
+      opacity: 1;
+    }
+    .product-card .primary-img {
+      transition: transform 0.4s ease;
+    }
+    .product-card:hover .primary-img {
+      transform: scale(1.05);
+    }
+    .product-card .view-product-btn,
+    .product-card .save-btn {
+      transition: all 0.3s ease;
+    }
+    .product-card .view-product-btn span {
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+    .product-card:hover .view-product-btn span {
+      transform: translateX(4px);
+    }
+    
+    /* Modal Zoom */
+    .zoom-img-container {
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+    .zoom-img-container img {
+      transition: transform 0.2s ease-out;
+      transform-origin: center center;
+    }
+    
+    /* Body Lock */
+    body.modal-open {
+      overflow: hidden;
+    }
+    
+    /* Navigation Hover Underline */
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #ccff00;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+    .nav-link.active {
+      color: #ccff00;
+    }
+
+    /* Header Scroll */
+    .header-scrolled {
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+    .header-transition {
+      transition: all 0.3s ease;
+    }
+
+    /* Mega Menu */
+    .mega-menu {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+    .mega-menu.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Carousel Snapping */
+    .carousel-container {
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+    .carousel-item {
+      scroll-snap-align: start;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+  
+  <!-- 1. Announcement bar -->
+  <div class="bg-lime-500 text-black text-[10px] md:text-xs font-bold py-2.5 px-4 flex justify-center items-center space-x-6 md:space-x-12 uppercase tracking-widest">
+    <div class="flex items-center">
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+      FREE SHIPPING ON ORDERS OVER $50
+    </div>
+    <div class="hidden md:flex items-center text-black/60">●</div>
+    <div class="hidden md:flex items-center">
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+      EASY RETURNS
+    </div>
+    <div class="hidden md:flex items-center text-black/60">●</div>
+    <div class="hidden md:flex items-center">
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+      SECURE PAYMENTS
+    </div>
+  </div>
+
+  <!-- 2. Sticky header -->
+  <header id="main-header" class="sticky top-0 z-50 bg-black text-white w-full border-b border-white/10 header-transition">
+    <div id="header-inner" class="flex justify-between items-center px-6 py-4 max-w-[1600px] mx-auto header-transition">
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="lg:hidden text-white hover:text-lime-500 transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+      
+      <!-- Logo -->
+      <a href="#" class="text-3xl font-black tracking-tighter uppercase flex items-center shrink-0" onclick="applyCategoryFilter('All')">
+        <svg class="w-6 h-6 mr-1.5 text-lime-500" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16a2 2 0 012 2v14a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2zm0 2v14h16V5H4zm8 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+        URBN
+      </a>
+      
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center space-x-7 text-[11px] font-bold tracking-[0.15em] uppercase ml-12 h-full">
+        <div class="h-full py-2">
+          <button id="shop-nav-btn" class="nav-link hover:text-lime-500 transition-colors uppercase tracking-[0.15em] font-bold pb-1 outline-none">SHOP</button>
+        </div>
+        <button class="nav-link hover:text-lime-500 transition-colors uppercase tracking-[0.15em] font-bold pb-1" onclick="applyCategoryFilter('Men')">MEN</button>
+        <button class="nav-link hover:text-lime-500 transition-colors uppercase tracking-[0.15em] font-bold pb-1" onclick="applyCategoryFilter('Women')">WOMEN</button>
+        <button class="nav-link hover:text-lime-500 transition-colors uppercase tracking-[0.15em] font-bold pb-1" onclick="applyCategoryFilter('Sports')">SPORTS & ACTIVEWEAR</button>
+        <button class="nav-link hover:text-lime-500 transition-colors uppercase tracking-[0.15em] font-bold pb-1" onclick="applyCategoryFilter('Innerwear')">INNERWEAR</button>
+        <button class="nav-link hover:text-lime-500 transition-colors uppercase tracking-[0.15em] font-bold pb-1" onclick="applyCategoryFilter('New')">NEW ARRIVALS</button>
+        <button class="nav-link hover:text-lime-500 transition-colors uppercase tracking-[0.15em] font-bold pb-1" onclick="applyCategoryFilter('All', 'All', 'featured')">BEST SELLERS</button>
+        <button class="nav-link text-lime-500 hover:text-lime-400 transition-colors uppercase tracking-[0.15em] font-bold pb-1" onclick="applyCategoryFilter('Sale')">SALE</button>
+      </nav>
+      
+      <!-- Mega Menu Backdrop -->
+      <div id="mega-menu-backdrop" class="mega-menu fixed inset-0 top-[120px] bg-black/60 z-40 transition-opacity"></div>
+      
+      <!-- Mega Menu Content -->
+      <div id="mega-menu" class="mega-menu absolute left-0 right-0 top-full bg-white text-black border-b border-gray-200 shadow-2xl z-50">
+        <div class="max-w-[1600px] mx-auto p-12 grid grid-cols-6 gap-8">
+          <div>
+            <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">MEN</h4>
+            <ul class="space-y-4 text-sm font-medium">
+              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-lime-600 transition">T-Shirts</button></li>
+              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-lime-600 transition">Shirts</button></li>
+              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-lime-600 transition">Hoodies</button></li>
+              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-lime-600 transition">Joggers</button></li>
+              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-lime-600 transition">Shorts</button></li>
+              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-lime-600 transition">Jackets</button></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">WOMEN</h4>
+            <ul class="space-y-4 text-sm font-medium">
+              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-lime-600 transition">Tops</button></li>
+              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-lime-600 transition">T-Shirts</button></li>
+              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-lime-600 transition">Leggings</button></li>
+              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-lime-600 transition">Shorts</button></li>
+              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-lime-600 transition">Hoodies</button></li>
+              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-lime-600 transition">Activewear</button></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">SPORTS</h4>
+            <ul class="space-y-4 text-sm font-medium">
+              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-lime-600 transition">Gym</button></li>
+              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-lime-600 transition">Running</button></li>
+              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-lime-600 transition">Training</button></li>
+              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-lime-600 transition">Sports</button></li>
+              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-lime-600 transition">Outdoor</button></li>
+              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-lime-600 transition">Performance</button></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">INNERWEAR</h4>
+            <ul class="space-y-4 text-sm font-medium">
+              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-lime-600 transition">Boxers</button></li>
+              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-lime-600 transition">Briefs</button></li>
+              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-lime-600 transition">Vests</button></li>
+              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-lime-600 transition">Sports Innerwear</button></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">DISCOVER</h4>
+            <ul class="space-y-4 text-sm font-medium">
+              <li><button onclick="applyCategoryFilter('New')" class="hover:text-lime-600 transition">New Arrivals</button></li>
+              <li><button onclick="applyCategoryFilter('All', 'All', 'featured')" class="hover:text-lime-600 transition">Best Sellers</button></li>
+              <li><button onclick="applyCategoryFilter('All', 'All', 'rating')" class="hover:text-lime-600 transition">Trending</button></li>
+              <li><button onclick="applyCategoryFilter('Sale')" class="hover:text-lime-600 transition text-red-500 font-bold">Sale</button></li>
+            </ul>
+          </div>
+          <div class="col-span-1 overflow-hidden">
+             <div class="relative w-full h-full min-h-[250px] bg-gray-100 group cursor-pointer" onclick="applyCategoryFilter('All')">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80" alt="Discover" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                <div class="absolute bottom-6 left-6 text-white">
+                  <h5 class="font-black text-xl uppercase tracking-tighter mb-1">Explore All</h5>
+                  <span class="text-xs font-bold uppercase tracking-widest border-b border-white pb-0.5">Shop Now</span>
+                </div>
+             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Icons -->
+      <div class="flex items-center space-x-6 ml-auto">
+        <button id="search-btn" class="hover:text-lime-500 transition-colors" aria-label="Search"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+        <button id="saved-btn" class="hover:text-lime-500 transition-colors relative" aria-label="Saved">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+          <span id="saved-badge" class="absolute -top-1.5 -right-2 bg-lime-500 text-black text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
+        </button>
+        <button class="hidden lg:block hover:text-lime-500 transition-colors" aria-label="Account"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. Hero -->
+  <section class="relative bg-black text-white w-full h-[85vh] min-h-[600px] flex items-center">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=2850&q=80" alt="Hero Lifestyle" class="w-full h-full object-cover opacity-60">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20"></div>
+    </div>
+    
+    <div class="relative z-10 w-full max-w-[1600px] mx-auto px-6 h-full flex flex-col justify-end pb-12 md:pb-24">
+      <div class="max-w-2xl">
+        <p class="uppercase text-xs md:text-sm tracking-[0.2em] mb-4 font-bold text-gray-300">New Season '24</p>
+        <h1 class="text-6xl md:text-8xl lg:text-[10rem] font-black leading-[0.85] uppercase tracking-tighter mb-6">
+          EVERYDAY<br>
+          <span class="text-lime-500">BUT BETTER.</span>
+        </h1>
+        <p class="text-lg md:text-xl font-medium text-gray-200 mb-8 max-w-lg leading-relaxed">
+          Street. Sport. You.<br>
+          Modern essentials designed for movement, comfort and everyday life.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-16">
+          <a href="#" class="bg-lime-500 text-black px-8 py-4 font-bold text-sm uppercase tracking-widest text-center hover:bg-lime-400 transition-colors">Explore Collections &rarr;</a>
+          <a href="#" class="border-2 border-white text-white px-8 py-4 font-bold text-sm uppercase tracking-widest text-center hover:bg-white hover:text-black transition-colors">View New Arrivals &rarr;</a>
+        </div>
+      </div>
+      
+      <!-- Hero Bottom Nav & Badges -->
+      <div class="w-full flex flex-col md:flex-row justify-between items-end border-t border-white/20 pt-6">
+         <div class="flex flex-wrap gap-4 md:space-x-8 text-xs md:text-sm font-bold tracking-widest uppercase mb-6 md:mb-0">
+            <a href="#" class="hover:text-lime-500 transition-colors">MEN</a>
+            <span class="text-white/30 hidden md:inline">|</span>
+            <a href="#" class="hover:text-lime-500 transition-colors">WOMEN</a>
+            <span class="text-white/30 hidden md:inline">|</span>
+            <a href="#" class="hover:text-lime-500 transition-colors">SPORTS</a>
+            <span class="text-white/30 hidden md:inline">|</span>
+            <a href="#" class="hover:text-lime-500 transition-colors">INNERWEAR</a>
+         </div>
+         <div class="flex space-x-6 md:space-x-10 text-[10px] md:text-xs uppercase tracking-widest font-bold text-gray-300">
+            <div class="flex items-center"><svg class="w-5 h-5 mr-2 text-lime-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>Premium Quality</div>
+            <div class="flex items-center"><svg class="w-5 h-5 mr-2 text-lime-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Comfort First</div>
+            <div class="flex hidden lg:flex items-center"><svg class="w-5 h-5 mr-2 text-lime-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>Made For You</div>
+         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Shop by Category -->
+  <section class="max-w-[1600px] mx-auto px-6 py-20 md:py-32">
+    <div class="flex justify-between items-end mb-12">
+      <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter">Shop By Category</h2>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Men -->
+      <a href="#" class="group relative bg-gray-100 overflow-hidden aspect-[4/3] flex items-center p-8 md:p-10">
+         <div class="relative z-10 w-1/2">
+            <h3 class="text-3xl md:text-4xl font-black uppercase mb-3 tracking-tighter">MEN</h3>
+            <p class="text-gray-600 text-sm mb-6 font-medium">Everyday fits for every vibe.</p>
+            <span class="font-bold text-xs uppercase tracking-widest border-b-2 border-black pb-1 group-hover:border-lime-500 transition-colors">Shop Men &rarr;</span>
+         </div>
+         <div class="absolute right-0 top-0 bottom-0 w-[55%] h-full">
+           <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" alt="Men's Category">
+         </div>
+      </a>
+
+      <!-- Women -->
+      <a href="#" class="group relative bg-gray-100 overflow-hidden aspect-[4/3] flex items-center p-8 md:p-10">
+         <div class="relative z-10 w-1/2">
+            <h3 class="text-3xl md:text-4xl font-black uppercase mb-3 tracking-tighter">WOMEN</h3>
+            <p class="text-gray-600 text-sm mb-6 font-medium">Styles that speak you.</p>
+            <span class="font-bold text-xs uppercase tracking-widest border-b-2 border-black pb-1 group-hover:border-lime-500 transition-colors">Shop Women &rarr;</span>
+         </div>
+         <div class="absolute right-0 top-0 bottom-0 w-[55%] h-full">
+           <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" alt="Women's Category">
+         </div>
+      </a>
+
+      <!-- Sports & Activewear -->
+      <a href="#" class="group relative bg-lime-100 overflow-hidden aspect-[4/3] flex items-center p-8 md:p-10">
+         <div class="relative z-10 w-1/2">
+            <h3 class="text-3xl md:text-4xl font-black uppercase mb-3 tracking-tighter leading-none">SPORTS &<br>ACTIVE</h3>
+            <p class="text-gray-700 text-sm mb-6 font-medium">Train hard, stay comfortable.</p>
+            <span class="font-bold text-xs uppercase tracking-widest border-b-2 border-black pb-1 group-hover:border-lime-500 transition-colors">Shop Sports &rarr;</span>
+         </div>
+         <div class="absolute right-0 top-0 bottom-0 w-[55%] h-full">
+           <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" alt="Sports Category">
+         </div>
+      </a>
+
+      <!-- Innerwear -->
+      <a href="#" class="group relative bg-gray-100 overflow-hidden aspect-[4/3] flex items-center p-8 md:p-10">
+         <div class="relative z-10 w-1/2">
+            <h3 class="text-3xl md:text-4xl font-black uppercase mb-3 tracking-tighter">INNERWEAR</h3>
+            <p class="text-gray-600 text-sm mb-6 font-medium">Comfort starts underneath.</p>
+            <span class="font-bold text-xs uppercase tracking-widest border-b-2 border-black pb-1 group-hover:border-lime-500 transition-colors">Shop Innerwear &rarr;</span>
+         </div>
+         <div class="absolute right-0 top-0 bottom-0 w-[55%] h-full">
+           <img src="https://images.unsplash.com/photo-1573030391206-3b7c89ba76bc?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" alt="Innerwear Category">
+         </div>
+      </a>
+
+      <!-- Accessories -->
+      <a href="#" class="group relative bg-gray-100 overflow-hidden aspect-[4/3] flex items-center p-8 md:p-10">
+         <div class="relative z-10 w-1/2">
+            <h3 class="text-3xl md:text-4xl font-black uppercase mb-3 tracking-tighter">ACCESSORIES</h3>
+            <p class="text-gray-600 text-sm mb-6 font-medium">The small things, done right.</p>
+            <span class="font-bold text-xs uppercase tracking-widest border-b-2 border-black pb-1 group-hover:border-lime-500 transition-colors">Shop Accessories &rarr;</span>
+         </div>
+         <div class="absolute right-0 top-0 bottom-0 w-[55%] h-full">
+           <img src="https://images.unsplash.com/photo-1521369909029-2afed882ba54?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" alt="Accessories Category">
+         </div>
+      </a>
+
+      <!-- New Arrivals -->
+      <a href="#" class="group relative bg-gray-200 overflow-hidden aspect-[4/3] flex items-center p-8 md:p-10">
+         <div class="relative z-10 w-1/2">
+            <h3 class="text-3xl md:text-4xl font-black uppercase mb-3 tracking-tighter leading-none">NEW<br>ARRIVALS</h3>
+            <p class="text-gray-700 text-sm mb-6 font-medium">Fresh drops, every week.</p>
+            <span class="font-bold text-xs uppercase tracking-widest border-b-2 border-black pb-1 group-hover:border-lime-500 transition-colors">Explore How &rarr;</span>
+         </div>
+         <div class="absolute right-0 top-0 bottom-0 w-[55%] h-full">
+           <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" alt="New Arrivals">
+         </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- 5. Shop by Activity -->
+  <section class="border-y border-gray-100 py-20">
+    <div class="max-w-[1600px] mx-auto px-6">
+      <div class="flex justify-between items-end mb-12">
+        <h2 class="text-2xl md:text-4xl font-black uppercase tracking-tighter">Shop By Activity</h2>
+        <a href="#" class="hidden sm:block text-xs font-bold uppercase tracking-widest hover:text-lime-500 transition-colors">View All &rarr;</a>
+      </div>
+      
+      <!-- Horizontal Scroll Container -->
+      <div class="flex overflow-x-auto hide-scrollbar space-x-6 md:space-x-10 pb-6 -mx-6 px-6 md:mx-0 md:px-0">
+        
+        <a href="#" class="flex flex-col items-center flex-shrink-0 group">
+          <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden mb-5 border-4 border-transparent group-hover:border-lime-500 transition-colors shadow-sm">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Gym">
+          </div>
+          <span class="font-bold uppercase tracking-widest text-xs md:text-sm">GYM</span>
+        </a>
+        
+        <a href="#" class="flex flex-col items-center flex-shrink-0 group">
+          <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden mb-5 border-4 border-transparent group-hover:border-lime-500 transition-colors shadow-sm">
+            <img src="https://images.unsplash.com/photo-1571008887538-b36bb32f4571?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Running">
+          </div>
+          <span class="font-bold uppercase tracking-widest text-xs md:text-sm">RUNNING</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center flex-shrink-0 group">
+          <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden mb-5 border-4 border-transparent group-hover:border-lime-500 transition-colors shadow-sm">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Training">
+          </div>
+          <span class="font-bold uppercase tracking-widest text-xs md:text-sm">TRAINING</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center flex-shrink-0 group">
+          <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden mb-5 border-4 border-transparent group-hover:border-lime-500 transition-colors shadow-sm">
+            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Sports">
+          </div>
+          <span class="font-bold uppercase tracking-widest text-xs md:text-sm">SPORTS</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center flex-shrink-0 group">
+          <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden mb-5 border-4 border-transparent group-hover:border-lime-500 transition-colors shadow-sm">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Everyday">
+          </div>
+          <span class="font-bold uppercase tracking-widest text-xs md:text-sm">EVERYDAY</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center flex-shrink-0 group">
+          <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden mb-5 border-4 border-transparent group-hover:border-lime-500 transition-colors shadow-sm">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Travel">
+          </div>
+          <span class="font-bold uppercase tracking-widest text-xs md:text-sm">TRAVEL</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center flex-shrink-0 group">
+          <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden mb-5 border-4 border-transparent group-hover:border-lime-500 transition-colors shadow-sm">
+            <img src="https://images.unsplash.com/photo-1515406085149-141a029528f8?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Lounge">
+          </div>
+          <span class="font-bold uppercase tracking-widest text-xs md:text-sm">LOUNGE</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center flex-shrink-0 group">
+          <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden mb-5 border-4 border-transparent group-hover:border-lime-500 transition-colors shadow-sm">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Outdoor">
+          </div>
+          <span class="font-bold uppercase tracking-widest text-xs md:text-sm">OUTDOOR</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Trending Now / Main Collection -->
+  <section class="max-w-[1600px] mx-auto px-6 py-20 md:py-32" id="main-collection">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 space-y-4 md:space-y-0">
+      <div>
+        <h2 id="collection-title" class="text-3xl md:text-5xl font-black uppercase tracking-tighter">Trending Now</h2>
+        <p id="collection-subtitle" class="text-gray-500 mt-2 font-medium">What's hot right now.</p>
+      </div>
+      <div class="flex items-center space-x-4">
+        <select id="sort-select" class="text-xs font-bold uppercase tracking-widest border-b-2 border-black pb-1 bg-transparent focus:outline-none cursor-pointer" onchange="applySort(this.value)">
+          <option value="featured">Sort: Featured</option>
+          <option value="newest">Newest</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+        </select>
+        <button id="filter-toggle-btn" class="text-xs font-bold uppercase tracking-widest border-2 border-black px-4 py-2 hover:bg-black hover:text-white transition" onclick="toggleFilterBar()">Filters</button>
+      </div>
+    </div>
+    
+    <!-- Filter Bar (Hidden by default) -->
+    <div id="filter-bar" class="hidden mb-8 p-6 bg-gray-50 flex flex-wrap gap-6 border border-gray-100 transition-all">
+       <div>
+         <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Category</label>
+         <select id="filter-category" class="w-full md:w-48 bg-white border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:border-black" onchange="updateFilters()">
+           <option value="All">All Categories</option>
+           <option value="Men">Men</option>
+           <option value="Women">Women</option>
+           <option value="Sports">Sports & Activewear</option>
+           <option value="Innerwear">Innerwear</option>
+         </select>
+       </div>
+       <div>
+         <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Activity</label>
+         <select id="filter-activity" class="w-full md:w-48 bg-white border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:border-black" onchange="updateFilters()">
+           <option value="All">All Activities</option>
+           <option value="Everyday">Everyday</option>
+           <option value="Gym">Gym</option>
+           <option value="Running">Running</option>
+           <option value="Training">Training</option>
+           <option value="Sports">Sports</option>
+         </select>
+       </div>
+       <div>
+         <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Price</label>
+         <select id="filter-price" class="w-full md:w-48 bg-white border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:border-black" onchange="updateFilters()">
+           <option value="All">Any Price</option>
+           <option value="under50">Under $50</option>
+           <option value="50to100">$50 to $100</option>
+           <option value="over100">Over $100</option>
+         </select>
+       </div>
+       <div class="flex items-end">
+         <button onclick="clearFilters()" class="text-xs font-bold uppercase tracking-widest border-b border-black pb-0.5 hover:text-red-500 transition">Clear Filters</button>
+       </div>
+    </div>
+
+    <!-- Carousel Controls (Desktop) -->
+    <div class="hidden md:flex justify-end mb-4 space-x-2">
+       <button onclick="scrollCarousel('trending-grid', -1)" class="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+       <button onclick="scrollCarousel('trending-grid', 1)" class="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+    </div>
+    
+    <div id="trending-grid" class="carousel-container flex overflow-x-auto hide-scrollbar gap-6 pb-6">
+      <!-- Dynamically Populated via JS -->
+    </div>
+  </section>
+
+  <!-- 7. Featured Collection -->
+  <section class="max-w-[1600px] mx-auto px-6 py-12 md:py-24">
+    <div class="w-full bg-black text-white rounded-none overflow-hidden flex flex-col md:flex-row relative">
+      
+      <!-- Content side -->
+      <div class="w-full md:w-1/2 p-10 md:p-20 flex flex-col justify-center z-10">
+        <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6 leading-none">
+          <span class="text-lime-500">MOVE FREELY.</span><br>
+          LIVE FULLY.
+        </h2>
+        <p class="text-lg md:text-xl text-gray-300 font-medium max-w-md mb-12">
+          Performance meets everyday in our advanced activewear collection. Designed for limitless movement.
+        </p>
+        <a href="#" class="bg-lime-500 text-black px-8 py-4 font-bold text-sm uppercase tracking-widest hover:bg-lime-400 transition-colors self-start">Shop Activewear &rarr;</a>
+      </div>
+      
+      <!-- Image side -->
+      <div class="w-full md:w-1/2 h-[400px] md:h-auto relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80" alt="Activewear Collection" class="absolute inset-0 w-full h-full object-cover object-center">
+        <!-- Optional overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent hidden md:block"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent md:hidden"></div>
+      </div>
+
+      <!-- Overlapping Benefits (Desktop) -->
+      <div class="hidden lg:flex absolute right-0 top-0 h-full w-[40%] bg-gradient-to-l from-black via-black/80 to-transparent flex-col justify-center px-16 space-y-10 z-20">
+         <div class="flex items-start space-x-6">
+           <svg class="w-10 h-10 text-lime-500 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+           <div>
+             <h4 class="font-bold text-lg uppercase tracking-wider mb-2">Breathable Fabrics</h4>
+             <p class="text-gray-400 text-sm">Stay cool, always. Advanced airflow tech.</p>
+           </div>
+         </div>
+         <div class="flex items-start space-x-6">
+           <svg class="w-10 h-10 text-lime-500 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+           <div>
+             <h4 class="font-bold text-lg uppercase tracking-wider mb-2">Moisture Wicking</h4>
+             <p class="text-gray-400 text-sm">Sweat it out, stay dry. Rapid evaporation.</p>
+           </div>
+         </div>
+         <div class="flex items-start space-x-6">
+           <svg class="w-10 h-10 text-lime-500 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+           <div>
+             <h4 class="font-bold text-lg uppercase tracking-wider mb-2">Stretch & Flex</h4>
+             <p class="text-gray-400 text-sm">Move without limits in 4-way stretch.</p>
+           </div>
+         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Sports & Activewear (Repeated logic as New Arrivals for simplicity in this demo) -->
+  <!-- We'll combine sections into New Arrivals as requested to save lines, but follow instructions strictly. -->
+
+  <!-- 10. New Arrivals -->
+  <section class="bg-gray-50 py-20 md:py-32">
+    <div class="max-w-[1600px] mx-auto px-6">
+      <div class="flex justify-between items-end mb-12">
+        <div>
+          <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter">New Arrivals</h2>
+          <p class="text-gray-500 mt-2 font-medium">Fresh styles just dropped.</p>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="#" class="hidden md:block text-xs font-bold uppercase tracking-widest hover:text-lime-500 transition-colors mr-4" onclick="applyCategoryFilter('New')">View All &rarr;</a>
+          <!-- Carousel Controls -->
+          <div class="hidden md:flex space-x-2">
+             <button onclick="scrollCarousel('new-arrivals-grid', -1)" class="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition bg-white"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+             <button onclick="scrollCarousel('new-arrivals-grid', 1)" class="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition bg-white"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+          </div>
+        </div>
+      </div>
+      
+      <div id="new-arrivals-grid" class="carousel-container flex overflow-x-auto hide-scrollbar gap-6 pb-6">
+        <!-- Dynamically Populated via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. Brand benefits -->
+  <section class="max-w-[1600px] mx-auto px-6 py-16 border-b border-gray-200">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+       
+       <div class="flex flex-col md:flex-row items-center md:items-start text-center md:text-left space-y-4 md:space-y-0 md:space-x-5">
+         <div class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center shrink-0">
+           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+         </div>
+         <div>
+           <h4 class="font-bold text-sm uppercase tracking-widest mb-1.5">Quality First</h4>
+           <p class="text-gray-500 text-xs md:text-sm">Premium materials you can truly feel.</p>
+         </div>
+       </div>
+
+       <div class="flex flex-col md:flex-row items-center md:items-start text-center md:text-left space-y-4 md:space-y-0 md:space-x-5">
+         <div class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center shrink-0">
+           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+         </div>
+         <div>
+           <h4 class="font-bold text-sm uppercase tracking-widest mb-1.5">Fast Delivery</h4>
+           <p class="text-gray-500 text-xs md:text-sm">Quick & reliable delivery across the US.</p>
+         </div>
+       </div>
+
+       <div class="flex flex-col md:flex-row items-center md:items-start text-center md:text-left space-y-4 md:space-y-0 md:space-x-5">
+         <div class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center shrink-0">
+           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+         </div>
+         <div>
+           <h4 class="font-bold text-sm uppercase tracking-widest mb-1.5">Easy Returns</h4>
+           <p class="text-gray-500 text-xs md:text-sm">Hassle-free returns within 30 days.</p>
+         </div>
+       </div>
+
+       <div class="flex flex-col md:flex-row items-center md:items-start text-center md:text-left space-y-4 md:space-y-0 md:space-x-5">
+         <div class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center shrink-0">
+           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+         </div>
+         <div>
+           <h4 class="font-bold text-sm uppercase tracking-widest mb-1.5">Secure Checkout</h4>
+           <p class="text-gray-500 text-xs md:text-sm">100% safe & encrypted payments.</p>
+         </div>
+       </div>
+
+    </div>
+  </section>
+
+  <!-- 15. Social / UGC -->
+  <section class="max-w-[1600px] mx-auto px-6 py-20 md:py-32">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 space-y-4 md:space-y-0">
+      <div>
+        <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter">Join the Movement</h2>
+        <p class="text-gray-500 mt-2 font-medium">Tag <span class="text-black font-bold">@urbn.store</span> to get featured.</p>
+      </div>
+      <a href="#" class="border-2 border-black px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors flex items-center">
+        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Follow Us
+      </a>
+    </div>
+    
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <a href="#" class="block aspect-square relative group overflow-hidden bg-gray-100">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </div>
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="UGC">
+      </a>
+      <a href="#" class="block aspect-square relative group overflow-hidden bg-gray-100">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </div>
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="UGC">
+      </a>
+      <a href="#" class="block aspect-square relative group overflow-hidden bg-gray-100">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </div>
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="UGC">
+      </a>
+      <a href="#" class="block aspect-square relative group overflow-hidden bg-gray-100 hidden md:block">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </div>
+        <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="UGC">
+      </a>
+      <a href="#" class="block aspect-square relative group overflow-hidden bg-gray-100 hidden lg:block">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </div>
+        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="UGC">
+      </a>
+    </div>
+  </section>
+
+  <!-- 17. Footer -->
+  <footer class="bg-black text-white pt-20 pb-10">
+    <div class="max-w-[1600px] mx-auto px-6">
+      
+      <!-- Newsletter Row -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-white/10 pb-16 mb-16 space-y-8 md:space-y-0">
+        <div class="max-w-xl">
+          <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4">Stay in the Loop</h2>
+          <p class="text-gray-400 font-medium text-sm">Sign up for exclusive offers, original stories, activism awareness, events and more.</p>
+        </div>
+        <div class="w-full md:w-auto flex">
+          <input type="email" placeholder="ENTER YOUR EMAIL" class="bg-transparent border-b-2 border-white/30 text-white placeholder-gray-500 py-3 px-2 w-full md:w-72 focus:outline-none focus:border-lime-500 text-sm font-bold uppercase tracking-widest transition-colors">
+          <button class="bg-white text-black font-bold uppercase text-xs tracking-widest px-6 ml-4 hover:bg-lime-500 transition-colors">Sign Up</button>
+        </div>
+      </div>
+
+      <!-- Links Row -->
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-10 lg:gap-6 mb-16">
+        
+        <div class="col-span-2 lg:col-span-2">
+          <a href="#" class="text-4xl font-black tracking-tighter uppercase flex items-center mb-6">
+            <svg class="w-8 h-8 mr-2 text-lime-500" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16a2 2 0 012 2v14a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2zm0 2v14h16V5H4zm8 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+            URBN
+          </a>
+          <p class="text-gray-400 text-sm max-w-sm font-medium mb-6">
+            Essentials for your everyday.<br>
+            Designed for movement.<br>
+            Made for you.
+          </p>
+          <div class="flex space-x-4 text-white">
+            <a href="#" class="hover:text-lime-500 transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="#" class="hover:text-lime-500 transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+            <a href="#" class="hover:text-lime-500 transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-xs uppercase tracking-widest mb-6">Shop</h4>
+          <ul class="space-y-4 text-sm text-gray-400 font-medium">
+            <li><a href="#" class="hover:text-white transition-colors">Men</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Women</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Sports & Activewear</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Innerwear</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Accessories</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">New Arrivals</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Best Sellers</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-xs uppercase tracking-widest mb-6">Customer Service</h4>
+          <ul class="space-y-4 text-sm text-gray-400 font-medium">
+            <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">FAQs</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Shipping</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Returns & Refunds</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Track Order</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Size Guide</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-xs uppercase tracking-widest mb-6">About</h4>
+          <ul class="space-y-4 text-sm text-gray-400 font-medium">
+            <li><a href="#" class="hover:text-white transition-colors">Our Story</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Sustainability</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-xs uppercase tracking-widest mb-6">Support</h4>
+          <ul class="space-y-4 text-sm text-gray-400 font-medium">
+            <li><a href="mailto:support@urbn.store" class="hover:text-white transition-colors">support@urbn.store</a></li>
+            <li><a href="tel:18001234567" class="hover:text-white transition-colors">1-800-123-4567</a></li>
+            <li class="pt-2">Mon - Sat | 9AM - 8PM EST</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs font-medium border-t border-white/10 pt-8">
+        <p>&copy; 2024 URBN USA. All rights reserved.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <span>United States (USD $)</span>
+          <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+        </div>
+      </div>
+      
+    </div>
+  </footer>
+
+  <!-- Search Overlay -->
+  <div id="search-overlay-backdrop" class="fixed inset-0 bg-black/60 z-[60] hidden opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="search-overlay" class="fixed top-0 left-0 right-0 bg-white z-[70] hidden opacity-0 pointer-events-none transition-all duration-300 transform -translate-y-4 shadow-2xl">
+    <div class="max-w-[1600px] mx-auto px-6 py-8">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl font-black uppercase tracking-tighter">Search</h2>
+        <button id="search-close" class="text-gray-400 hover:text-black transition p-2 bg-gray-50 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+      </div>
+      <div class="relative mb-10">
+        <svg class="w-6 h-6 absolute left-0 top-1/2 -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        <input type="text" id="search-input" placeholder="Search products, categories & activities" class="w-full pl-10 pr-4 py-4 text-xl border-b-2 border-gray-200 focus:border-black outline-none transition-colors bg-transparent placeholder-gray-300 font-medium">
+      </div>
+      
+      <div id="search-popular" class="mb-8">
+        <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-4">Popular Searches</h4>
+        <div class="flex flex-wrap gap-3">
+          <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-sm font-medium transition rounded-full" onclick="executeSearch('Oversized T-Shirts')">Oversized T-Shirts</button>
+          <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-sm font-medium transition rounded-full" onclick="executeSearch('Activewear')">Activewear</button>
+          <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-sm font-medium transition rounded-full" onclick="executeSearch('Boxers')">Boxers</button>
+          <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-sm font-medium transition rounded-full" onclick="executeSearch('Gym Shorts')">Gym Shorts</button>
+          <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-sm font-medium transition rounded-full" onclick="executeSearch('Hoodies')">Hoodies</button>
+          <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-sm font-medium transition rounded-full" onclick="executeSearch('Running Wear')">Running Wear</button>
+        </div>
+      </div>
+
+      <div id="search-results-container" class="hidden">
+        <div class="flex justify-between items-center mb-6">
+          <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400">Results (<span id="search-results-count">0</span>)</h4>
+          <button onclick="applyCategoryFilter('All')" class="text-xs font-bold uppercase tracking-widest border-b border-black pb-0.5 hover:text-lime-600 transition">View All</button>
+        </div>
+        <div id="search-results-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 overflow-y-auto max-h-[50vh] pr-2 pb-4">
+          <!-- Results injected via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/60 z-[60] hidden opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="mobile-drawer" class="fixed right-0 top-0 bottom-0 w-full sm:w-[400px] bg-white z-[70] translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
+    <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-white">
+      <h2 class="text-2xl font-black uppercase tracking-tighter">Menu</h2>
+      <button id="mobile-close" class="text-gray-400 hover:text-black transition p-2 bg-gray-50 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+    </div>
+    <div class="flex-1 overflow-y-auto p-6">
+      <div class="space-y-6">
+        <!-- SHOP Categories -->
+        <div>
+           <button class="flex justify-between items-center w-full py-2 border-b border-gray-100 font-bold text-lg uppercase tracking-tight" onclick="toggleMobileAccordion('mob-cat-men')">
+             Men
+             <svg class="w-5 h-5 transform transition-transform" id="icon-mob-cat-men" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+           </button>
+           <ul id="mob-cat-men" class="hidden pl-4 py-4 space-y-4 text-gray-500 font-medium">
+             <li><button onclick="applyCategoryFilter('Men')" class="hover:text-black">Shop All Men</button></li>
+             <li><button onclick="applyCategoryFilter('Men', 'Everyday')" class="hover:text-black">T-Shirts</button></li>
+             <li><button onclick="applyCategoryFilter('Men', 'Everyday')" class="hover:text-black">Hoodies</button></li>
+             <li><button onclick="applyCategoryFilter('Men', 'Everyday')" class="hover:text-black">Joggers</button></li>
+             <li><button onclick="applyCategoryFilter('Men', 'Everyday')" class="hover:text-black">Shorts</button></li>
+           </ul>
+        </div>
+        
+        <div>
+           <button class="flex justify-between items-center w-full py-2 border-b border-gray-100 font-bold text-lg uppercase tracking-tight" onclick="toggleMobileAccordion('mob-cat-women')">
+             Women
+             <svg class="w-5 h-5 transform transition-transform" id="icon-mob-cat-women" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+           </button>
+           <ul id="mob-cat-women" class="hidden pl-4 py-4 space-y-4 text-gray-500 font-medium">
+             <li><button onclick="applyCategoryFilter('Women')" class="hover:text-black">Shop All Women</button></li>
+             <li><button onclick="applyCategoryFilter('Women', 'Gym')" class="hover:text-black">Leggings</button></li>
+             <li><button onclick="applyCategoryFilter('Women', 'Everyday')" class="hover:text-black">Tops & T-Shirts</button></li>
+             <li><button onclick="applyCategoryFilter('Women', 'Activewear')" class="hover:text-black">Activewear</button></li>
+           </ul>
+        </div>
+        
+        <div>
+           <button class="flex justify-between items-center w-full py-2 border-b border-gray-100 font-bold text-lg uppercase tracking-tight" onclick="toggleMobileAccordion('mob-cat-sports')">
+             Sports & Activewear
+             <svg class="w-5 h-5 transform transition-transform" id="icon-mob-cat-sports" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+           </button>
+           <ul id="mob-cat-sports" class="hidden pl-4 py-4 space-y-4 text-gray-500 font-medium">
+             <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-black">Shop All Sports</button></li>
+             <li><button onclick="applyCategoryFilter('Sports', 'Gym')" class="hover:text-black">Gym</button></li>
+             <li><button onclick="applyCategoryFilter('Sports', 'Running')" class="hover:text-black">Running</button></li>
+             <li><button onclick="applyCategoryFilter('Sports', 'Training')" class="hover:text-black">Training</button></li>
+           </ul>
+        </div>
+        
+        <div>
+           <button class="flex justify-between items-center w-full py-2 border-b border-gray-100 font-bold text-lg uppercase tracking-tight" onclick="toggleMobileAccordion('mob-cat-innerwear')">
+             Innerwear
+             <svg class="w-5 h-5 transform transition-transform" id="icon-mob-cat-innerwear" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+           </button>
+           <ul id="mob-cat-innerwear" class="hidden pl-4 py-4 space-y-4 text-gray-500 font-medium">
+             <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-black">Shop All Innerwear</button></li>
+             <li><button onclick="applyCategoryFilter('Innerwear', 'Everyday')" class="hover:text-black">Boxers & Briefs</button></li>
+           </ul>
+        </div>
+
+        <div class="pt-4 space-y-4">
+           <button onclick="applyCategoryFilter('New')" class="block w-full text-left font-bold text-lg uppercase tracking-tight text-lime-500">New Arrivals</button>
+           <button onclick="applyCategoryFilter('All', 'All', 'featured')" class="block w-full text-left font-bold text-lg uppercase tracking-tight">Best Sellers</button>
+           <button onclick="applyCategoryFilter('Sale')" class="block w-full text-left font-bold text-lg uppercase tracking-tight text-red-500">Sale</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Modal -->
+  <div id="product-modal-backdrop" class="fixed inset-0 bg-black/60 z-[60] hidden opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="product-modal" class="fixed inset-0 z-[70] hidden items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300 flex">
+    <div class="bg-white w-full max-w-[1100px] max-h-[95vh] overflow-y-auto sm:overflow-hidden shadow-2xl flex flex-col sm:flex-row relative transform scale-95 transition-transform duration-300">
+      
+      <button id="modal-close" class="absolute top-4 right-4 z-20 bg-white/80 backdrop-blur text-black p-2.5 rounded-full hover:bg-black hover:text-white transition-colors shadow-sm" aria-label="Close">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+
+      <!-- Image Gallery -->
+      <div class="w-full sm:w-1/2 flex flex-col h-[50vh] sm:h-[85vh] bg-gray-50 relative group">
+         <div class="relative flex-grow zoom-img-container h-full w-full bg-gray-100" id="modal-main-img-container">
+           <img id="modal-main-img" src="" alt="Product" class="w-full h-full object-cover object-top absolute inset-0">
+           <!-- Gallery Nav -->
+           <button id="gallery-prev" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 p-2.5 rounded-full hover:bg-black hover:text-white transition shadow-sm opacity-0 group-hover:opacity-100"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+           <button id="gallery-next" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 p-2.5 rounded-full hover:bg-black hover:text-white transition shadow-sm opacity-0 group-hover:opacity-100"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+         </div>
+         <div id="modal-thumbnails" class="flex space-x-3 p-4 overflow-x-auto hide-scrollbar bg-white border-t border-gray-100 shrink-0">
+           <!-- Thumbs populated by JS -->
+         </div>
+      </div>
+
+      <!-- Details -->
+      <div class="w-full sm:w-1/2 p-6 sm:p-10 lg:p-12 flex flex-col h-auto sm:h-[85vh] overflow-y-auto">
+         <div class="mb-4">
+           <span id="modal-badge" class="bg-lime-500 text-black text-[10px] font-bold px-2.5 py-1 uppercase tracking-wider mb-3 inline-block hidden">NEW</span>
+           <h2 id="modal-title" class="text-2xl md:text-4xl font-black uppercase tracking-tighter mb-2 leading-tight"></h2>
+           
+           <div class="flex items-center mb-4">
+             <div class="flex text-black text-xs" id="modal-stars"></div>
+             <span id="modal-reviews" class="text-sm text-gray-500 ml-2 font-medium"></span>
+           </div>
+           
+           <div class="flex items-baseline space-x-3 mb-6">
+             <span id="modal-price" class="font-black text-2xl"></span>
+             <span id="modal-compare" class="text-gray-400 line-through text-lg font-medium hidden"></span>
+           </div>
+         </div>
+         
+         <p id="modal-desc" class="text-gray-600 text-sm mb-8 leading-relaxed"></p>
+         
+         <!-- Colors -->
+         <div class="mb-6">
+           <h4 class="font-bold text-xs uppercase tracking-widest mb-3">Color</h4>
+           <div id="modal-colors" class="flex space-x-3"></div>
+         </div>
+
+         <!-- Sizes -->
+         <div class="mb-10">
+           <div class="flex justify-between items-center mb-3">
+             <h4 class="font-bold text-xs uppercase tracking-widest">Size</h4>
+             <a href="#" class="text-gray-400 text-[10px] uppercase font-bold tracking-widest hover:text-black underline transition-colors">Size Guide</a>
+           </div>
+           <div id="modal-sizes" class="grid grid-cols-5 gap-2"></div>
+         </div>
+
+         <!-- Specs -->
+         <div class="mb-10 pt-8 border-t border-gray-100">
+           <h4 class="font-bold text-xs uppercase tracking-widest mb-4">Specifications</h4>
+           <ul id="modal-specs" class="space-y-3 text-sm text-gray-500 font-medium list-disc list-inside"></ul>
+         </div>
+
+         <!-- Actions -->
+         <div class="mt-auto pt-8 border-t border-gray-100 flex flex-col sm:flex-row gap-4">
+           <button id="modal-save-btn" class="flex-1 border-2 border-black py-4 text-xs font-bold uppercase tracking-widest hover:bg-gray-50 transition-colors flex justify-center items-center">
+             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="modal-save-icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+             <span id="modal-save-text">Save Product</span>
+           </button>
+           <button id="modal-enquire-btn" class="flex-1 bg-lime-500 text-black py-4 text-xs font-bold uppercase tracking-widest hover:bg-lime-400 transition-colors flex justify-center items-center">
+             Enquire <span class="ml-2">&rarr;</span>
+           </button>
+         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Saved Drawer -->
+  <div id="saved-drawer-backdrop" class="fixed inset-0 bg-black/60 z-[60] hidden opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="saved-drawer" class="fixed right-0 top-0 bottom-0 w-full sm:w-[400px] bg-white z-[70] translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
+    <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-white">
+      <h2 class="text-xl font-black uppercase tracking-tighter flex items-center">
+        Saved <span id="saved-drawer-count" class="ml-2 bg-gray-100 text-black text-xs px-2 py-0.5 rounded-full">0</span>
+      </h2>
+      <button id="saved-close" class="text-gray-400 hover:text-black transition p-2 bg-gray-50 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+    </div>
+    <div id="saved-items-container" class="flex-1 overflow-y-auto p-6 space-y-6">
+       <!-- Saved Items JS -->
+    </div>
+  </div>
+
+  <script>
+    // JS Logic
+    const rawProducts = [
+      {
+        id: "p1", name: "Oversized Box Tee", category: "Men", gender: "Mens", activity: "Everyday",
+        price: 29, comparePrice: 39, discount: "-25%", rating: 4.8, reviews: 128, isNew: false,
+        description: "The ultimate everyday tee. Crafted from heavy-weight, premium combed cotton for a structured yet relaxed drape. Pre-shrunk and garment-dyed for a lived-in feel.",
+        images: [
+          "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1574180566232-aaad1b5b8450?auto=format&fit=crop&w=800&q=80"
+        ],
+        colors: ["#111111", "#f5f5f5", "#5c5c5c"], sizes: ["S", "M", "L", "XL"],
+        specs: ["100% Combed Cotton", "Relaxed boxy fit", "Dropped shoulders", "Machine wash cold"]
+      },
+      {
+        id: "p2", name: "Performance Hoodie", category: "Men", gender: "Mens", activity: "Training",
+        price: 69, comparePrice: 89, discount: "-22%", rating: 4.9, reviews: 245, isNew: false,
+        description: "Engineered for movement. This performance hoodie features moisture-wicking tech and 4-way stretch fabric to keep you comfortable during warm-ups.",
+        images: [
+          "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1556821839-445217983ea0?auto=format&fit=crop&w=800&q=80"
+        ],
+        colors: ["#222222", "#475569"], sizes: ["S", "M", "L", "XL"],
+        specs: ["88% Polyester, 12% Elastane", "Moisture-wicking", "Zippered pockets", "Athletic fit"]
+      },
+      {
+        id: "p3", name: "High-Support Sports Bra", category: "Women", gender: "Womens", activity: "Gym",
+        price: 39, comparePrice: 49, discount: "-20%", rating: 4.7, reviews: 312, isNew: false,
+        description: "Uncompromising support for high-impact activities. Features a compressive fit, breathable mesh panels, and wide, comfortable straps.",
+        images: [
+          "https://images.unsplash.com/photo-1544022613-e87ca75a784a?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1608228068998-5777bd36f5f3?auto=format&fit=crop&w=800&q=80"
+        ],
+        colors: ["#111111", "#8b5cf6", "#f43f5e"], sizes: ["XS", "S", "M", "L", "XL"],
+        specs: ["75% Nylon, 25% Spandex", "High impact support", "Removable pads", "Sweat-wicking"]
+      },
+      {
+        id: "p4", name: "Tech Run Shorts", category: "Men", gender: "Mens", activity: "Running",
+        price: 45, comparePrice: null, discount: null, rating: 4.6, reviews: 95, isNew: true,
+        description: "Ultralight running shorts with a built-in brief liner. Designed with side splits for maximum range of motion and a secure zip pocket for essentials.",
+        images: [
+          "https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1533659828870-95ee305cee3e?auto=format&fit=crop&w=800&q=80"
+        ],
+        colors: ["#111111", "#0284c7"], sizes: ["S", "M", "L", "XL"],
+        specs: ["5-inch inseam", "Built-in liner", "Reflective details", "Zip back pocket"]
+      },
+      {
+        id: "p5", name: "Seamless Leggings", category: "Women", gender: "Womens", activity: "Yoga",
+        price: 59, comparePrice: null, discount: null, rating: 4.9, reviews: 420, isNew: true,
+        description: "Buttery soft, second-skin feel. These seamless leggings feature a high, ribbed waistband that stays in place through every pose.",
+        images: [
+          "https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"
+        ],
+        colors: ["#2dd4bf", "#111111"], sizes: ["XS", "S", "M", "L"],
+        specs: ["90% Nylon, 10% Spandex", "High-waisted", "Seamless construction", "Squat-proof"]
+      },
+      {
+        id: "p6", name: "Signature Dad Cap", category: "Accessories", gender: "Unisex", activity: "Everyday",
+        price: 24, comparePrice: null, discount: null, rating: 4.5, reviews: 88, isNew: true,
+        description: "The perfect finishing touch. Classic 6-panel dad hat constructed from washed cotton twill, featuring our embroidered minimalist logo.",
+        images: [
+          "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1556306535-0f09a536f01f?auto=format&fit=crop&w=800&q=80"
+        ],
+        colors: ["#111111", "#d9f845", "#f5f5f5"], sizes: ["ONE SIZE"],
+        specs: ["100% Cotton Twill", "Adjustable strap", "Pre-curved brim", "Embroidered logo"]
+      },
+      {
+        id: "p7", name: "Crew Socks 3-Pack", category: "Accessories", gender: "Unisex", activity: "Training",
+        price: 18, comparePrice: null, discount: null, rating: 4.8, reviews: 512, isNew: true,
+        description: "Premium athletic crew socks. Cushioned footbed for impact absorption and a ribbed leg that stays up all day.",
+        images: [
+          "https://images.unsplash.com/photo-1618354691438-25bc04584c23?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?auto=format&fit=crop&w=800&q=80"
+        ],
+        colors: ["#ffffff", "#111111"], sizes: ["M", "L"],
+        specs: ["Cotton/Nylon blend", "Terry loop cushioning", "Arch support", "Pack of 3"]
+      },
+      {
+        id: "p8", name: "Graphic Muscle Tank", category: "Women", gender: "Womens", activity: "Gym",
+        price: 28, comparePrice: 35, discount: "-20%", rating: 4.6, reviews: 145, isNew: false,
+        description: "A breezy muscle tank with dropped armholes for ventilation and showing off your favorite sports bra. Features a bold URBN graphic.",
+        images: [
+          "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80"
+        ],
+        colors: ["#f5f5f5", "#111111"], sizes: ["XS", "S", "M", "L"],
+        specs: ["100% Cotton", "Dropped armholes", "Screen-printed graphic", "Relaxed fit"]
+      }
+    ];
+
+    // Extrapolate to 16 products for robustness
+    const allProducts = [
+      ...rawProducts,
+      {...rawProducts[0], id: "p9", name: "Minimalist Joggers", price: 59, isNew: true, images: ["https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80"]},
+      {...rawProducts[1], id: "p10", name: "Woven Track Jacket", price: 79, images: ["https://images.unsplash.com/photo-1512413914488-84223c6d7a16?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1520975954732-35dd22299614?auto=format&fit=crop&w=800&q=80"]},
+      {...rawProducts[2], id: "p11", name: "Everyday Crop Top", price: 29, comparePrice: 39, discount: "-25%", images: ["https://images.unsplash.com/photo-1622323719706-e7949666063e?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"]},
+      {...rawProducts[3], id: "p12", name: "Utility Cargo Pants", price: 89, isNew: true, images: ["https://images.unsplash.com/photo-1517423738875-5ce310acd3da?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80"]},
+      {...rawProducts[4], id: "p13", name: "Pro Compression Tight", price: 49, images: ["https://images.unsplash.com/photo-1506629082955-511b1aa562c8?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=800&q=80"]},
+      {...rawProducts[5], id: "p14", name: "Fleece Zip-Up", price: 69, comparePrice: 89, discount: "-22%", images: ["https://images.unsplash.com/photo-1548624313-0396c75e4b1a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1512316668749-923f9933ccb4?auto=format&fit=crop&w=800&q=80"]},
+      {...rawProducts[6], id: "p15", name: "Gym Duffel Bag", price: 55, isNew: true, images: ["https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=800&q=80"]},
+      {...rawProducts[7], id: "p16", name: "Classic Beanie", price: 24, images: ["https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1605335198064-07d248bcf627?auto=format&fit=crop&w=800&q=80"]}
+    ];
+
+    let savedProductIds = JSON.parse(localStorage.getItem('urbn_saved') || '[]');
+
+    const generateStars = (rating) => {
+      let stars = '';
+      const full = Math.floor(rating);
+      const half = rating % 1 >= 0.5 ? 1 : 0;
+      const empty = 5 - full - half;
+      
+      for(let i=0; i<full; i++) stars += `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
+      for(let i=0; i<half; i++) stars += `<svg class="w-3.5 h-3.5 fill-current text-gray-800" viewBox="0 0 24 24"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27V2z"/></svg>`;
+      for(let i=0; i<empty; i++) stars += `<svg class="w-3.5 h-3.5 text-gray-300 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
+      return stars;
+    };
+
+    const renderProductCard = (product) => {
+      const isSaved = savedProductIds.includes(product.id);
+      const badgeHtml = product.discount 
+        ? `<span class="absolute top-4 left-4 bg-lime-500 text-black text-[10px] font-bold px-3 py-1.5 uppercase tracking-wider z-10">${product.discount}</span>` 
+        : (product.isNew ? `<span class="absolute top-4 left-4 bg-black text-white text-[10px] font-bold px-3 py-1.5 uppercase tracking-wider z-10">NEW</span>` : '');
+      
+      const priceHtml = product.comparePrice 
+        ? `<span class="font-black text-xl">$${product.price}</span><span class="text-gray-400 line-through text-sm font-medium ml-2">$${product.comparePrice}</span>` 
+        : `<span class="font-black text-xl">$${product.price}</span>`;
+        
+      const saveIcon = isSaved 
+        ? `<svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`
+        : `<svg class="w-5 h-5 text-gray-400 hover:text-black transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>`;
+
+      return `
+        <div class="carousel-item w-[280px] md:w-[320px] flex-shrink-0 group flex flex-col h-full bg-white relative cursor-pointer" onclick="openProductModal('${product.id}')">
+           <div class="relative bg-gray-100 aspect-[3/4] mb-5 overflow-hidden">
+              ${badgeHtml}
+              <button class="save-btn absolute top-4 right-4 z-20 bg-white p-2.5 rounded-full shadow-sm" onclick="event.stopPropagation(); toggleSave('${product.id}')" aria-label="Save">
+                ${saveIcon}
+              </button>
+              <img src="${product.images[0]}" class="primary-img w-full h-full object-cover object-top absolute inset-0 z-0" alt="${product.name}">
+              ${product.images[1] ? `<img src="${product.images[1]}" class="secondary-img w-full h-full object-cover object-top absolute inset-0 z-10 pointer-events-none" alt="${product.name} Alternative">` : ''}
+              
+              <div class="view-product-btn absolute bottom-0 left-0 right-0 p-3 z-20 hidden lg:block">
+                <div class="w-full bg-black/95 text-white text-center py-3.5 text-xs font-bold uppercase tracking-widest shadow-lg">
+                  View Product <span class="ml-1">&rarr;</span>
+                </div>
+              </div>
+           </div>
+           <h3 class="font-bold text-lg mb-1 tracking-tight px-1">${product.name}</h3>
+           <p class="text-gray-500 text-sm mb-3 px-1">${product.category} | ${product.activity}</p>
+           <div class="flex items-center mb-3 px-1">
+             <div class="flex text-black text-[10px]">
+               ${generateStars(product.rating)}
+             </div>
+             <span class="text-xs text-gray-500 ml-2 font-medium">(${product.reviews})</span>
+           </div>
+           <div class="flex items-baseline mt-auto px-1">
+             ${priceHtml}
+           </div>
+           
+           <div class="lg:hidden mt-4 w-full border-2 border-black py-3 text-center text-xs font-bold uppercase tracking-widest bg-white text-black">
+             View Product
+           </div>
+        </div>
+      `;
+    };
+
+    let currentFilters = {
+      category: 'All',
+      activity: 'All',
+      price: 'All',
+      sort: 'featured'
+    };
+
+    const applyCategoryFilter = (category, activity = 'All', sort = 'featured') => {
+      currentFilters.category = category;
+      currentFilters.activity = activity;
+      currentFilters.sort = sort;
+      currentFilters.price = 'All';
+      
+      document.getElementById('filter-category').value = category === 'Sale' || category === 'New' ? 'All' : category;
+      document.getElementById('filter-activity').value = activity;
+      document.getElementById('filter-price').value = 'All';
+      document.getElementById('sort-select').value = sort;
+      
+      const title = document.getElementById('collection-title');
+      const subtitle = document.getElementById('collection-subtitle');
+      if(category === 'New') {
+        title.innerText = 'New Arrivals';
+        subtitle.innerText = 'Fresh drops, just for you.';
+      } else if (category === 'Sale') {
+        title.innerText = 'Sale Collection';
+        subtitle.innerText = 'Best prices of the season.';
+      } else if (category === 'All') {
+        title.innerText = 'All Products';
+        subtitle.innerText = 'Explore our entire collection.';
+      } else {
+        title.innerText = `${category} Collection`;
+        subtitle.innerText = `Discover our premium ${category.toLowerCase()} selection.`;
+      }
+      
+      renderGrids(category);
+      
+      // Close overlays if open
+      closeMegaMenu();
+      closeMobileDrawer();
+      closeSearch();
+      
+      // Scroll to collection
+      document.getElementById('main-collection').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const toggleFilterBar = () => {
+      const bar = document.getElementById('filter-bar');
+      if (bar.classList.contains('hidden')) {
+        bar.classList.remove('hidden');
+      } else {
+        bar.classList.add('hidden');
+      }
+    };
+
+    const updateFilters = () => {
+      currentFilters.category = document.getElementById('filter-category').value;
+      currentFilters.activity = document.getElementById('filter-activity').value;
+      currentFilters.price = document.getElementById('filter-price').value;
+      applyCategoryFilter(currentFilters.category, currentFilters.activity, currentFilters.sort);
+    };
+    
+    const applySort = (sortValue) => {
+      currentFilters.sort = sortValue;
+      renderGrids(currentFilters.category);
+    };
+    
+    const clearFilters = () => {
+      applyCategoryFilter('All');
+    };
+
+    const renderGrids = (forceCategory = null) => {
+      const trendingContainer = document.getElementById('trending-grid');
+      const newArrivalsContainer = document.getElementById('new-arrivals-grid');
+      
+      let filtered = [...allProducts];
+      
+      const activeCategory = forceCategory || currentFilters.category;
+      
+      if (activeCategory === 'Sale') {
+        filtered = filtered.filter(p => p.discount);
+      } else if (activeCategory === 'New') {
+        filtered = filtered.filter(p => p.isNew);
+      } else if (activeCategory !== 'All') {
+        filtered = filtered.filter(p => p.category === activeCategory || p.gender === activeCategory + 's');
+      }
+      
+      if (currentFilters.activity !== 'All') {
+        filtered = filtered.filter(p => p.activity === currentFilters.activity);
+      }
+      
+      if (currentFilters.price === 'under50') filtered = filtered.filter(p => p.price < 50);
+      else if (currentFilters.price === '50to100') filtered = filtered.filter(p => p.price >= 50 && p.price <= 100);
+      else if (currentFilters.price === 'over100') filtered = filtered.filter(p => p.price > 100);
+      
+      if (currentFilters.sort === 'newest') filtered.sort((a, b) => (b.isNew === a.isNew) ? 0 : b.isNew ? 1 : -1);
+      else if (currentFilters.sort === 'price-asc') filtered.sort((a, b) => a.price - b.price);
+      else if (currentFilters.sort === 'price-desc') filtered.sort((a, b) => b.price - a.price);
+      else if (currentFilters.sort === 'rating') filtered.sort((a, b) => b.rating - a.rating);
+      
+      trendingContainer.innerHTML = filtered.length > 0 ? filtered.map(renderProductCard).join('') : '<p class="text-gray-500 w-full col-span-full py-12">No products found for these filters.</p>';
+      
+      // New arrivals always shows newest
+      let newest = [...allProducts].filter(p => p.isNew);
+      if(newest.length === 0) newest = [...allProducts].slice(0, 8); // fallback
+      if(newArrivalsContainer) {
+        newArrivalsContainer.innerHTML = newest.map(renderProductCard).join('');
+      }
+      
+      updateSavedBadge();
+    };
+
+    const scrollCarousel = (id, direction) => {
+      const container = document.getElementById(id);
+      if(container) {
+        container.scrollBy({ left: direction * 320, behavior: 'smooth' });
+      }
+    };
+    
+    // Mega Menu
+    const megaMenu = document.getElementById('mega-menu');
+    const megaBackdrop = document.getElementById('mega-menu-backdrop');
+    const shopNavBtn = document.getElementById('shop-nav-btn');
+    
+    const openMegaMenu = () => {
+      megaMenu.classList.add('open');
+      megaBackdrop.classList.remove('hidden');
+      void megaBackdrop.offsetWidth;
+      megaBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+      shopNavBtn.classList.add('active');
+    };
+    
+    const closeMegaMenu = () => {
+      megaMenu.classList.remove('open');
+      megaBackdrop.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => megaBackdrop.classList.add('hidden'), 300);
+      shopNavBtn.classList.remove('active');
+    };
+    
+    // Search Overlay
+    const searchOverlay = document.getElementById('search-overlay');
+    const searchBackdrop = document.getElementById('search-overlay-backdrop');
+    const searchInput = document.getElementById('search-input');
+    
+    const openSearch = () => {
+      searchOverlay.classList.remove('hidden');
+      searchBackdrop.classList.remove('hidden');
+      void searchOverlay.offsetWidth;
+      searchOverlay.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-4');
+      searchBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.classList.add('modal-open');
+      setTimeout(() => searchInput.focus(), 300);
+    };
+    
+    const closeSearch = () => {
+      searchOverlay.classList.add('opacity-0', 'pointer-events-none', '-translate-y-4');
+      searchBackdrop.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        searchOverlay.classList.add('hidden');
+        searchBackdrop.classList.add('hidden');
+        if(!document.getElementById('mobile-drawer').classList.contains('translate-x-0') && !document.getElementById('product-modal').classList.contains('scale-100')) {
+          document.body.classList.remove('modal-open');
+        }
+      }, 300);
+    };
+    
+    const executeSearch = (query) => {
+      searchInput.value = query;
+      handleSearchInput();
+    };
+    
+    const handleSearchInput = () => {
+      const q = searchInput.value.toLowerCase().trim();
+      const container = document.getElementById('search-results-container');
+      const grid = document.getElementById('search-results-grid');
+      const count = document.getElementById('search-results-count');
+      
+      if(q.length < 2) {
+        container.classList.add('hidden');
+        return;
+      }
+      
+      const results = allProducts.filter(p => 
+        p.name.toLowerCase().includes(q) || 
+        p.category.toLowerCase().includes(q) || 
+        p.activity.toLowerCase().includes(q)
+      );
+      
+      count.innerText = results.length;
+      container.classList.remove('hidden');
+      
+      grid.innerHTML = results.slice(0,6).map(p => `
+        <div class="cursor-pointer group flex flex-col h-full bg-white relative" onclick="closeSearch(); openProductModal('${p.id}')">
+           <div class="relative bg-gray-100 aspect-[3/4] mb-3 overflow-hidden">
+              <img src="${p.images[0]}" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" alt="${p.name}">
+           </div>
+           <h3 class="font-bold text-sm truncate">${p.name}</h3>
+           <p class="text-gray-500 text-xs truncate">${p.category}</p>
+           <div class="font-black text-sm mt-1 mb-2">$${p.price}</div>
+           <div class="mt-auto w-full border border-black py-2 text-center text-[10px] font-bold uppercase tracking-widest bg-white text-black hover:bg-black hover:text-white transition-colors">
+             View Product
+           </div>
+        </div>
+      `).join('');
+    };
+    
+    // Mobile Drawer
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const mobileBackdrop = document.getElementById('mobile-menu-backdrop');
+    
+    const openMobileDrawer = () => {
+      mobileBackdrop.classList.remove('hidden');
+      mobileDrawer.classList.remove('hidden');
+      void mobileDrawer.offsetWidth;
+      mobileBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+      mobileDrawer.classList.remove('translate-x-full');
+      mobileDrawer.classList.add('translate-x-0');
+      document.body.classList.add('modal-open');
+    };
+    
+    const closeMobileDrawer = () => {
+      mobileBackdrop.classList.add('opacity-0', 'pointer-events-none');
+      mobileDrawer.classList.add('translate-x-full');
+      mobileDrawer.classList.remove('translate-x-0');
+      setTimeout(() => {
+        mobileBackdrop.classList.add('hidden');
+        if(!document.getElementById('search-overlay').classList.contains('opacity-0') === false) {
+           document.body.classList.remove('modal-open');
+        }
+      }, 300);
+    };
+    
+    const toggleMobileAccordion = (id) => {
+      const el = document.getElementById(id);
+      const icon = document.getElementById(`icon-${id}`);
+      if(el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        el.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    };
+
+    // --- Save System ---
+    const toggleSave = (id) => {
+      if (savedProductIds.includes(id)) {
+        savedProductIds = savedProductIds.filter(pid => pid !== id);
+      } else {
+        savedProductIds.push(id);
+      }
+      localStorage.setItem('urbn_saved', JSON.stringify(savedProductIds));
+      
+      // Re-render UI
+      renderGrids();
+      updateSavedBadge();
+      if(currentProduct && currentProduct.id === id) {
+        updateModalSaveBtn();
+      }
+      if(!document.getElementById('saved-drawer').classList.contains('translate-x-full')) {
+        renderSavedDrawer();
+      }
+    };
+
+    const updateSavedBadge = () => {
+      const badge = document.getElementById('saved-badge');
+      if (savedProductIds.length > 0) {
+        badge.innerText = savedProductIds.length;
+        badge.classList.remove('opacity-0', 'hidden');
+      } else {
+        badge.classList.add('opacity-0');
+      }
+      
+      const drawerCount = document.getElementById('saved-drawer-count');
+      if(drawerCount) drawerCount.innerText = savedProductIds.length;
+    };
+
+    const renderSavedDrawer = () => {
+      const container = document.getElementById('saved-items-container');
+      if (savedProductIds.length === 0) {
+        container.innerHTML = `<div class="text-center text-gray-500 py-12 flex flex-col items-center"><svg class="w-12 h-12 text-gray-200 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg><p class="text-sm font-medium">Your saved items will appear here.</p></div>`;
+        return;
+      }
+      
+      const savedProducts = savedProductIds.map(id => allProducts.find(p => p.id === id)).filter(Boolean);
+      container.innerHTML = savedProducts.map(product => `
+        <div class="flex items-center space-x-4">
+          <div class="w-24 h-32 bg-gray-100 flex-shrink-0 cursor-pointer" onclick="openProductModal('${product.id}')">
+            <img src="${product.images[0]}" class="w-full h-full object-cover object-top" alt="${product.name}">
+          </div>
+          <div class="flex-1 min-w-0">
+            <h4 class="font-bold text-sm mb-1 truncate">${product.name}</h4>
+            <div class="text-xs text-gray-500 mb-2">$${product.price}</div>
+            <div class="flex space-x-3">
+              <button onclick="openProductModal('${product.id}')" class="text-[10px] font-bold uppercase tracking-widest border-b border-black pb-0.5 hover:text-lime-600">View</button>
+              <button onclick="toggleSave('${product.id}')" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-black transition">Remove</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    };
+
+    // --- Modal System ---
+    let currentProduct = null;
+    let currentImageIndex = 0;
+
+    const openProductModal = (id) => {
+      currentProduct = allProducts.find(p => p.id === id);
+      if(!currentProduct) return;
+      
+      document.getElementById('modal-title').innerText = currentProduct.name;
+      document.getElementById('modal-desc').innerText = currentProduct.description;
+      
+      document.getElementById('modal-price').innerText = `$${currentProduct.price}`;
+      const compPriceEl = document.getElementById('modal-compare');
+      if (currentProduct.comparePrice) {
+        compPriceEl.innerText = `$${currentProduct.comparePrice}`;
+        compPriceEl.classList.remove('hidden');
+      } else {
+        compPriceEl.classList.add('hidden');
+      }
+      
+      const badge = document.getElementById('modal-badge');
+      if (currentProduct.discount) {
+        badge.innerText = currentProduct.discount;
+        badge.className = "bg-lime-500 text-black text-[10px] font-bold px-2.5 py-1 uppercase tracking-wider mb-3 inline-block";
+        badge.classList.remove('hidden');
+      } else if (currentProduct.isNew) {
+        badge.innerText = "NEW";
+        badge.className = "bg-black text-white text-[10px] font-bold px-2.5 py-1 uppercase tracking-wider mb-3 inline-block";
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+
+      document.getElementById('modal-stars').innerHTML = generateStars(currentProduct.rating);
+      document.getElementById('modal-reviews').innerText = `(${currentProduct.reviews} Reviews)`;
+      
+      // Sizes
+      const sizesHtml = currentProduct.sizes.map(s => `<button class="border border-gray-200 py-2.5 text-xs font-bold hover:border-black transition focus:border-black focus:bg-gray-50">${s}</button>`).join('');
+      document.getElementById('modal-sizes').innerHTML = sizesHtml;
+      
+      // Colors
+      const colorsHtml = currentProduct.colors.map((c, i) => `<button class="w-8 h-8 rounded-full border border-gray-200 ring-2 ring-transparent focus:ring-black transition" style="background-color: ${c}"></button>`).join('');
+      document.getElementById('modal-colors').innerHTML = colorsHtml;
+      
+      // Specs
+      const specsHtml = currentProduct.specs.map(s => `<li>${s}</li>`).join('');
+      document.getElementById('modal-specs').innerHTML = specsHtml;
+      
+      updateModalSaveBtn();
+      
+      currentImageIndex = 0;
+      updateModalGallery();
+      
+      const backdrop = document.getElementById('product-modal-backdrop');
+      const modal = document.getElementById('product-modal');
+      
+      backdrop.classList.remove('hidden');
+      modal.classList.remove('hidden');
+      
+      // force reflow
+      void modal.offsetWidth;
+      
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.querySelector('div').classList.remove('scale-95');
+      modal.querySelector('div').classList.add('scale-100');
+      
+      document.body.classList.add('modal-open');
+    };
+
+    const closeProductModal = () => {
+      const backdrop = document.getElementById('product-modal-backdrop');
+      const modal = document.getElementById('product-modal');
+      
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.querySelector('div').classList.add('scale-95');
+      modal.querySelector('div').classList.remove('scale-100');
+      
+      setTimeout(() => {
+        backdrop.classList.add('hidden');
+        modal.classList.add('hidden');
+        document.body.classList.remove('modal-open');
+        currentProduct = null;
+      }, 300);
+    };
+
+    const updateModalSaveBtn = () => {
+      if(!currentProduct) return;
+      const isSaved = savedProductIds.includes(currentProduct.id);
+      const icon = document.getElementById('modal-save-icon');
+      const text = document.getElementById('modal-save-text');
+      
+      if(isSaved) {
+        icon.setAttribute('fill', 'currentColor');
+        icon.classList.add('text-black');
+        text.innerText = 'Saved';
+      } else {
+        icon.setAttribute('fill', 'none');
+        icon.classList.remove('text-black');
+        text.innerText = 'Save Product';
+      }
+    };
+
+    const updateModalGallery = () => {
+      if(!currentProduct) return;
+      
+      const mainImg = document.getElementById('modal-main-img');
+      // Adding a fade effect for image switch
+      mainImg.style.opacity = '0.5';
+      setTimeout(() => {
+        mainImg.src = currentProduct.images[currentImageIndex];
+        mainImg.style.opacity = '1';
+      }, 150);
+      
+      const thumbsHtml = currentProduct.images.map((img, i) => `
+        <button class="w-16 h-20 sm:w-20 sm:h-24 flex-shrink-0 border-2 transition-colors ${i === currentImageIndex ? 'border-black' : 'border-transparent hover:border-gray-300'}" onclick="setGalleryImage(${i})">
+          <img src="${img}" class="w-full h-full object-cover object-top" alt="Thumbnail">
+        </button>
+      `).join('');
+      
+      document.getElementById('modal-thumbnails').innerHTML = thumbsHtml;
+    };
+
+    const setGalleryImage = (index) => {
+      if(!currentProduct) return;
+      currentImageIndex = index;
+      updateModalGallery();
+    };
+
+    // Events
+    document.addEventListener('DOMContentLoaded', () => {
+      renderGrids();
+      
+      // Header Scroll
+      const header = document.getElementById('main-header');
+      const headerInner = document.getElementById('header-inner');
+      window.addEventListener('scroll', () => {
+        if(window.scrollY > 50) {
+          header.classList.add('header-scrolled');
+          headerInner.classList.remove('py-4');
+          headerInner.classList.add('py-2');
+        } else {
+          header.classList.remove('header-scrolled');
+          headerInner.classList.remove('py-2');
+          headerInner.classList.add('py-4');
+        }
+      });
+      
+      // Mega Menu
+      shopNavBtn.addEventListener('mouseenter', openMegaMenu);
+      document.getElementById('main-header').addEventListener('mouseleave', closeMegaMenu);
+      megaBackdrop.addEventListener('mouseenter', closeMegaMenu);
+      
+      // Mobile Drawer
+      document.getElementById('mobile-menu-btn').addEventListener('click', openMobileDrawer);
+      document.getElementById('mobile-close').addEventListener('click', closeMobileDrawer);
+      mobileBackdrop.addEventListener('click', closeMobileDrawer);
+      
+      // Search
+      const searchBtn = document.getElementById('search-btn');
+      if (searchBtn) searchBtn.addEventListener('click', openSearch);
+      document.getElementById('search-close').addEventListener('click', closeSearch);
+      searchBackdrop.addEventListener('click', closeSearch);
+      searchInput.addEventListener('input', handleSearchInput);
+      
+      // Drawer Toggle (Saved)
+      const savedBtn = document.getElementById('saved-btn');
+      const savedDrawer = document.getElementById('saved-drawer');
+      const savedBackdrop = document.getElementById('saved-drawer-backdrop');
+      const savedClose = document.getElementById('saved-close');
+      
+      const openDrawer = () => {
+        renderSavedDrawer();
+        savedBackdrop.classList.remove('hidden');
+        savedDrawer.classList.remove('hidden');
+        void savedDrawer.offsetWidth; // Reflow
+        savedBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+        savedDrawer.classList.remove('translate-x-full');
+        document.body.classList.add('modal-open');
+      };
+      
+      const closeDrawer = () => {
+        savedBackdrop.classList.add('opacity-0', 'pointer-events-none');
+        savedDrawer.classList.add('translate-x-full');
+        setTimeout(() => {
+          savedBackdrop.classList.add('hidden');
+          if(!document.getElementById('mobile-drawer').classList.contains('translate-x-0') && !document.getElementById('search-overlay').classList.contains('opacity-0') === false) {
+             document.body.classList.remove('modal-open');
+          }
+        }, 300);
+      };
+      
+      if(savedBtn) savedBtn.addEventListener('click', openDrawer);
+      if(savedClose) savedClose.addEventListener('click', closeDrawer);
+      if(savedBackdrop) savedBackdrop.addEventListener('click', closeDrawer);
+      
+      // Modal Close
+      document.getElementById('modal-close').addEventListener('click', closeProductModal);
+      document.getElementById('product-modal').addEventListener('click', (e) => {
+        if(e.target.id === 'product-modal') closeProductModal();
+      });
+      
+      // Modal Gallery Nav
+      document.getElementById('gallery-prev').addEventListener('click', () => {
+        if(!currentProduct) return;
+        currentImageIndex = currentImageIndex === 0 ? currentProduct.images.length - 1 : currentImageIndex - 1;
+        updateModalGallery();
+      });
+      document.getElementById('gallery-next').addEventListener('click', () => {
+        if(!currentProduct) return;
+        currentImageIndex = currentImageIndex === currentProduct.images.length - 1 ? 0 : currentImageIndex + 1;
+        updateModalGallery();
+      });
+      
+      // Keyboard Navigation
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') {
+          closeProductModal();
+          closeMegaMenu();
+          closeSearch();
+          closeMobileDrawer();
+          closeDrawer();
+        }
+        if(!currentProduct) return;
+        if(e.key === 'ArrowLeft') {
+          currentImageIndex = currentImageIndex === 0 ? currentProduct.images.length - 1 : currentImageIndex - 1;
+          updateModalGallery();
+        }
+        if(e.key === 'ArrowRight') {
+          currentImageIndex = currentImageIndex === currentProduct.images.length - 1 ? 0 : currentImageIndex + 1;
+          updateModalGallery();
+        }
+      });
+      
+      // Modal Save Btn
+      document.getElementById('modal-save-btn').addEventListener('click', () => {
+        if(currentProduct) toggleSave(currentProduct.id);
+      });
+
+      // Mobile swipe variables
+      let touchstartX = 0;
+      let touchendX = 0;
+      const slider = document.getElementById('modal-main-img-container');
+      
+      slider.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+      });
+      
+      slider.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        if (touchendX < touchstartX - 50) {
+           // Swipe Left -> Next
+           if(currentProduct) {
+             currentImageIndex = currentImageIndex === currentProduct.images.length - 1 ? 0 : currentImageIndex + 1;
+             updateModalGallery();
+           }
+        }
+        if (touchendX > touchstartX + 50) {
+           // Swipe Right -> Prev
+           if(currentProduct) {
+             currentImageIndex = currentImageIndex === 0 ? currentProduct.images.length - 1 : currentImageIndex - 1;
+             updateModalGallery();
+           }
+        }
+      });
+
+      // Desktop Image Zoom
+      const zoomContainer = document.getElementById('modal-main-img-container');
+      const zoomImg = document.getElementById('modal-main-img');
+      
+      zoomContainer.addEventListener('mousemove', (e) => {
+        if (window.innerWidth < 1024) return; // Only on desktop
+        const rect = zoomContainer.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        
+        zoomImg.style.transformOrigin = `${x}% ${y}%`;
+        zoomImg.style.transform = 'scale(1.5)';
+      });
+      
+      zoomContainer.addEventListener('mouseleave', () => {
+        zoomImg.style.transform = 'scale(1)';
+        zoomImg.style.transformOrigin = 'center center';
+      });
+    });
+  </script>
+</body>
+</html>
