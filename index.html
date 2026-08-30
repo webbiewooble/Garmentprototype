@@ -215,10 +215,20 @@
       pointer-events: auto;
     }
 
-    /* Carousel Snapping */
+    /* Carousel Snapping & Performance */
     .carousel-container {
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+    }
+    #new-arrivals-grid {
+      contain: content;
+      will-change: scroll-position;
+    }
+    #new-arrivals-grid .product-card {
+      contain: layout style paint;
+      will-change: transform;
     }
     .carousel-item {
       scroll-snap-align: start;
@@ -413,45 +423,49 @@
 <body class="overflow-x-hidden">
   
   <!-- 1. Announcement bar -->
-  <div class="bg-lime-500 text-black text-[10px] md:text-xs font-bold py-2.5 px-4 flex justify-center items-center space-x-6 md:space-x-12 uppercase tracking-widest">
+  <div class="bg-[#d2fa3a] text-black text-[10px] md:text-xs font-bold py-2.5 px-4 flex justify-center items-center space-x-6 md:space-x-10 uppercase tracking-widest">
     <div class="flex items-center">
       <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
-      FREE SHIPPING ON ORDERS OVER $50
+      FREE UK SHIPPING ON ORDERS OVER £45
     </div>
-    <div class="hidden md:flex items-center text-black/60">●</div>
-    <div class="hidden md:flex items-center">
+    <div class="flex items-center text-black/60">•</div>
+    <div class="flex items-center">
       <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
       EASY RETURNS
     </div>
-    <div class="hidden md:flex items-center text-black/60">●</div>
-    <div class="hidden md:flex items-center">
-      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+    <div class="flex items-center text-black/60">•</div>
+    <div class="flex items-center">
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
       SECURE PAYMENTS
     </div>
   </div>
 
   <!-- 2. Sticky header -->
   <header id="main-header" class="sticky top-0 z-50 bg-black text-white w-full border-b border-white/10 header-transition">
-    <div id="header-inner" class="flex justify-between items-center px-4 md:px-6 py-4 max-w-[1600px] mx-auto header-transition">
+    <div id="header-inner" class="flex justify-between items-center px-4 md:px-8 py-4 max-w-[1600px] mx-auto header-transition">
       
       <!-- Logo -->
-      <a href="#" class="text-3xl font-black tracking-tighter uppercase flex items-center shrink-0" aria-label="Home" onclick="applyCategoryFilter('All')">
-        <svg class="w-6 h-6 mr-1.5 text-lime-500" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16a2 2 0 012 2v14a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2zm0 2v14h16V5H4zm8 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
-        URBN
+      <a href="#" class="text-2xl md:text-3xl font-black tracking-tighter uppercase flex items-center shrink-0 space-x-2" aria-label="Home" onclick="applyCategoryFilter('All')">
+        <svg class="w-6 h-6 text-[#d2fa3a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 3v9a6 6 0 0012 0V3M9 6v6a3 3 0 006 0V6" />
+        </svg>
+        <span>URBN</span>
       </a>
       
       <!-- Desktop Nav -->
       <nav class="hidden lg:flex items-center space-x-7 text-[11px] font-bold tracking-[0.15em] uppercase ml-12 h-full">
         <div class="h-full py-2">
-          <button id="shop-nav-btn" class="nav-link hover:text-lime-500 transition-colors uppercase tracking-[0.15em] font-bold pb-1 outline-none min-h-[44px] focus-visible:ring-2 focus-visible:ring-lime-500">SHOP</button>
+          <button id="shop-nav-btn" class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.15em] font-bold pb-1 outline-none min-h-[44px] focus-visible:ring-2 focus-visible:ring-[#d2fa3a] flex items-center">
+            SHOP <svg class="w-3.5 h-3.5 ml-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
         </div>
-        <button class="nav-link hover:text-lime-500 transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('Men')">MEN</button>
-        <button class="nav-link hover:text-lime-500 transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('Women')">WOMEN</button>
-        <button class="nav-link hover:text-lime-500 transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('Sports')">SPORTS & ACTIVEWEAR</button>
-        <button class="nav-link hover:text-lime-500 transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('Innerwear')">INNERWEAR</button>
-        <button class="nav-link hover:text-lime-500 transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('New')">NEW ARRIVALS</button>
-        <button class="nav-link hover:text-lime-500 transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('All', 'All', 'featured')">BEST SELLERS</button>
-        <button class="nav-link text-lime-500 hover:text-lime-400 transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('Sale')">SALE</button>
+        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('Men')">MEN</button>
+        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('Women')">WOMEN</button>
+        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('Sports')">SPORTS & ACTIVEWEAR</button>
+        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('Innerwear')">INNERWEAR</button>
+        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('New')">NEW ARRIVALS</button>
+        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('All', 'All', 'featured')">BEST SELLERS</button>
+        <button class="nav-link text-red-500 hover:text-red-400 transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('Sale')">SALE</button>
       </nav>
       
       <!-- Mega Menu Backdrop -->
@@ -463,52 +477,52 @@
           <div>
             <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">MEN</h4>
             <ul class="space-y-4 text-sm font-medium">
-              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-lime-600 transition">T-Shirts</button></li>
-              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-lime-600 transition">Shirts</button></li>
-              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-lime-600 transition">Hoodies</button></li>
-              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-lime-600 transition">Joggers</button></li>
-              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-lime-600 transition">Shorts</button></li>
-              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-lime-600 transition">Jackets</button></li>
+              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-black transition">T-Shirts</button></li>
+              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-black transition">Shirts</button></li>
+              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-black transition">Hoodies</button></li>
+              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-black transition">Joggers</button></li>
+              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-black transition">Shorts</button></li>
+              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-black transition">Jackets</button></li>
             </ul>
           </div>
           <div>
             <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">WOMEN</h4>
             <ul class="space-y-4 text-sm font-medium">
-              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-lime-600 transition">Tops</button></li>
-              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-lime-600 transition">T-Shirts</button></li>
-              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-lime-600 transition">Leggings</button></li>
-              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-lime-600 transition">Shorts</button></li>
-              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-lime-600 transition">Hoodies</button></li>
-              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-lime-600 transition">Activewear</button></li>
+              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-black transition">Tops</button></li>
+              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-black transition">T-Shirts</button></li>
+              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-black transition">Leggings</button></li>
+              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-black transition">Shorts</button></li>
+              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-black transition">Hoodies</button></li>
+              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-black transition">Activewear</button></li>
             </ul>
           </div>
           <div>
             <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">SPORTS</h4>
             <ul class="space-y-4 text-sm font-medium">
-              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-lime-600 transition">Gym</button></li>
-              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-lime-600 transition">Running</button></li>
-              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-lime-600 transition">Training</button></li>
-              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-lime-600 transition">Sports</button></li>
-              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-lime-600 transition">Outdoor</button></li>
-              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-lime-600 transition">Performance</button></li>
+              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-black transition">Gym</button></li>
+              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-black transition">Running</button></li>
+              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-black transition">Training</button></li>
+              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-black transition">Sports</button></li>
+              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-black transition">Outdoor</button></li>
+              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-black transition">Performance</button></li>
             </ul>
           </div>
           <div>
             <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">INNERWEAR</h4>
             <ul class="space-y-4 text-sm font-medium">
-              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-lime-600 transition">Boxers</button></li>
-              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-lime-600 transition">Briefs</button></li>
-              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-lime-600 transition">Vests</button></li>
-              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-lime-600 transition">Sports Innerwear</button></li>
+              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-black transition">Boxers</button></li>
+              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-black transition">Briefs</button></li>
+              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-black transition">Vests</button></li>
+              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-black transition">Sports Innerwear</button></li>
             </ul>
           </div>
           <div>
             <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">DISCOVER</h4>
             <ul class="space-y-4 text-sm font-medium">
-              <li><button onclick="applyCategoryFilter('New')" class="hover:text-lime-600 transition">New Arrivals</button></li>
-              <li><button onclick="applyCategoryFilter('All', 'All', 'featured')" class="hover:text-lime-600 transition">Best Sellers</button></li>
-              <li><button onclick="applyCategoryFilter('All', 'All', 'rating')" class="hover:text-lime-600 transition">Trending</button></li>
-              <li><button onclick="applyCategoryFilter('Sale')" class="hover:text-lime-600 transition text-red-500 font-bold">Sale</button></li>
+              <li><button onclick="applyCategoryFilter('New')" class="hover:text-black transition">New Arrivals</button></li>
+              <li><button onclick="applyCategoryFilter('All', 'All', 'featured')" class="hover:text-black transition">Best Sellers</button></li>
+              <li><button onclick="applyCategoryFilter('All', 'All', 'rating')" class="hover:text-black transition">Trending</button></li>
+              <li><button onclick="applyCategoryFilter('Sale')" class="hover:text-red-600 transition text-red-500 font-bold">Sale</button></li>
             </ul>
           </div>
           <div class="col-span-1 overflow-hidden">
@@ -526,14 +540,18 @@
 
       <!-- Right Icons -->
       <div class="flex items-center space-x-2 md:space-x-4 ml-auto">
-        <button id="search-btn" class="hover:text-lime-500 transition-colors w-11 h-11 flex items-center justify-center" aria-label="Search"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
-        <button id="saved-btn" class="hover:text-lime-500 transition-colors relative w-11 h-11 flex items-center justify-center" aria-label="Saved">
+        <button id="search-btn" class="hover:text-[#d2fa3a] transition-colors w-11 h-11 flex items-center justify-center" aria-label="Search"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+        <button class="hidden md:flex hover:text-[#d2fa3a] transition-colors w-11 h-11 items-center justify-center" aria-label="Account"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></button>
+        <button id="saved-btn" class="hover:text-[#d2fa3a] transition-colors relative w-11 h-11 flex items-center justify-center" aria-label="Saved">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-          <span id="saved-badge" class="absolute top-1.5 right-1.5 bg-lime-500 text-black text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
+          <span id="saved-badge" class="absolute top-1.5 right-1.5 bg-[#d2fa3a] text-black text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
         </button>
-        <button class="hidden lg:flex hover:text-lime-500 transition-colors w-11 h-11 items-center justify-center" aria-label="Account"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></button>
+        <button class="hover:text-[#d2fa3a] transition-colors relative w-11 h-11 flex items-center justify-center" aria-label="Cart" onclick="openDrawer()">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+          <span class="absolute top-1.5 right-1.5 bg-[#d2fa3a] text-black text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </button>
         <!-- Mobile Menu Button -->
-        <button id="mobile-menu-btn" class="lg:hidden text-white hover:text-lime-500 transition-colors w-11 h-11 flex items-center justify-center" aria-label="Menu">
+        <button id="mobile-menu-btn" class="lg:hidden text-white hover:text-[#d2fa3a] transition-colors w-11 h-11 flex items-center justify-center" aria-label="Menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
       </div>
@@ -541,45 +559,45 @@
   </header>
 
   <!-- 3. Hero -->
-  <section id="hero-section" class="relative bg-black text-white w-full h-[85vh] min-h-[600px] flex items-center overflow-hidden">
+  <section id="hero-section" class="relative bg-black text-white w-full h-[90vh] min-h-[640px] flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img id="hero-bg" src="https://images.pexels.com/photos/20418295/pexels-photo-20418295.jpeg?auto=compress&cs=tinysrgb&w=1600" fetchpriority="high" decoding="async" alt="Hero Lifestyle" class="w-[105%] h-[105%] max-w-none object-cover opacity-60 -ml-[2.5%] -mt-[2.5%] load-hero-img cursor-img transition-transform duration-75">
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/20"></div>
     </div>
     
-    <div class="relative z-10 w-full max-w-[1600px] mx-auto px-6 h-full flex flex-col justify-end pb-12 md:pb-24">
-      <div class="max-w-2xl">
-        <p class="uppercase text-xs md:text-sm tracking-[0.2em] mb-4 font-bold text-gray-300 load-hidden" style="transition-delay: 100ms;">New Season '24</p>
-        <h1 class="text-6xl md:text-8xl lg:text-[10rem] font-black leading-[0.85] uppercase tracking-tighter mb-6">
-          <span class="load-line"><span class="load-line-inner" style="transition-delay: 200ms;">EVERYDAY</span></span>
-          <span class="load-line"><span class="load-line-inner text-lime-500" style="transition-delay: 300ms;">BUT BETTER.</span></span>
+    <div class="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12 h-full flex flex-col justify-end pb-12 md:pb-16">
+      <div class="max-w-3xl">
+        <p class="uppercase text-xs md:text-sm tracking-[0.25em] mb-4 font-bold text-gray-300 load-hidden" style="transition-delay: 100ms;">NEW SEASON '24</p>
+        <h1 class="text-6xl md:text-8xl lg:text-[9.5rem] font-black leading-[0.88] uppercase tracking-tighter mb-6">
+          <span class="load-line"><span class="load-line-inner block" style="transition-delay: 200ms;">EVERYDAY</span></span>
+          <span class="load-line"><span class="load-line-inner text-[#d2fa3a] block" style="transition-delay: 300ms;">BUT BETTER</span></span>
         </h1>
-        <p class="text-lg md:text-xl font-medium text-gray-200 mb-8 max-w-lg leading-relaxed load-hidden" style="transition-delay: 400ms;">
+        <p class="text-base md:text-xl font-medium text-gray-200 mb-8 max-w-md leading-relaxed load-hidden" style="transition-delay: 400ms;">
           Street. Sport. You.<br>
-          Modern essentials designed for movement, comfort and everyday life.
+          Essentials that move with your life.
         </p>
         
         <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-16">
-          <a href="#" class="bg-lime-500 text-black px-8 py-4 font-bold text-sm uppercase tracking-widest text-center btn-hover-fx load-hidden cursor-btn" style="transition-delay: 500ms;">Explore Collections <span class="arrow-fx">&rarr;</span></a>
-          <a href="#" class="border-2 border-white text-white px-8 py-4 font-bold text-sm uppercase tracking-widest text-center btn-hover-fx load-hidden cursor-btn" style="transition-delay: 600ms;">View New Arrivals <span class="arrow-fx">&rarr;</span></a>
+          <a href="#main-collection" onclick="applyCategoryFilter('All')" class="bg-[#d2fa3a] text-black px-8 py-4 font-bold text-xs md:text-sm uppercase tracking-widest text-center btn-hover-fx load-hidden cursor-btn" style="transition-delay: 500ms;">SHOP NOW <span class="arrow-fx">&rarr;</span></a>
+          <a href="#main-collection" onclick="applyCategoryFilter('All')" class="border border-white text-white px-8 py-4 font-bold text-xs md:text-sm uppercase tracking-widest text-center btn-hover-fx load-hidden cursor-btn" style="transition-delay: 600ms;">EXPLORE COLLECTIONS <span class="arrow-fx">&rarr;</span></a>
         </div>
       </div>
       
       <!-- Hero Bottom Nav & Badges -->
-      <div class="w-full flex flex-col md:flex-row justify-between items-end border-t border-white/20 pt-6 load-hidden" style="transition-delay: 700ms;">
+      <div class="w-full flex flex-col md:flex-row justify-between items-start md:items-end border-t border-white/20 pt-6 load-hidden" style="transition-delay: 700ms;">
          <div class="flex flex-wrap gap-4 md:space-x-8 text-xs md:text-sm font-bold tracking-widest uppercase mb-6 md:mb-0">
-            <a href="#" class="hover:text-lime-500 transition-colors cursor-btn">MEN</a>
+            <button onclick="applyCategoryFilter('Men')" class="hover:text-[#d2fa3a] transition-colors cursor-btn">MEN</button>
             <span class="text-white/30 hidden md:inline">|</span>
-            <a href="#" class="hover:text-lime-500 transition-colors cursor-btn">WOMEN</a>
+            <button onclick="applyCategoryFilter('Women')" class="hover:text-[#d2fa3a] transition-colors cursor-btn">WOMEN</button>
             <span class="text-white/30 hidden md:inline">|</span>
-            <a href="#" class="hover:text-lime-500 transition-colors cursor-btn">SPORTS</a>
+            <button onclick="applyCategoryFilter('Sports')" class="hover:text-[#d2fa3a] transition-colors cursor-btn">SPORTS</button>
             <span class="text-white/30 hidden md:inline">|</span>
-            <a href="#" class="hover:text-lime-500 transition-colors cursor-btn">INNERWEAR</a>
+            <button onclick="applyCategoryFilter('Innerwear')" class="hover:text-[#d2fa3a] transition-colors cursor-btn">INNERWEAR</button>
          </div>
-         <div class="flex space-x-6 md:space-x-10 text-[10px] md:text-xs uppercase tracking-widest font-bold text-gray-300">
-            <div class="flex items-center"><svg class="w-5 h-5 mr-2 text-lime-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>Premium Quality</div>
-            <div class="flex items-center"><svg class="w-5 h-5 mr-2 text-lime-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Comfort First</div>
-            <div class="flex hidden lg:flex items-center"><svg class="w-5 h-5 mr-2 text-lime-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>Made For You</div>
+         <div class="flex items-center bg-black/60 backdrop-blur-md px-6 py-3 rounded-full border border-white/10 space-x-6 md:space-x-8 text-[10px] md:text-xs uppercase tracking-widest font-bold text-gray-200">
+            <div class="flex items-center"><svg class="w-4 h-4 mr-2 text-[#d2fa3a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>PREMIUM QUALITY</div>
+            <div class="flex items-center"><svg class="w-4 h-4 mr-2 text-[#d2fa3a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>COMFORT FIRST</div>
+            <div class="hidden sm:flex items-center"><svg class="w-4 h-4 mr-2 text-[#d2fa3a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>MADE FOR YOU</div>
          </div>
       </div>
     </div>
@@ -784,9 +802,9 @@
          <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Price</label>
          <select id="filter-price" class="w-full md:w-48 bg-white border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:border-black" onchange="updateFilters()">
            <option value="All">Any Price</option>
-           <option value="under50">Under $50</option>
-           <option value="50to100">$50 to $100</option>
-           <option value="over100">Over $100</option>
+           <option value="under25">Under £25</option>
+           <option value="25to40">£25 to £40</option>
+           <option value="over40">Over £40</option>
          </select>
        </div>
        <div class="flex items-end">
@@ -859,121 +877,108 @@
   <!-- 8. Sports & Activewear (Repeated logic as New Arrivals for simplicity in this demo) -->
   <!-- We'll combine sections into New Arrivals as requested to save lines, but follow instructions strictly. -->
 
-  <!-- 10. New Arrivals -->
-  <section class="bg-gray-50 py-20 md:py-32">
-    <div class="max-w-[1600px] mx-auto px-6">
-      <div class="flex justify-between items-end mb-12">
-        <div>
-          <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter">New Arrivals</h2>
-          <p class="text-gray-500 mt-2 font-medium">Fresh styles just dropped.</p>
-        </div>
-        <div class="flex items-center space-x-4">
-          <a href="#" class="hidden md:block text-xs font-bold uppercase tracking-widest hover:text-lime-500 transition-colors mr-4" onclick="applyCategoryFilter('New')">View All &rarr;</a>
-          <!-- Carousel Controls -->
-          <div class="hidden md:flex space-x-2">
-             <button aria-label="Scroll left" onclick="scrollCarousel('new-arrivals-grid', -1)" class="w-11 h-11 border border-gray-300 rounded-full flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition bg-white"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
-             <button aria-label="Scroll right" onclick="scrollCarousel('new-arrivals-grid', 1)" class="w-11 h-11 border border-gray-300 rounded-full flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition bg-white"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
-          </div>
-        </div>
-      </div>
-      
-      <div id="new-arrivals-grid" class="carousel-container flex overflow-x-auto hide-scrollbar gap-6 pb-6 px-6 md:px-0">
-        <!-- Dynamically Populated via JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- 13. Brand benefits -->
-  <section class="max-w-[1600px] mx-auto px-6 py-16 border-b border-gray-200">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-       
-       <div class="flex flex-col md:flex-row items-center md:items-start text-center md:text-left space-y-4 md:space-y-0 md:space-x-5">
-         <div class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center shrink-0">
-           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-         </div>
-         <div>
-           <h4 class="font-bold text-sm uppercase tracking-widest mb-1.5">Quality First</h4>
-           <p class="text-gray-500 text-xs md:text-sm">Premium materials you can truly feel.</p>
-         </div>
-       </div>
-
-       <div class="flex flex-col md:flex-row items-center md:items-start text-center md:text-left space-y-4 md:space-y-0 md:space-x-5">
-         <div class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center shrink-0">
-           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-         </div>
-         <div>
-           <h4 class="font-bold text-sm uppercase tracking-widest mb-1.5">Fast Delivery</h4>
-           <p class="text-gray-500 text-xs md:text-sm">Quick & reliable delivery across the US.</p>
-         </div>
-       </div>
-
-       <div class="flex flex-col md:flex-row items-center md:items-start text-center md:text-left space-y-4 md:space-y-0 md:space-x-5">
-         <div class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center shrink-0">
-           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-         </div>
-         <div>
-           <h4 class="font-bold text-sm uppercase tracking-widest mb-1.5">Easy Returns</h4>
-           <p class="text-gray-500 text-xs md:text-sm">Hassle-free returns within 30 days.</p>
-         </div>
-       </div>
-
-       <div class="flex flex-col md:flex-row items-center md:items-start text-center md:text-left space-y-4 md:space-y-0 md:space-x-5">
-         <div class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center shrink-0">
-           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-         </div>
-         <div>
-           <h4 class="font-bold text-sm uppercase tracking-widest mb-1.5">Premium Quality</h4>
-           <p class="text-gray-500 text-xs md:text-sm">Guaranteed authenticity & premium materials.</p>
-         </div>
-       </div>
-
-    </div>
-  </section>
-
-  <!-- 15. Social / UGC -->
-  <section class="max-w-[1600px] mx-auto px-6 py-20 md:py-32">
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 space-y-4 md:space-y-0">
+  <!-- 10. New Arrivals (Exact visual match to image: 7-item lookbook showcase with neon lime NEW tags) -->
+  <section class="max-w-[1600px] mx-auto px-6 py-12 md:py-20">
+    <div class="flex justify-between items-end mb-8">
       <div>
-        <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter">Join the Movement</h2>
-        <p class="text-gray-500 mt-2 font-medium">Tag <span class="text-black font-bold">@urbn.store</span> to get featured.</p>
+        <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter">New Arrivals</h2>
+        <p class="text-gray-500 mt-2 font-medium text-sm md:text-base">Fresh styles just dropped.</p>
       </div>
-      <a href="#" class="border-2 border-black px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors flex items-center">
-        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        Follow Us
+      <a href="#" class="text-xs font-bold uppercase tracking-widest hover:text-black transition-colors flex items-center group" onclick="applyCategoryFilter('New')">
+        <span>View All</span>
+        <span class="ml-1.5 transition-transform group-hover:translate-x-1">&rarr;</span>
       </a>
     </div>
     
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-      <a href="#" class="block aspect-square relative group overflow-hidden bg-gray-100">
-        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    <!-- 7-Card Grid matching the design image -->
+    <div id="new-arrivals-grid" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 md:gap-4">
+      <!-- Populated via JS with 7 lookbook items with neon lime NEW badges -->
+    </div>
+
+    <!-- 13. Brand Trust & Benefits (5-column white container with icons) -->
+    <div class="mt-12 bg-white border border-gray-200 rounded-xl p-6 md:p-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 items-center">
+      <div class="flex items-center space-x-3.5">
+        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         </div>
-        <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/19435777/pexels-photo-19435777.jpeg?auto=compress&cs=tinysrgb&w=600" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" alt="UGC">
-      </a>
-      <a href="#" class="block aspect-square relative group overflow-hidden bg-gray-100">
-        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        <div>
+          <h4 class="font-black text-xs uppercase tracking-wider text-black">QUALITY FIRST</h4>
+          <p class="text-gray-500 text-xs mt-0.5">Premium materials you can feel.</p>
         </div>
-        <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=600" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" alt="UGC">
-      </a>
-      <a href="#" class="block aspect-square relative group overflow-hidden bg-gray-100">
-        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </div>
+
+      <div class="flex items-center space-x-3.5">
+        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
         </div>
-        <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/8483390/pexels-photo-8483390.jpeg?auto=compress&cs=tinysrgb&w=600" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" alt="UGC">
-      </a>
-      <a href="#" class="block aspect-square relative group overflow-hidden bg-gray-100 hidden md:block">
-        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        <div>
+          <h4 class="font-black text-xs uppercase tracking-wider text-black">FAST DELIVERY</h4>
+          <p class="text-gray-500 text-xs mt-0.5">Quick & reliable delivery across UK.</p>
         </div>
-        <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=600" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" alt="UGC">
-      </a>
-      <a href="#" class="block aspect-square relative group overflow-hidden bg-gray-100 hidden lg:block">
-        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </div>
+
+      <div class="flex items-center space-x-3.5">
+        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
         </div>
-        <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/5037287/pexels-photo-5037287.jpeg?auto=compress&cs=tinysrgb&w=600" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" alt="UGC">
-      </a>
+        <div>
+          <h4 class="font-black text-xs uppercase tracking-wider text-black">EASY RETURNS</h4>
+          <p class="text-gray-500 text-xs mt-0.5">Hassle-free returns within 7 days.</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-3.5">
+        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+        </div>
+        <div>
+          <h4 class="font-black text-xs uppercase tracking-wider text-black">SECURE PAYMENTS</h4>
+          <p class="text-gray-500 text-xs mt-0.5">100% safe & secure checkout.</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-3.5">
+        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+        </div>
+        <div>
+          <h4 class="font-black text-xs uppercase tracking-wider text-black">CUSTOMER SUPPORT</h4>
+          <p class="text-gray-500 text-xs mt-0.5">We're here when you need us.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15. Social / UGC Movement Showcase -->
+    <div class="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+      <div class="lg:col-span-3 bg-black text-white p-8 md:p-10 rounded-xl flex flex-col justify-between">
+        <div>
+          <h3 class="text-2xl md:text-3xl font-black uppercase tracking-tight mb-2">JOIN THE MOVEMENT</h3>
+          <p class="text-gray-400 text-sm font-medium">Tag <span class="text-[#d2fa3a] font-bold">@urbn.store</span> to get featured.</p>
+        </div>
+        <div class="mt-8">
+          <a href="#" class="inline-flex items-center text-xs font-bold uppercase tracking-widest border border-white/30 px-5 py-3 rounded-md hover:border-[#d2fa3a] hover:text-[#d2fa3a] transition-colors">
+            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            FOLLOW US &rarr;
+          </a>
+        </div>
+      </div>
+      <div class="lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+        <div class="rounded-xl overflow-hidden aspect-[3/4] bg-gray-100 relative group cursor-pointer">
+          <img src="https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=600" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" alt="UGC 1" loading="lazy" decoding="async">
+        </div>
+        <div class="rounded-xl overflow-hidden aspect-[3/4] bg-gray-100 relative group cursor-pointer">
+          <img src="https://images.pexels.com/photos/20418295/pexels-photo-20418295.jpeg?auto=compress&cs=tinysrgb&w=600" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" alt="UGC 2" loading="lazy" decoding="async">
+        </div>
+        <div class="rounded-xl overflow-hidden aspect-[3/4] bg-gray-100 relative group cursor-pointer">
+          <img src="https://images.pexels.com/photos/5037287/pexels-photo-5037287.jpeg?auto=compress&cs=tinysrgb&w=600" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" alt="UGC 3" loading="lazy" decoding="async">
+        </div>
+        <div class="rounded-xl overflow-hidden aspect-[3/4] bg-gray-100 relative group cursor-pointer">
+          <img src="https://images.pexels.com/photos/8483390/pexels-photo-8483390.jpeg?auto=compress&cs=tinysrgb&w=600" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" alt="UGC 4" loading="lazy" decoding="async">
+        </div>
+        <div class="rounded-xl overflow-hidden aspect-[3/4] bg-gray-100 relative group cursor-pointer">
+          <img src="https://images.pexels.com/photos/8436130/pexels-photo-8436130.jpeg?auto=compress&cs=tinysrgb&w=600" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" alt="UGC 5" loading="lazy" decoding="async">
+        </div>
+      </div>
     </div>
   </section>
 
@@ -988,8 +993,8 @@
           <p class="text-gray-400 font-medium text-sm">Sign up for exclusive offers, original stories, activism awareness, events and more.</p>
         </div>
         <div class="w-full md:w-auto flex">
-          <input type="email" placeholder="ENTER YOUR EMAIL" class="bg-transparent border-b-2 border-white/30 text-white placeholder-gray-500 py-3 px-2 w-full md:w-72 focus:outline-none focus:border-lime-500 text-sm font-bold uppercase tracking-widest transition-colors">
-          <button class="bg-white text-black font-bold uppercase text-xs tracking-widest px-6 ml-4 hover:bg-lime-500 transition-colors">Sign Up</button>
+          <input type="email" placeholder="ENTER YOUR EMAIL" class="bg-transparent border-b-2 border-white/30 text-white placeholder-gray-500 py-3 px-2 w-full md:w-72 focus:outline-none focus:border-[#d2fa3a] text-sm font-bold uppercase tracking-widest transition-colors">
+          <button class="bg-[#d2fa3a] text-black font-bold uppercase text-xs tracking-widest px-6 ml-4 hover:bg-white transition-colors">Sign Up</button>
         </div>
       </div>
 
@@ -998,7 +1003,7 @@
         
         <div class="col-span-2 lg:col-span-2">
           <a href="#" class="text-4xl font-black tracking-tighter uppercase flex items-center mb-6">
-            <svg class="w-8 h-8 mr-2 text-lime-500" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16a2 2 0 012 2v14a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2zm0 2v14h16V5H4zm8 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+            <svg class="w-8 h-8 mr-2 text-[#d2fa3a]" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16a2 2 0 012 2v14a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2zm0 2v14h16V5H4zm8 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
             URBN
           </a>
           <p class="text-gray-400 text-sm max-w-sm font-medium mb-6">
@@ -1007,22 +1012,22 @@
             Made for you.
           </p>
           <div class="flex space-x-4 text-white">
-            <a href="#" class="hover:text-lime-500 transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-            <a href="#" class="hover:text-lime-500 transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
-            <a href="#" class="hover:text-lime-500 transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></a>
+            <a href="#" class="hover:text-[#d2fa3a] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="#" class="hover:text-[#d2fa3a] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+            <a href="#" class="hover:text-[#d2fa3a] transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></a>
           </div>
         </div>
 
         <div>
           <h4 class="font-bold text-xs uppercase tracking-widest mb-6">Shop</h4>
           <ul class="space-y-4 text-sm text-gray-400 font-medium">
-            <li><a href="#" class="hover:text-white transition-colors">Men</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Women</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Sports & Activewear</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Innerwear</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Accessories</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">New Arrivals</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Best Sellers</a></li>
+            <li><a href="#" class="hover:text-white transition-colors" onclick="applyCategoryFilter('Men')">Men</a></li>
+            <li><a href="#" class="hover:text-white transition-colors" onclick="applyCategoryFilter('Women')">Women</a></li>
+            <li><a href="#" class="hover:text-white transition-colors" onclick="applyCategoryFilter('Sports')">Sports & Activewear</a></li>
+            <li><a href="#" class="hover:text-white transition-colors" onclick="applyCategoryFilter('Innerwear')">Innerwear</a></li>
+            <li><a href="#" class="hover:text-white transition-colors" onclick="applyCategoryFilter('Accessories')">Accessories</a></li>
+            <li><a href="#" class="hover:text-white transition-colors" onclick="applyCategoryFilter('New')">New Arrivals</a></li>
+            <li><a href="#" class="hover:text-white transition-colors" onclick="applyCategoryFilter('All', 'All', 'featured')">Best Sellers</a></li>
           </ul>
         </div>
 
@@ -1031,9 +1036,8 @@
           <ul class="space-y-4 text-sm text-gray-400 font-medium">
             <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
             <li><a href="#" class="hover:text-white transition-colors">FAQs</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Shipping</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">UK Shipping & Tracking</a></li>
             <li><a href="#" class="hover:text-white transition-colors">Returns & Refunds</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Track Order</a></li>
             <li><a href="#" class="hover:text-white transition-colors">Size Guide</a></li>
           </ul>
         </div>
@@ -1052,9 +1056,9 @@
         <div>
           <h4 class="font-bold text-xs uppercase tracking-widest mb-6">Support</h4>
           <ul class="space-y-4 text-sm text-gray-400 font-medium">
-            <li><a href="mailto:support@urbn.store" class="hover:text-white transition-colors">support@urbn.store</a></li>
-            <li><a href="tel:18001234567" class="hover:text-white transition-colors">1-800-123-4567</a></li>
-            <li class="pt-2">Mon - Sat | 9AM - 8PM EST</li>
+            <li><a href="mailto:support@urbn.co.uk" class="hover:text-white transition-colors">support@urbn.co.uk</a></li>
+            <li><a href="tel:08001234567" class="hover:text-white transition-colors">0800 123 4567</a></li>
+            <li class="pt-2">Mon - Sat | 9AM - 8PM GMT</li>
           </ul>
         </div>
 
@@ -1062,15 +1066,20 @@
 
       <!-- Copyright -->
       <div class="flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs font-medium border-t border-white/10 pt-8">
-        <p>&copy; 2024 URBN USA. All rights reserved.</p>
+        <p>&copy; 2025 URBN UK. All rights reserved.</p>
         <div class="flex space-x-6 mt-4 md:mt-0">
-          <span>United States (USD $)</span>
+          <span>United Kingdom (GBP £)</span>
           <a href="#" class="hover:text-white transition-colors">Sitemap</a>
         </div>
       </div>
       
     </div>
   </footer>
+
+  <!-- Floating Back to Top Button (Matching UI design in image) -->
+  <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top" class="fixed bottom-6 right-6 z-40 w-10 h-10 bg-[#d2fa3a] text-black font-black flex items-center justify-center rounded-sm shadow-xl hover:bg-black hover:text-white transition-all transform hover:scale-105">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+  </button>
 
   <!-- Search Overlay -->
   <div id="search-overlay-backdrop" class="fixed inset-0 bg-black/60 z-[60] hidden opacity-0 pointer-events-none transition-opacity duration-300"></div>
@@ -1247,7 +1256,7 @@
              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="modal-save-icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
              <span id="modal-save-text">Save Product</span>
            </button>
-           <button id="modal-enquire-btn" class="flex-1 bg-lime-500 text-black py-4 text-xs font-bold uppercase tracking-widest hover:bg-lime-400 transition-colors flex justify-center items-center">
+           <button id="modal-enquire-btn" class="flex-1 bg-[#d2fa3a] text-black py-4 text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors flex justify-center items-center">
              Enquire <span class="ml-2">&rarr;</span>
            </button>
          </div>
@@ -1273,106 +1282,123 @@
     // JS Logic
     const rawProducts = [
       {
-        id: "p1", name: "Oversized Box Tee", category: "Men", gender: "Mens", activity: "Everyday",
-        price: 29, comparePrice: 39, discount: "-25%", rating: 4.8, reviews: 128, isNew: false,
-        description: "The ultimate everyday tee. Crafted from heavy-weight, premium combed cotton for a structured yet relaxed drape. Pre-shrunk and garment-dyed for a lived-in feel.",
+        id: "p1", name: "Oversized Heavyweight Tee", subtitle: "Heavy Cotton | Boxy Fit", category: "Men", gender: "Mens", activity: "Everyday",
+        price: 22, comparePrice: 32, discount: "-30%", rating: 4.8, reviews: 128, isNew: true,
+        description: "The ultimate everyday tee. Crafted from heavy-weight 240 GSM combed cotton for a structured yet relaxed drape. Pre-shrunk and garment-dyed for a lived-in feel.",
         images: [
-          "https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=800"
+          "https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=600",
+          "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=600"
         ],
         colors: ["#111111", "#f5f5f5", "#5c5c5c"], sizes: ["S", "M", "L", "XL"],
-        specs: ["100% Combed Cotton", "Relaxed boxy fit", "Dropped shoulders", "Machine wash cold"]
+        specs: ["100% Combed Cotton (240 GSM)", "Relaxed boxy fit", "Dropped shoulders", "Machine wash cold at 30°C"]
       },
       {
-        id: "p2", name: "Performance Hoodie", category: "Men", gender: "Mens", activity: "Training",
-        price: 69, comparePrice: 89, discount: "-22%", rating: 4.9, reviews: 245, isNew: false,
-        description: "Engineered for movement. This performance hoodie features moisture-wicking tech and 4-way stretch fabric to keep you comfortable during warm-ups.",
+        id: "p2", name: "Everyday Relaxed Hoodie", subtitle: "Brushed Fleece | Relaxed Fit", category: "Men", gender: "Mens", activity: "Everyday",
+        price: 38, comparePrice: 48, discount: "-20%", rating: 4.9, reviews: 162, isNew: true,
+        description: "Cozy heavy fleece hoodie with brushed interior. Double-layered hood and ribbed trims provide structured durability.",
         images: [
-          "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=800"
+          "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=600",
+          "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=600"
         ],
-        colors: ["#222222", "#475569"], sizes: ["S", "M", "L", "XL"],
-        specs: ["88% Polyester, 12% Elastane", "Moisture-wicking", "Zippered pockets", "Athletic fit"]
+        colors: ["#7dd3fc", "#222222", "#f5f5f5"], sizes: ["S", "M", "L", "XL"],
+        specs: ["80% Organic Cotton, 20% Recycled Poly", "400 GSM heavy brushed fleece", "Kangaroo pocket", "Relaxed silhouette"]
       },
       {
-        id: "p3", name: "High-Support Sports Bra", category: "Women", gender: "Womens", activity: "Gym",
-        price: 39, comparePrice: 49, discount: "-20%", rating: 4.7, reviews: 312, isNew: false,
-        description: "Uncompromising support for high-impact activities. Features a compressive fit, breathable mesh panels, and wide, comfortable straps.",
+        id: "p3", name: "Performance Training Shorts", subtitle: "Lightweight | 4-Way Stretch", category: "Men", gender: "Mens", activity: "Training",
+        price: 24, comparePrice: 32, discount: "-25%", rating: 4.9, reviews: 95, isNew: true,
+        description: "Engineered for high-intensity movement. Features moisture-wicking tech and 4-way stretch fabric with side split hem for maximum range.",
         images: [
-          "https://images.pexels.com/photos/8483390/pexels-photo-8483390.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/19435777/pexels-photo-19435777.jpeg?auto=compress&cs=tinysrgb&w=800"
+          "https://images.pexels.com/photos/5037287/pexels-photo-5037287.jpeg?auto=compress&cs=tinysrgb&w=600",
+          "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=600"
+        ],
+        colors: ["#111111", "#0284c7"], sizes: ["S", "M", "L", "XL"],
+        specs: ["88% Recycled Polyester, 12% Elastane", "Quick-dry moisture-wicking", "Zippered secure pockets", "Athletic 7-inch inseam"]
+      },
+      {
+        id: "p4", name: "Graphic Back Print Tee", subtitle: "100% Cotton | Oversized", category: "Men", gender: "Mens", activity: "Everyday",
+        price: 26, comparePrice: null, discount: null, rating: 4.9, reviews: 48, isNew: true,
+        description: "Bold screen-printed typography on back with minimalist chest emblem. Premium 240 GSM heavy cotton jersey.",
+        images: [
+          "https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=600",
+          "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=600"
+        ],
+        colors: ["#f5f5f5", "#111111"], sizes: ["S", "M", "L", "XL"],
+        specs: ["240 GSM Heavy Cotton", "Screen printed graphics", "Pre-shrunk", "Ribbed collar"]
+      },
+      {
+        id: "p5", name: "High Support Sports Bra", subtitle: "Compressive | High Support", category: "Women", gender: "Womens", activity: "Gym",
+        price: 32, comparePrice: 42, discount: "-25%", rating: 4.8, reviews: 178, isNew: true,
+        description: "Uncompromising support for high-impact training. Features compressive fit, breathable mesh panels, and wide comfortable straps.",
+        images: [
+          "https://images.pexels.com/photos/8483390/pexels-photo-8483390.jpeg?auto=compress&cs=tinysrgb&w=600",
+          "https://images.pexels.com/photos/19435777/pexels-photo-19435777.jpeg?auto=compress&cs=tinysrgb&w=600"
         ],
         colors: ["#111111", "#8b5cf6", "#f43f5e"], sizes: ["XS", "S", "M", "L", "XL"],
         specs: ["75% Nylon, 25% Spandex", "High impact support", "Removable pads", "Sweat-wicking"]
       },
       {
-        id: "p4", name: "Tech Run Shorts", category: "Men", gender: "Mens", activity: "Running",
-        price: 45, comparePrice: null, discount: null, rating: 4.6, reviews: 95, isNew: true,
-        description: "Ultralight running shorts with a built-in brief liner. Designed with side splits for maximum range of motion and a secure zip pocket for essentials.",
+        id: "p6", name: "Cushioned Crew Socks 3-Pack", subtitle: "Terry Cushion | Anti-Odor", category: "Accessories", gender: "Unisex", activity: "Training",
+        price: 12, comparePrice: 16, discount: "-25%", rating: 4.9, reviews: 86, isNew: true,
+        description: "Premium athletic crew socks. High-density cushioned footbed for impact absorption and ribbed leg compression.",
         images: [
-          "https://images.pexels.com/photos/5037287/pexels-photo-5037287.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=800"
+          "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=600",
+          "https://images.pexels.com/photos/8436130/pexels-photo-8436130.jpeg?auto=compress&cs=tinysrgb&w=600"
         ],
-        colors: ["#111111", "#0284c7"], sizes: ["S", "M", "L", "XL"],
-        specs: ["5-inch inseam", "Built-in liner", "Reflective details", "Zip back pocket"]
+        colors: ["#ffffff", "#94a3b8", "#111111"], sizes: ["M", "L"],
+        specs: ["Cotton/Nylon blend", "Terry loop cushioning", "Arch compression support", "Pack of 3"]
       },
       {
-        id: "p5", name: "Seamless Leggings", category: "Women", gender: "Womens", activity: "Yoga",
-        price: 59, comparePrice: null, discount: null, rating: 4.9, reviews: 420, isNew: true,
-        description: "Buttery soft, second-skin feel. These seamless leggings feature a high, ribbed waistband that stays in place through every pose.",
+        id: "p7", name: "Vintage Washed Dad Cap", subtitle: "Washed Cotton | Adjustable", category: "Accessories", gender: "Unisex", activity: "Everyday",
+        price: 18, comparePrice: null, discount: null, rating: 4.7, reviews: 34, isNew: true,
+        description: "Classic 6-panel unstructured dad hat crafted from vintage-washed cotton twill with matte metal buckle.",
         images: [
-          "https://images.pexels.com/photos/8483390/pexels-photo-8483390.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/19435777/pexels-photo-19435777.jpeg?auto=compress&cs=tinysrgb&w=800"
+          "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=600",
+          "https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=600"
         ],
-        colors: ["#2dd4bf", "#111111"], sizes: ["XS", "S", "M", "L"],
-        specs: ["90% Nylon, 10% Spandex", "High-waisted", "Seamless construction", "Squat-proof"]
+        colors: ["#d2fa3a", "#111111", "#e2e8f0"], sizes: ["ONE SIZE"],
+        specs: ["100% Washed Cotton Twill", "Antique brass buckle", "Low profile crown", "Embroidered eyelets"]
       },
       {
-        id: "p6", name: "Signature Dad Cap", category: "Accessories", gender: "Unisex", activity: "Everyday",
-        price: 24, comparePrice: null, discount: null, rating: 4.5, reviews: 88, isNew: true,
-        description: "The perfect finishing touch. Classic 6-panel dad hat constructed from washed cotton twill, featuring our embroidered minimalist logo.",
+        id: "p8", name: "Active Boxer Brief", subtitle: "MicroModal | Anti-Chafe", category: "Innerwear", gender: "Mens", activity: "Everyday",
+        price: 14, comparePrice: 20, discount: "-30%", rating: 4.9, reviews: 210, isNew: false,
+        description: "Engineered ergonomic pouch with flatlock anti-chafing seams. Micro-modal waistband stays smooth all day.",
         images: [
-          "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=800"
+          "https://images.pexels.com/photos/8874672/pexels-photo-8874672.jpeg?auto=compress&cs=tinysrgb&w=600",
+          "https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=600"
         ],
-        colors: ["#111111", "#d9f845", "#f5f5f5"], sizes: ["ONE SIZE"],
-        specs: ["100% Cotton Twill", "Adjustable strap", "Pre-curved brim", "Embroidered logo"]
+        colors: ["#111111", "#475569", "#ffffff"], sizes: ["S", "M", "L", "XL"],
+        specs: ["MicroModal & Spandex", "Anti-odor treatment", "No-roll waistband", "Stay-put leg design"]
       },
       {
-        id: "p7", name: "Crew Socks 3-Pack", category: "Accessories", gender: "Unisex", activity: "Training",
-        price: 18, comparePrice: null, discount: null, rating: 4.8, reviews: 512, isNew: true,
-        description: "Premium athletic crew socks. Cushioned footbed for impact absorption and a ribbed leg that stays up all day.",
+        id: "p9", name: "Tapered Track Pants", subtitle: "Regular Fit | Zip Pockets", category: "Men", gender: "Mens", activity: "Training",
+        price: 36, comparePrice: 45, discount: "-20%", rating: 4.6, reviews: 110, isNew: false,
+        description: "Tapered track pants with ankle zippers for easy on-and-off over sneakers. Deep zippered side pockets keep phone secure.",
         images: [
-          "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/8436130/pexels-photo-8436130.jpeg?auto=compress&cs=tinysrgb&w=800"
+          "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=600",
+          "https://images.pexels.com/photos/8436130/pexels-photo-8436130.jpeg?auto=compress&cs=tinysrgb&w=600"
         ],
-        colors: ["#ffffff", "#111111"], sizes: ["M", "L"],
-        specs: ["Cotton/Nylon blend", "Terry loop cushioning", "Arch support", "Pack of 3"]
+        colors: ["#111111", "#334155"], sizes: ["S", "M", "L", "XL"],
+        specs: ["Tapered leg fit", "YKK zip pockets", "Elastic drawstring waist", "Water-repellent finish"]
       },
       {
-        id: "p8", name: "Graphic Muscle Tank", category: "Women", gender: "Womens", activity: "Gym",
-        price: 28, comparePrice: 35, discount: "-20%", rating: 4.6, reviews: 145, isNew: false,
-        description: "A breezy muscle tank with dropped armholes for ventilation and showing off your favorite sports bra. Features a bold URBN graphic.",
+        id: "p10", name: "Seamless Ribbed Leggings", subtitle: "High Waisted | Squat Proof", category: "Women", gender: "Womens", activity: "Gym",
+        price: 34, comparePrice: 45, discount: "-24%", rating: 4.9, reviews: 92, isNew: false,
+        description: "Buttery soft ribbed seamless fabric offering flattering compressive shaping with full opacity and zero roll-down.",
         images: [
-          "https://images.pexels.com/photos/19435777/pexels-photo-19435777.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/8483390/pexels-photo-8483390.jpeg?auto=compress&cs=tinysrgb&w=800"
+          "https://images.pexels.com/photos/19435777/pexels-photo-19435777.jpeg?auto=compress&cs=tinysrgb&w=600",
+          "https://images.pexels.com/photos/8483390/pexels-photo-8483390.jpeg?auto=compress&cs=tinysrgb&w=600"
         ],
-        colors: ["#f5f5f5", "#111111"], sizes: ["XS", "S", "M", "L"],
-        specs: ["100% Cotton", "Dropped armholes", "Screen-printed graphic", "Relaxed fit"]
+        colors: ["#111111", "#8b5cf6", "#475569"], sizes: ["XS", "S", "M", "L", "XL"],
+        specs: ["80% Polyamide, 20% Elastane", "High-rise compressive waistband", "100% squat proof", "Seamless ribbed knit"]
       }
     ];
 
-    // Extrapolate to 16 products for robustness
+    // Array for all products
     const allProducts = [
       ...rawProducts,
-      {...rawProducts[0], id: "p9", name: "Minimalist Joggers", price: 59, isNew: true, images: ["https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=800", "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=800"]},
-      {...rawProducts[1], id: "p10", name: "Woven Track Jacket", price: 79, images: ["https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=800", "https://images.pexels.com/photos/5037287/pexels-photo-5037287.jpeg?auto=compress&cs=tinysrgb&w=800"]},
-      {...rawProducts[2], id: "p11", name: "Everyday Crop Top", price: 29, comparePrice: 39, discount: "-25%", images: ["https://images.pexels.com/photos/19435777/pexels-photo-19435777.jpeg?auto=compress&cs=tinysrgb&w=800", "https://images.pexels.com/photos/8483390/pexels-photo-8483390.jpeg?auto=compress&cs=tinysrgb&w=800"]},
-      {...rawProducts[3], id: "p12", name: "Utility Cargo Pants", price: 89, isNew: true, images: ["https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=800", "https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=800"]},
-      {...rawProducts[4], id: "p13", name: "Pro Compression Tight", price: 49, images: ["https://images.pexels.com/photos/8436130/pexels-photo-8436130.jpeg?auto=compress&cs=tinysrgb&w=800", "https://images.pexels.com/photos/5037287/pexels-photo-5037287.jpeg?auto=compress&cs=tinysrgb&w=800"]},
-      {...rawProducts[5], id: "p14", name: "Fleece Zip-Up", price: 69, comparePrice: 89, discount: "-22%", images: ["https://images.pexels.com/photos/20418295/pexels-photo-20418295.jpeg?auto=compress&cs=tinysrgb&w=800", "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=800"]},
-      {...rawProducts[6], id: "p15", name: "Gym Duffel Bag", price: 55, isNew: true, images: ["https://images.pexels.com/photos/8436130/pexels-photo-8436130.jpeg?auto=compress&cs=tinysrgb&w=800", "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=800"]},
-      {...rawProducts[7], id: "p16", name: "Classic Beanie", price: 24, images: ["https://images.pexels.com/photos/8874672/pexels-photo-8874672.jpeg?auto=compress&cs=tinysrgb&w=800", "https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=800"]}
+      {...rawProducts[0], id: "p11", name: "Heavyweight Boxy Tee - Olive", subtitle: "Cotton | Heavy Weight", price: 24, comparePrice: null, discount: null, isNew: true, rating: 4.9, reviews: 42, images: ["https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=600"]},
+      {...rawProducts[1], id: "p12", name: "Fleece Lined Zip Hoodie", subtitle: "Fleece Lined | Relaxed Fit", price: 42, comparePrice: 55, discount: "-23%", isNew: true, rating: 4.8, reviews: 38, images: ["https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=600"]},
+      {...rawProducts[2], id: "p13", name: "4-Way Stretch Liner Shorts", subtitle: "4-Way Stretch | Quick Dry", price: 28, comparePrice: null, discount: null, isNew: false, rating: 4.7, reviews: 29, images: ["https://images.pexels.com/photos/5037287/pexels-photo-5037287.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=600"]}
     ];
 
     let savedProductIds = JSON.parse(localStorage.getItem('urbn_saved') || '[]');
@@ -1383,57 +1409,78 @@
       const half = rating % 1 >= 0.5 ? 1 : 0;
       const empty = 5 - full - half;
       
-      for(let i=0; i<full; i++) stars += `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
-      for(let i=0; i<half; i++) stars += `<svg class="w-3.5 h-3.5 fill-current text-gray-800" viewBox="0 0 24 24"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27V2z"/></svg>`;
+      for(let i=0; i<full; i++) stars += `<svg class="w-3.5 h-3.5 fill-current text-black" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
+      for(let i=0; i<half; i++) stars += `<svg class="w-3.5 h-3.5 fill-current text-black" viewBox="0 0 24 24"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27V2z"/></svg>`;
       for(let i=0; i<empty; i++) stars += `<svg class="w-3.5 h-3.5 text-gray-300 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
       return stars;
     };
 
-    const renderProductCard = (product) => {
+    const formatGBP = (val) => {
+      return '£' + Number(val).toFixed(0);
+    };
+
+    const renderProductCard = (product, idx = 0, isImmediate = false) => {
       const isSaved = savedProductIds.includes(product.id);
       const badgeHtml = product.discount 
-        ? `<span class="absolute top-4 left-4 bg-lime-500 text-black text-[10px] font-bold px-3 py-1.5 uppercase tracking-wider z-10">${product.discount}</span>` 
-        : (product.isNew ? `<span class="absolute top-4 left-4 bg-black text-white text-[10px] font-bold px-3 py-1.5 uppercase tracking-wider z-10">NEW</span>` : '');
+        ? `<span class="absolute top-3 left-3 bg-[#d2fa3a] text-black text-[10px] font-black px-2.5 py-1 uppercase tracking-wider z-10">${product.discount}</span>` 
+        : (product.isNew ? `<span class="absolute top-3 left-3 bg-black text-white text-[10px] font-black px-2.5 py-1 uppercase tracking-wider z-10">NEW</span>` : '');
       
       const priceHtml = product.comparePrice 
-        ? `<span class="font-black text-lg md:text-xl">$${product.price}</span><span class="text-gray-400 line-through text-xs md:text-sm font-medium ml-2">$${product.comparePrice}</span>` 
-        : `<span class="font-black text-lg md:text-xl">$${product.price}</span>`;
+        ? `<span class="font-black text-lg md:text-xl text-black">${formatGBP(product.price)}</span><span class="text-gray-400 line-through text-xs md:text-sm font-medium ml-2">${formatGBP(product.comparePrice)}</span>` 
+        : `<span class="font-black text-lg md:text-xl text-black">${formatGBP(product.price)}</span>`;
         
       const saveIcon = isSaved 
-        ? `<svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`
-        : `<svg class="w-5 h-5 text-gray-400 hover:text-black transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>`;
+        ? `<svg class="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`
+        : `<svg class="w-4 h-4 text-gray-400 hover:text-black transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>`;
+
+      const loadPriority = idx < 3 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
+      const animClass = isImmediate ? 'active' : 'reveal-scale active';
+      const subtitleText = product.subtitle || (product.category + ' | ' + product.activity);
 
       return `
-        <div class="carousel-item w-[280px] md:w-[320px] flex-shrink-0 group flex flex-col h-full bg-white relative cursor-pointer product-card reveal-scale" onclick="openProductModal('${product.id}')">
-           <div class="relative bg-gray-100 aspect-[3/4] mb-5 overflow-hidden">
+        <div class="carousel-item w-[260px] md:w-[300px] flex-shrink-0 group flex flex-col h-full bg-white relative cursor-pointer product-card ${animClass}" onclick="openProductModal('${product.id}')">
+           <div class="relative bg-gray-100 aspect-[3/4] mb-4 overflow-hidden">
               ${badgeHtml}
-              <button class="save-btn absolute top-4 right-4 z-20 bg-white p-3 rounded-full shadow-sm" onclick="event.stopPropagation(); toggleSave('${product.id}')" aria-label="Save">
+              <button class="save-btn absolute top-3 right-3 z-20 bg-white/90 hover:bg-white p-2.5 rounded-full shadow-sm" onclick="event.stopPropagation(); toggleSave('${product.id}')" aria-label="Save">
                 ${saveIcon}
               </button>
-              <img src="${product.images[0]}" class="primary-img w-full h-full object-cover object-top absolute inset-0 z-0" alt="${product.name}" loading="lazy" decoding="async">
+              <img src="${product.images[0]}" class="primary-img w-full h-full object-cover object-top absolute inset-0 z-0" alt="${product.name}" ${loadPriority} decoding="async">
               ${product.images[1] ? `<img src="${product.images[1]}" class="secondary-img w-full h-full object-cover object-top absolute inset-0 z-10 pointer-events-none" alt="${product.name} Alternative" loading="lazy" decoding="async">` : ''}
               
               <div class="view-product-btn absolute bottom-0 left-0 right-0 p-3 z-20 hidden lg:block">
-                <div class="w-full bg-black/95 text-white text-center py-3.5 text-xs font-bold uppercase tracking-widest shadow-lg">
-                  View Product <span class="ml-1">&rarr;</span>
-                </div>
+                <button class="w-full bg-black text-white hover:bg-[#d2fa3a] hover:text-black transition-colors py-3 text-xs font-black uppercase tracking-wider shadow-lg flex items-center justify-center space-x-1" onclick="event.stopPropagation(); openProductModal('${product.id}')">
+                  <span>+ QUICK ADD</span>
+                </button>
               </div>
            </div>
-           <h3 class="font-bold text-base md:text-lg mb-1 tracking-tight px-1">${product.name}</h3>
-           <p class="text-gray-500 text-xs md:text-sm mb-2 md:mb-3 px-1">${product.category} | ${product.activity}</p>
-           <div class="flex items-center mb-2 md:mb-3 px-1">
-             <div class="flex text-black text-[10px]">
+           <h3 class="font-bold text-base md:text-lg mb-0.5 tracking-tight">${product.name}</h3>
+           <p class="text-gray-500 text-xs mb-2">${subtitleText}</p>
+           <div class="flex items-center mb-2">
+             <div class="flex text-black text-[10px] space-x-0.5">
                ${generateStars(product.rating)}
              </div>
-             <span class="text-[10px] md:text-xs text-gray-500 ml-2 font-medium">(${product.reviews})</span>
+             <span class="text-xs text-gray-500 ml-2 font-medium">(${product.reviews})</span>
            </div>
-           <div class="flex items-baseline mt-auto px-1">
+           <div class="flex items-baseline mt-auto">
              ${priceHtml}
            </div>
            
-           <div class="lg:hidden mt-4 w-full border-2 border-black py-3 text-center text-xs font-bold uppercase tracking-widest bg-white text-black">
-             View Product
+           <div class="lg:hidden mt-3 w-full border border-black py-2.5 text-center text-xs font-black uppercase tracking-wider bg-black text-white">
+             + QUICK ADD
            </div>
+        </div>
+      `;
+    };
+
+    const renderNewArrivalCard = (product) => {
+      return `
+        <div class="group relative rounded-xl overflow-hidden aspect-[3/4] bg-[#f5f5f7] cursor-pointer shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1" onclick="openProductModal('${product.id}')">
+          <span class="absolute top-2.5 left-2.5 bg-[#d2fa3a] text-black text-[9px] font-black px-2 py-0.5 rounded-sm uppercase tracking-wider z-20">NEW</span>
+          <img src="${product.images[0]}" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" alt="${product.name}" loading="lazy" decoding="async">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-3 flex flex-col justify-end text-white z-10">
+            <h4 class="font-bold text-xs leading-tight line-clamp-1">${product.name}</h4>
+            <div class="font-black text-xs text-[#d2fa3a] mt-0.5">${formatGBP(product.price)}</div>
+          </div>
         </div>
       `;
     };
@@ -1528,29 +1575,25 @@
         filtered = filtered.filter(p => p.activity === currentFilters.activity);
       }
       
-      if (currentFilters.price === 'under50') filtered = filtered.filter(p => p.price < 50);
-      else if (currentFilters.price === '50to100') filtered = filtered.filter(p => p.price >= 50 && p.price <= 100);
-      else if (currentFilters.price === 'over100') filtered = filtered.filter(p => p.price > 100);
+      if (currentFilters.price === 'under25') filtered = filtered.filter(p => p.price < 25);
+      else if (currentFilters.price === '25to40') filtered = filtered.filter(p => p.price >= 25 && p.price <= 40);
+      else if (currentFilters.price === 'over40') filtered = filtered.filter(p => p.price > 40);
       
       if (currentFilters.sort === 'newest') filtered.sort((a, b) => (b.isNew === a.isNew) ? 0 : b.isNew ? 1 : -1);
       else if (currentFilters.sort === 'price-asc') filtered.sort((a, b) => a.price - b.price);
       else if (currentFilters.sort === 'price-desc') filtered.sort((a, b) => b.price - a.price);
       else if (currentFilters.sort === 'rating') filtered.sort((a, b) => b.rating - a.rating);
       
-      trendingContainer.innerHTML = filtered.length > 0 ? filtered.map(renderProductCard).join('') : '<p class="text-gray-500 w-full col-span-full py-12">No products found for these filters.</p>';
+      trendingContainer.innerHTML = filtered.length > 0 ? filtered.map((p, i) => renderProductCard(p, i, false)).join('') : '<p class="text-gray-500 w-full col-span-full py-12">No products found for these filters.</p>';
       
-      // New arrivals always shows newest
-      let newest = [...allProducts].filter(p => p.isNew);
-      if(newest.length === 0) newest = [...allProducts].slice(0, 8); // fallback
+      // New arrivals displays the exact 7 lookbook cards matching reference design
+      const new7Arrivals = [rawProducts[0], rawProducts[1], rawProducts[2], rawProducts[3], rawProducts[4], rawProducts[5], rawProducts[6]];
       if(newArrivalsContainer) {
-        newArrivalsContainer.innerHTML = newest.map(renderProductCard).join('');
+        newArrivalsContainer.innerHTML = new7Arrivals.map(p => renderNewArrivalCard(p)).join('');
       }
       
-      if (trendingContainer && trendingContainer.classList.contains('active')) {
+      if (trendingContainer) {
          trendingContainer.querySelectorAll('.reveal-scale').forEach(el => el.classList.add('active'));
-      }
-      if (newArrivalsContainer && newArrivalsContainer.classList.contains('active')) {
-         newArrivalsContainer.querySelectorAll('.reveal-scale').forEach(el => el.classList.add('active'));
       }
       
       updateSavedBadge();
@@ -1642,7 +1685,7 @@
            </div>
            <h3 class="font-bold text-sm truncate">${p.name}</h3>
            <p class="text-gray-500 text-xs truncate">${p.category}</p>
-           <div class="font-black text-sm mt-1 mb-2">$${p.price}</div>
+           <div class="font-black text-sm mt-1 mb-2">${formatGBP(p.price)}</div>
            <div class="mt-auto w-full border border-black py-2 text-center text-[10px] font-bold uppercase tracking-widest bg-white text-black hover:bg-black hover:text-white transition-colors">
              View Product
            </div>
@@ -1705,12 +1748,12 @@
       if(currentProduct && currentProduct.id === id) {
         updateModalSaveBtn();
         if (isSaving) {
-           const modalSaveIcon = document.getElementById('modal-save-icon');
-           if (modalSaveIcon) {
-             modalSaveIcon.classList.remove('heart-animate');
-             void modalSaveIcon.offsetWidth; // trigger reflow
-             modalSaveIcon.classList.add('heart-animate');
-           }
+          const modalSaveIcon = document.getElementById('modal-save-icon');
+          if (modalSaveIcon) {
+            modalSaveIcon.classList.remove('heart-animate');
+            void modalSaveIcon.offsetWidth; // trigger reflow
+            modalSaveIcon.classList.add('heart-animate');
+          }
         }
       }
       if(!document.getElementById('saved-drawer').classList.contains('translate-x-full')) {
@@ -1746,9 +1789,9 @@
           </div>
           <div class="flex-1 min-w-0">
             <h4 class="font-bold text-sm mb-1 truncate">${product.name}</h4>
-            <div class="text-xs text-gray-500 mb-2">$${product.price}</div>
+            <div class="text-xs text-gray-500 mb-2">${formatGBP(product.price)}</div>
             <div class="flex space-x-3">
-              <button onclick="openProductModal('${product.id}')" class="text-[10px] font-bold uppercase tracking-widest border-b border-black pb-0.5 hover:text-lime-600">View</button>
+              <button onclick="openProductModal('${product.id}')" class="text-[10px] font-bold uppercase tracking-widest border-b border-black pb-0.5 hover:text-[#d2fa3a]">View</button>
               <button onclick="toggleSave('${product.id}')" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-black transition">Remove</button>
             </div>
           </div>
@@ -1767,10 +1810,10 @@
       document.getElementById('modal-title').innerText = currentProduct.name;
       document.getElementById('modal-desc').innerText = currentProduct.description;
       
-      document.getElementById('modal-price').innerText = `$${currentProduct.price}`;
+      document.getElementById('modal-price').innerText = formatGBP(currentProduct.price);
       const compPriceEl = document.getElementById('modal-compare');
       if (currentProduct.comparePrice) {
-        compPriceEl.innerText = `$${currentProduct.comparePrice}`;
+        compPriceEl.innerText = formatGBP(currentProduct.comparePrice);
         compPriceEl.classList.remove('hidden');
       } else {
         compPriceEl.classList.add('hidden');
@@ -1779,7 +1822,7 @@
       const badge = document.getElementById('modal-badge');
       if (currentProduct.discount) {
         badge.innerText = currentProduct.discount;
-        badge.className = "bg-lime-500 text-black text-[10px] font-bold px-2.5 py-1 uppercase tracking-wider mb-3 inline-block";
+        badge.className = "bg-[#d2fa3a] text-black text-[10px] font-bold px-2.5 py-1 uppercase tracking-wider mb-3 inline-block";
         badge.classList.remove('hidden');
       } else if (currentProduct.isNew) {
         badge.innerText = "NEW";
