@@ -423,19 +423,19 @@
 <body class="overflow-x-hidden">
   
   <!-- 1. Announcement bar -->
-  <div class="bg-[#d2fa3a] text-black text-[10px] md:text-xs font-bold py-2.5 px-4 flex justify-center items-center space-x-6 md:space-x-10 uppercase tracking-widest">
-    <div class="flex items-center">
-      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+  <div class="bg-[#d2fa3a] text-black text-[10px] sm:text-[11px] md:text-xs font-bold py-2 sm:py-2.5 px-3 sm:px-4 flex justify-center items-center overflow-x-auto hide-scrollbar whitespace-nowrap space-x-4 sm:space-x-6 md:space-x-10 uppercase tracking-wider sm:tracking-widest">
+    <div class="flex items-center shrink-0">
+      <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
       FREE UK SHIPPING ON ORDERS OVER £45
     </div>
-    <div class="flex items-center text-black/60">•</div>
-    <div class="flex items-center">
-      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+    <div class="hidden sm:flex items-center text-black/60 shrink-0">•</div>
+    <div class="hidden sm:flex items-center shrink-0">
+      <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
       EASY RETURNS
     </div>
-    <div class="flex items-center text-black/60">•</div>
-    <div class="flex items-center">
-      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+    <div class="hidden sm:flex items-center text-black/60 shrink-0">•</div>
+    <div class="hidden sm:flex items-center shrink-0">
+      <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
       SECURE PAYMENTS
     </div>
   </div>
@@ -453,19 +453,18 @@
       </a>
       
       <!-- Desktop Nav -->
-      <nav class="hidden lg:flex items-center space-x-7 text-[11px] font-bold tracking-[0.15em] uppercase ml-12 h-full">
+      <nav class="hidden lg:flex items-center justify-evenly flex-1 max-w-4xl mx-6 xl:mx-12 text-[12px] xl:text-[13px] font-bold tracking-[0.12em] xl:tracking-[0.16em] uppercase h-full">
         <div class="h-full py-2">
-          <button id="shop-nav-btn" class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.15em] font-bold pb-1 outline-none min-h-[44px] focus-visible:ring-2 focus-visible:ring-[#d2fa3a] flex items-center">
+          <button id="shop-nav-btn" class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.12em] xl:tracking-[0.16em] font-bold pb-1 outline-none min-h-[44px] focus-visible:ring-2 focus-visible:ring-[#d2fa3a] flex items-center whitespace-nowrap">
             SHOP <svg class="w-3.5 h-3.5 ml-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
         </div>
-        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('Men')">MEN</button>
-        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('Women')">WOMEN</button>
-        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('Sports')">SPORTS & ACTIVEWEAR</button>
-        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('Innerwear')">INNERWEAR</button>
-        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('New')">NEW ARRIVALS</button>
-        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('All', 'All', 'featured')">BEST SELLERS</button>
-        <button class="nav-link text-red-500 hover:text-red-400 transition-colors uppercase tracking-[0.15em] font-bold pb-1 min-h-[44px]" onclick="applyCategoryFilter('Sale')">SALE</button>
+        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.12em] xl:tracking-[0.16em] font-bold pb-1 min-h-[44px] whitespace-nowrap" onclick="applyCategoryFilter('Men')">MEN</button>
+        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.12em] xl:tracking-[0.16em] font-bold pb-1 min-h-[44px] whitespace-nowrap" onclick="applyCategoryFilter('Women')">WOMEN</button>
+        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.12em] xl:tracking-[0.16em] font-bold pb-1 min-h-[44px] whitespace-nowrap" onclick="applyCategoryFilter('Innerwear')">INNERWEAR</button>
+        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.12em] xl:tracking-[0.16em] font-bold pb-1 min-h-[44px] whitespace-nowrap" onclick="applyCategoryFilter('New')">NEW ARRIVALS</button>
+        <button class="nav-link hover:text-[#d2fa3a] transition-colors uppercase tracking-[0.12em] xl:tracking-[0.16em] font-bold pb-1 min-h-[44px] whitespace-nowrap" onclick="applyCategoryFilter('Bestsellers', 'All', 'featured')">BESTSELLERS</button>
+        <button class="nav-link text-red-500 hover:text-red-400 transition-colors uppercase tracking-[0.12em] xl:tracking-[0.16em] font-bold pb-1 min-h-[44px] whitespace-nowrap" onclick="applyCategoryFilter('Sale')">SALE</button>
       </nav>
       
       <!-- Mega Menu Backdrop -->
@@ -473,55 +472,40 @@
       
       <!-- Mega Menu Content -->
       <div id="mega-menu" class="mega-menu absolute left-0 right-0 top-full bg-white text-black border-b border-gray-200 shadow-2xl z-50">
-        <div class="max-w-[1600px] mx-auto p-12 grid grid-cols-6 gap-8">
+        <div class="max-w-[1600px] mx-auto p-12 grid grid-cols-5 gap-8">
           <div>
-            <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">MEN</h4>
+            <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">ACTIVITIES</h4>
             <ul class="space-y-4 text-sm font-medium">
-              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-black transition">T-Shirts</button></li>
-              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-black transition">Shirts</button></li>
-              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-black transition">Hoodies</button></li>
-              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-black transition">Joggers</button></li>
-              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-black transition">Shorts</button></li>
-              <li><button onclick="applyCategoryFilter('Men')" class="hover:text-black transition">Jackets</button></li>
+              <li><button onclick="applyCategoryFilter('All', 'Training')" class="hover:text-black transition">Training & Workout</button></li>
+              <li><button onclick="applyCategoryFilter('All', 'Gym')" class="hover:text-black transition">Gym Performance</button></li>
+              <li><button onclick="applyCategoryFilter('All', 'Running')" class="hover:text-black transition">Running</button></li>
+              <li><button onclick="applyCategoryFilter('All', 'Streetwear')" class="hover:text-black transition">Streetwear & Lifestyle</button></li>
+              <li><button onclick="applyCategoryFilter('All', 'Sports')" class="hover:text-black transition">Team Sports</button></li>
             </ul>
           </div>
           <div>
-            <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">WOMEN</h4>
+            <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">SPORTS TOPS</h4>
             <ul class="space-y-4 text-sm font-medium">
-              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-black transition">Tops</button></li>
-              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-black transition">T-Shirts</button></li>
-              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-black transition">Leggings</button></li>
-              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-black transition">Shorts</button></li>
-              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-black transition">Hoodies</button></li>
-              <li><button onclick="applyCategoryFilter('Women')" class="hover:text-black transition">Activewear</button></li>
+              <li><button onclick="applyCategoryFilter('Sports T-Shirts')" class="hover:text-black transition">Sports T-Shirts</button></li>
+              <li><button onclick="applyCategoryFilter('Sports Jerseys')" class="hover:text-black transition">Sports Jerseys</button></li>
+              <li><button onclick="applyCategoryFilter('Sports Hoodies')" class="hover:text-black transition">Sports Hoodies</button></li>
             </ul>
           </div>
           <div>
-            <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">SPORTS</h4>
+            <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">BOTTOMS & SETS</h4>
             <ul class="space-y-4 text-sm font-medium">
-              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-black transition">Gym</button></li>
-              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-black transition">Running</button></li>
-              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-black transition">Training</button></li>
-              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-black transition">Sports</button></li>
-              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-black transition">Outdoor</button></li>
-              <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-black transition">Performance</button></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">INNERWEAR</h4>
-            <ul class="space-y-4 text-sm font-medium">
-              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-black transition">Boxers</button></li>
-              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-black transition">Briefs</button></li>
-              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-black transition">Vests</button></li>
-              <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-black transition">Sports Innerwear</button></li>
+              <li><button onclick="applyCategoryFilter('Sports Joggers')" class="hover:text-black transition">Sports Joggers</button></li>
+              <li><button onclick="applyCategoryFilter('Track Pants')" class="hover:text-black transition">Track Pants</button></li>
+              <li><button onclick="applyCategoryFilter('Tracksuits')" class="hover:text-black transition">Tracksuits</button></li>
+              <li><button onclick="applyCategoryFilter('Sports Sets')" class="hover:text-black transition">Sports Sets</button></li>
             </ul>
           </div>
           <div>
             <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">DISCOVER</h4>
             <ul class="space-y-4 text-sm font-medium">
               <li><button onclick="applyCategoryFilter('New')" class="hover:text-black transition">New Arrivals</button></li>
-              <li><button onclick="applyCategoryFilter('All', 'All', 'featured')" class="hover:text-black transition">Best Sellers</button></li>
-              <li><button onclick="applyCategoryFilter('All', 'All', 'rating')" class="hover:text-black transition">Trending</button></li>
+              <li><button onclick="applyCategoryFilter('Bestsellers', 'All', 'featured')" class="hover:text-black transition">Best Sellers</button></li>
+              <li><button onclick="applyCategoryFilter('All', 'All', 'rating')" class="hover:text-black transition">Top Rated</button></li>
               <li><button onclick="applyCategoryFilter('Sale')" class="hover:text-red-600 transition text-red-500 font-bold">Sale</button></li>
             </ul>
           </div>
@@ -531,7 +515,7 @@
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                 <div class="absolute bottom-6 left-6 text-white">
                   <h5 class="font-black text-xl uppercase tracking-tighter mb-1">Explore All</h5>
-                  <span class="text-xs font-bold uppercase tracking-widest border-b border-white pb-0.5">Shop Now</span>
+                  <span class="text-xs font-bold uppercase tracking-widest border-b border-white pb-0.5">Shop Collection</span>
                 </div>
              </div>
           </div>
@@ -605,88 +589,6 @@
     </div>
   </section>
 
-  <!-- 4. Shop by Category -->
-  <section class="max-w-[1600px] mx-auto px-6 py-20 md:py-32 reveal">
-    <div class="flex justify-between items-end mb-12">
-      <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter">Shop By Category</h2>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
-      
-      <!-- Men -->
-      <a href="#" class="group relative bg-gray-100 overflow-hidden aspect-[4/3] flex items-center p-8 md:p-10 category-card cursor-btn reveal-scale">
-         <div class="relative z-10 w-1/2">
-            <h3 class="text-3xl md:text-4xl font-black uppercase mb-3 tracking-tighter cat-title">MEN</h3>
-            <p class="text-gray-600 text-sm mb-6 font-medium">Everyday fits for every vibe.</p>
-            <span class="font-bold text-xs uppercase tracking-widest border-b-2 border-black pb-1 group-hover:border-lime-500 transition-colors hover-arrow-group">Shop Men <span class="arrow-fx">&rarr;</span></span>
-         </div>
-         <div class="absolute right-0 top-0 bottom-0 w-[55%] h-full">
-           <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" alt="Men's Category">
-         </div>
-      </a>
-
-      <!-- Women -->
-      <a href="#" class="group relative bg-gray-100 overflow-hidden aspect-[4/3] flex items-center p-8 md:p-10 category-card cursor-btn reveal-scale">
-         <div class="relative z-10 w-1/2">
-            <h3 class="text-3xl md:text-4xl font-black uppercase mb-3 tracking-tighter cat-title">WOMEN</h3>
-            <p class="text-gray-600 text-sm mb-6 font-medium">Styles that speak you.</p>
-            <span class="font-bold text-xs uppercase tracking-widest border-b-2 border-black pb-1 group-hover:border-lime-500 transition-colors hover-arrow-group">Shop Women <span class="arrow-fx">&rarr;</span></span>
-         </div>
-         <div class="absolute right-0 top-0 bottom-0 w-[55%] h-full">
-           <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/19435777/pexels-photo-19435777.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" alt="Women's Category">
-         </div>
-      </a>
-
-      <!-- Sports & Activewear -->
-      <a href="#" class="group relative bg-lime-100 overflow-hidden aspect-[4/3] flex items-center p-8 md:p-10 category-card cursor-btn reveal-scale">
-         <div class="relative z-10 w-1/2">
-            <h3 class="text-3xl md:text-4xl font-black uppercase mb-3 tracking-tighter leading-none cat-title">SPORTS &<br>ACTIVE</h3>
-            <p class="text-gray-700 text-sm mb-6 font-medium">Train hard, stay comfortable.</p>
-            <span class="font-bold text-xs uppercase tracking-widest border-b-2 border-black pb-1 group-hover:border-lime-500 transition-colors hover-arrow-group">Shop Sports <span class="arrow-fx">&rarr;</span></span>
-         </div>
-         <div class="absolute right-0 top-0 bottom-0 w-[55%] h-full">
-           <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/8436130/pexels-photo-8436130.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" alt="Sports Category">
-         </div>
-      </a>
-
-      <!-- Innerwear -->
-      <a href="#" class="group relative bg-gray-100 overflow-hidden aspect-[4/3] flex items-center p-8 md:p-10 category-card cursor-btn reveal-scale">
-         <div class="relative z-10 w-1/2">
-            <h3 class="text-3xl md:text-4xl font-black uppercase mb-3 tracking-tighter cat-title">INNERWEAR</h3>
-            <p class="text-gray-600 text-sm mb-6 font-medium">Comfort starts underneath.</p>
-            <span class="font-bold text-xs uppercase tracking-widest border-b-2 border-black pb-1 group-hover:border-lime-500 transition-colors hover-arrow-group">Shop Innerwear <span class="arrow-fx">&rarr;</span></span>
-         </div>
-         <div class="absolute right-0 top-0 bottom-0 w-[55%] h-full">
-           <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/8874672/pexels-photo-8874672.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" alt="Innerwear Category">
-         </div>
-      </a>
-
-      <!-- Accessories -->
-      <a href="#" class="group relative bg-gray-100 overflow-hidden aspect-[4/3] flex items-center p-8 md:p-10 category-card cursor-btn reveal-scale">
-         <div class="relative z-10 w-1/2">
-            <h3 class="text-3xl md:text-4xl font-black uppercase mb-3 tracking-tighter cat-title">ACCESSORIES</h3>
-            <p class="text-gray-600 text-sm mb-6 font-medium">The small things, done right.</p>
-            <span class="font-bold text-xs uppercase tracking-widest border-b-2 border-black pb-1 group-hover:border-lime-500 transition-colors hover-arrow-group">Shop Accessories <span class="arrow-fx">&rarr;</span></span>
-         </div>
-         <div class="absolute right-0 top-0 bottom-0 w-[55%] h-full">
-           <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" alt="Accessories Category">
-         </div>
-      </a>
-
-      <!-- New Arrivals -->
-      <a href="#" class="group relative bg-gray-200 overflow-hidden aspect-[4/3] flex items-center p-8 md:p-10 category-card cursor-btn reveal-scale">
-         <div class="relative z-10 w-1/2">
-            <h3 class="text-3xl md:text-4xl font-black uppercase mb-3 tracking-tighter leading-none cat-title">NEW<br>ARRIVALS</h3>
-            <p class="text-gray-700 text-sm mb-6 font-medium">Fresh drops, every week.</p>
-            <span class="font-bold text-xs uppercase tracking-widest border-b-2 border-black pb-1 group-hover:border-lime-500 transition-colors hover-arrow-group">Explore Now <span class="arrow-fx">&rarr;</span></span>
-         </div>
-         <div class="absolute right-0 top-0 bottom-0 w-[55%] h-full">
-           <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/8483390/pexels-photo-8483390.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" alt="New Arrivals">
-         </div>
-      </a>
-
-    </div>
-  </section>
 
   <!-- 5. Shop by Activity -->
   <section class="border-y border-gray-100 py-20 reveal">
@@ -765,36 +667,52 @@
         <h2 id="collection-title" class="text-3xl md:text-5xl font-black uppercase tracking-tighter">Trending Now</h2>
         <p id="collection-subtitle" class="text-gray-500 mt-2 font-medium">What's hot right now.</p>
       </div>
-      <div class="flex items-center space-x-4">
-        <select id="sort-select" class="text-xs font-bold uppercase tracking-widest border-b-2 border-black pb-1 bg-transparent focus:outline-none cursor-pointer" onchange="applySort(this.value)">
-          <option value="featured">Sort: Featured</option>
-          <option value="newest">Newest</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="rating">Top Rated</option>
-        </select>
-        <button id="filter-toggle-btn" class="text-xs font-bold uppercase tracking-widest border-2 border-black px-4 py-3 hover:bg-black hover:text-white transition cursor-btn" onclick="toggleFilterBar()">Filters</button>
+      <div class="flex items-center justify-between sm:justify-end w-full md:w-auto gap-3 pt-2 md:pt-0">
+        <div class="relative flex-1 sm:flex-initial">
+          <select id="sort-select" class="w-full sm:w-auto text-xs font-bold uppercase tracking-wider md:tracking-widest border-2 border-black sm:border-0 sm:border-b-2 sm:border-black py-2.5 sm:py-0 sm:pb-1 px-3 sm:px-0 bg-white sm:bg-transparent rounded-none focus:outline-none cursor-pointer appearance-none pr-8 sm:pr-6" onchange="applySort(this.value)">
+            <option value="featured">Sort: Featured</option>
+            <option value="newest">Newest</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-black">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+        </div>
+        <button id="filter-toggle-btn" class="flex-1 sm:flex-initial text-xs font-bold uppercase tracking-wider md:tracking-widest border-2 border-black px-4 sm:px-5 py-2.5 sm:py-3 hover:bg-black hover:text-white transition cursor-btn whitespace-nowrap text-center justify-center flex items-center" onclick="toggleFilterBar()">
+          <svg class="w-3.5 h-3.5 mr-1.5 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+          Filters
+        </button>
       </div>
     </div>
     
-    <!-- Filter Bar (Hidden by default) -->
+     <!-- Filter Bar (Hidden by default) -->
     <div id="filter-bar" class="hidden mb-8 p-6 bg-gray-50 flex flex-wrap gap-6 border border-gray-100 transition-all">
        <div>
          <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Category</label>
          <select id="filter-category" class="w-full md:w-48 bg-white border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:border-black" onchange="updateFilters()">
-           <option value="All">All Categories</option>
-           <option value="Sports Garments">Sports Garments</option>
+           <option value="All">All Garments</option>
+           <option value="Sports T-Shirts">Sports T-Shirts</option>
+           <option value="Sports Jerseys">Sports Jerseys</option>
+           <option value="Sports Hoodies">Sports Hoodies</option>
+           <option value="Sports Joggers">Sports Joggers</option>
+           <option value="Track Pants">Track Pants</option>
+           <option value="Tracksuits">Tracksuits</option>
+           <option value="Sports Sets">Sports Sets</option>
          </select>
        </div>
        <div>
          <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Activity</label>
          <select id="filter-activity" class="w-full md:w-48 bg-white border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:border-black" onchange="updateFilters()">
            <option value="All">All Activities</option>
-           <option value="Everyday">Everyday</option>
+           <option value="Training">Training</option>
            <option value="Gym">Gym</option>
            <option value="Running">Running</option>
-           <option value="Training">Training</option>
-           <option value="Sports">Sports</option>
+           <option value="Streetwear">Streetwear</option>
+           <option value="Sports">Team Sports</option>
+           <option value="Everyday">Everyday</option>
+           <option value="Travel">Travel</option>
          </select>
        </div>
        <div>
@@ -993,7 +911,7 @@
     <div class="absolute inset-0 pointer-events-none z-0">
       <!-- Desktop right-aligned image, Mobile full-width background image -->
       <div class="absolute right-0 top-0 w-full lg:w-[45%] xl:w-[40%] h-full">
-        <img src="https://images.pexels.com/photos/10321151/pexels-photo-10321151.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover object-center lg:object-right opacity-30 lg:opacity-100" alt="Models in hoodies">
+        <img src="https://www.youngla.com/cdn/shop/files/3G0A6341.jpg?v=1763420958&width=2668&utm_source=chatgpt.com" class="w-full h-full object-cover object-center lg:object-right opacity-30 lg:opacity-100" alt="Athletic Performance Wear">
         
         <!-- Gradient overlay to fade the left edge seamlessly into black (Desktop) -->
         <div class="hidden lg:block absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent w-full"></div>
@@ -1036,14 +954,12 @@
         <div>
           <h4 class="font-bold text-sm uppercase tracking-wider mb-6 text-white">Shop</h4>
           <ul class="space-y-3 text-sm text-gray-300 font-medium">
-            <li><a href="#" class="hover:text-white transition-colors">Men</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Women</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Sports & Activewear</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Innerwear</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Accessories</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">New Arrivals</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Best Sellers</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">All Products</a></li>
+            <li><a href="#" class="hover:text-white transition-colors" onclick="applyCategoryFilter('All')">All Products</a></li>
+            <li><a href="#" class="hover:text-white transition-colors" onclick="applyCategoryFilter('New')">New Arrivals</a></li>
+            <li><a href="#" class="hover:text-white transition-colors" onclick="applyCategoryFilter('Sale')">Sale</a></li>
+            <li><a href="#" class="hover:text-white transition-colors" onclick="applyCategoryFilter('All', 'Gym')">Gym</a></li>
+            <li><a href="#" class="hover:text-white transition-colors" onclick="applyCategoryFilter('All', 'Running')">Running</a></li>
+            <li><a href="#" class="hover:text-white transition-colors" onclick="applyCategoryFilter('All', 'Training')">Training</a></li>
           </ul>
         </div>
         
@@ -1056,7 +972,7 @@
             <li><a href="#" class="hover:text-white transition-colors">Shipping</a></li>
             <li><a href="#" class="hover:text-white transition-colors">Returns & Refunds</a></li>
             <li><a href="#" class="hover:text-white transition-colors">Track Order</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Size Guide</a></li>
+            <li><button onclick="openSizeGuide()" class="hover:text-white transition-colors text-left">Size Guide</button></li>
           </ul>
         </div>
         
@@ -1144,60 +1060,30 @@
     </div>
     <div class="flex-1 overflow-y-auto p-6">
       <div class="space-y-4">
-        <!-- SHOP Categories -->
-        <div>
-           <button class="flex justify-between items-center w-full py-3 border-b border-gray-100 font-bold text-lg uppercase tracking-tight" onclick="toggleMobileAccordion('mob-cat-men')">
-             Men
-             <svg class="w-5 h-5 transform transition-transform" id="icon-mob-cat-men" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-           </button>
-           <ul id="mob-cat-men" class="hidden pl-4 py-2 space-y-2 text-gray-500 font-medium">
-             <li><button onclick="applyCategoryFilter('Men')" class="hover:text-black block w-full text-left py-2">Shop All Men</button></li>
-             <li><button onclick="applyCategoryFilter('Men', 'Everyday')" class="hover:text-black block w-full text-left py-2">T-Shirts</button></li>
-             <li><button onclick="applyCategoryFilter('Men', 'Everyday')" class="hover:text-black block w-full text-left py-2">Hoodies</button></li>
-             <li><button onclick="applyCategoryFilter('Men', 'Everyday')" class="hover:text-black block w-full text-left py-2">Joggers</button></li>
-             <li><button onclick="applyCategoryFilter('Men', 'Everyday')" class="hover:text-black block w-full text-left py-2">Shorts</button></li>
-           </ul>
+        <!-- Mobile Drawer Links -->
+        <div class="space-y-3 pb-2 border-b border-gray-100">
+          <button onclick="applyCategoryFilter('Men')" class="block w-full text-left font-bold text-lg uppercase tracking-tight hover:text-lime-500 transition-colors">Men</button>
+          <button onclick="applyCategoryFilter('Women')" class="block w-full text-left font-bold text-lg uppercase tracking-tight hover:text-lime-500 transition-colors">Women</button>
+          <button onclick="applyCategoryFilter('Innerwear')" class="block w-full text-left font-bold text-lg uppercase tracking-tight hover:text-lime-500 transition-colors">Innerwear</button>
+          <button onclick="applyCategoryFilter('New')" class="block w-full text-left font-bold text-lg uppercase tracking-tight text-lime-500 hover:text-black transition-colors">New Arrivals</button>
+          <button onclick="applyCategoryFilter('Bestsellers', 'All', 'featured')" class="block w-full text-left font-bold text-lg uppercase tracking-tight hover:text-lime-500 transition-colors">Bestsellers</button>
         </div>
-        
-        <div>
-           <button class="flex justify-between items-center w-full py-3 border-b border-gray-100 font-bold text-lg uppercase tracking-tight" onclick="toggleMobileAccordion('mob-cat-women')">
-             Women
-             <svg class="w-5 h-5 transform transition-transform" id="icon-mob-cat-women" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-           </button>
-           <ul id="mob-cat-women" class="hidden pl-4 py-4 space-y-4 text-gray-500 font-medium">
-             <li><button onclick="applyCategoryFilter('Women')" class="hover:text-black block w-full text-left py-2">Shop All Women</button></li>
-             <li><button onclick="applyCategoryFilter('Women', 'Gym')" class="hover:text-black block w-full text-left py-2">Leggings</button></li>
-             <li><button onclick="applyCategoryFilter('Women', 'Everyday')" class="hover:text-black block w-full text-left py-2">Tops & T-Shirts</button></li>
-             <li><button onclick="applyCategoryFilter('Women', 'Activewear')" class="hover:text-black block w-full text-left py-2">Activewear</button></li>
-           </ul>
-        </div>
-        
+
         <div>
            <button class="flex justify-between items-center w-full py-3 border-b border-gray-100 font-bold text-lg uppercase tracking-tight" onclick="toggleMobileAccordion('mob-cat-sports')">
-             Sports & Activewear
+             Sports Garments By Activity
              <svg class="w-5 h-5 transform transition-transform" id="icon-mob-cat-sports" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
            </button>
            <ul id="mob-cat-sports" class="hidden pl-4 py-4 space-y-4 text-gray-500 font-medium">
-             <li><button onclick="applyCategoryFilter('Sports')" class="hover:text-black block w-full text-left py-2">Shop All Sports</button></li>
-             <li><button onclick="applyCategoryFilter('Sports', 'Gym')" class="hover:text-black block w-full text-left py-2">Gym</button></li>
-             <li><button onclick="applyCategoryFilter('Sports', 'Running')" class="hover:text-black block w-full text-left py-2">Running</button></li>
-             <li><button onclick="applyCategoryFilter('Sports', 'Training')" class="hover:text-black block w-full text-left py-2">Training</button></li>
-           </ul>
-        </div>
-        
-        <div>
-           <button class="flex justify-between items-center w-full py-3 border-b border-gray-100 font-bold text-lg uppercase tracking-tight" onclick="toggleMobileAccordion('mob-cat-innerwear')">
-             Innerwear
-             <svg class="w-5 h-5 transform transition-transform" id="icon-mob-cat-innerwear" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-           </button>
-           <ul id="mob-cat-innerwear" class="hidden pl-4 py-4 space-y-4 text-gray-500 font-medium">
-             <li><button onclick="applyCategoryFilter('Innerwear')" class="hover:text-black block w-full text-left py-2">Shop All Innerwear</button></li>
-             <li><button onclick="applyCategoryFilter('Innerwear', 'Everyday')" class="hover:text-black block w-full text-left py-2">Boxers & Briefs</button></li>
+             <li><button onclick="applyCategoryFilter('All')" class="hover:text-black block w-full text-left py-2">Shop All</button></li>
+             <li><button onclick="applyCategoryFilter('All', 'Gym')" class="hover:text-black block w-full text-left py-2">Gym</button></li>
+             <li><button onclick="applyCategoryFilter('All', 'Running')" class="hover:text-black block w-full text-left py-2">Running</button></li>
+             <li><button onclick="applyCategoryFilter('All', 'Training')" class="hover:text-black block w-full text-left py-2">Training</button></li>
+             <li><button onclick="applyCategoryFilter('All', 'Everyday')" class="hover:text-black block w-full text-left py-2">Everyday</button></li>
            </ul>
         </div>
 
-        <div class="pt-4 space-y-4">
-           <button onclick="applyCategoryFilter('New')" class="block w-full text-left font-bold text-lg uppercase tracking-tight text-lime-500">New Arrivals</button>
+        <div class="pt-2 space-y-4">
            <button onclick="applyCategoryFilter('All', 'All', 'featured')" class="block w-full text-left font-bold text-lg uppercase tracking-tight">Best Sellers</button>
            <button onclick="applyCategoryFilter('Sale')" class="block w-full text-left font-bold text-lg uppercase tracking-tight text-red-500">Sale</button>
         </div>
@@ -1221,118 +1107,426 @@
     </div>
   </div>
 
+  <!-- Size Guide Modal -->
+  <div id="size-guide-backdrop" class="fixed inset-0 bg-black/70 z-[80] hidden opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeSizeGuide()"></div>
+  <div id="size-guide-modal" tabindex="-1" class="focus:outline-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[94%] max-w-2xl max-h-[90vh] bg-white z-[90] hidden opacity-0 pointer-events-none transition-all duration-300 shadow-2xl flex flex-col overflow-hidden">
+    <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0 z-10">
+      <div>
+        <h2 class="text-2xl font-black uppercase tracking-tighter">Garment Size Guide</h2>
+        <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mt-0.5">Find your perfect KOCAN fit</p>
+      </div>
+      <button onclick="closeSizeGuide()" aria-label="Close size guide" class="text-gray-400 hover:text-black transition w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <div class="p-6 overflow-y-auto flex-1 space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-2 border-b border-gray-100">
+        <div class="flex space-x-2">
+          <button id="size-tab-tops" onclick="switchSizeGuideTab('tops')" class="px-4 py-2 text-xs font-bold uppercase tracking-widest bg-black text-white transition">Tops, Jerseys & Sets</button>
+          <button id="size-tab-bottoms" onclick="switchSizeGuideTab('bottoms')" class="px-4 py-2 text-xs font-bold uppercase tracking-widest bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Joggers & Track Pants</button>
+        </div>
+        <div class="flex items-center space-x-1 bg-gray-100 p-1 rounded-md text-xs font-bold">
+          <button id="unit-in" onclick="switchSizeGuideUnit('in')" class="px-3 py-1 bg-white shadow-sm text-black rounded transition">INCHES</button>
+          <button id="unit-cm" onclick="switchSizeGuideUnit('cm')" class="px-3 py-1 text-gray-500 hover:text-black rounded transition">CM</button>
+        </div>
+      </div>
+      <div id="table-tops" class="overflow-x-auto">
+        <table class="w-full text-left text-xs font-medium border-collapse">
+          <thead>
+            <tr class="bg-gray-50 text-gray-500 uppercase tracking-wider text-[11px] border-b border-gray-200">
+              <th class="py-3 px-4 font-bold">Size</th>
+              <th class="py-3 px-4 font-bold">Chest</th>
+              <th class="py-3 px-4 font-bold">Length</th>
+              <th class="py-3 px-4 font-bold">Shoulder</th>
+              <th class="py-3 px-4 font-bold">Sleeve</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100" id="tbody-tops"></tbody>
+        </table>
+      </div>
+      <div id="table-bottoms" class="overflow-x-auto hidden">
+        <table class="w-full text-left text-xs font-medium border-collapse">
+          <thead>
+            <tr class="bg-gray-50 text-gray-500 uppercase tracking-wider text-[11px] border-b border-gray-200">
+              <th class="py-3 px-4 font-bold">Size</th>
+              <th class="py-3 px-4 font-bold">Waist</th>
+              <th class="py-3 px-4 font-bold">Inseam</th>
+              <th class="py-3 px-4 font-bold">Hips</th>
+              <th class="py-3 px-4 font-bold">Thigh</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100" id="tbody-bottoms"></tbody>
+        </table>
+      </div>
+      <div class="bg-gray-50 p-5 rounded-lg border border-gray-100 space-y-3">
+        <h4 class="text-xs font-black uppercase tracking-wider text-black flex items-center">
+          <svg class="w-4 h-4 mr-1.5 text-lime-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Fit & Silhouette Guide
+        </h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div class="bg-white p-3 border border-gray-100 rounded">
+            <span class="font-bold uppercase tracking-wider text-black block mb-0.5">Oversized Fit</span>
+            <p class="text-gray-500 leading-relaxed">Relaxed boxy chest and dropped shoulders for modern streetwear drape.</p>
+          </div>
+          <div class="bg-white p-3 border border-gray-100 rounded">
+            <span class="font-bold uppercase tracking-wider text-black block mb-0.5">Regular Athletic Fit</span>
+            <p class="text-gray-500 leading-relaxed">Clean contour across chest and shoulders with ease through torso.</p>
+          </div>
+          <div class="bg-white p-3 border border-gray-100 rounded">
+            <span class="font-bold uppercase tracking-wider text-black block mb-0.5">Tapered Fit</span>
+            <p class="text-gray-500 leading-relaxed">Roomy seat and thighs tapering smoothly down to the ankle.</p>
+          </div>
+          <div class="bg-white p-3 border border-gray-100 rounded">
+            <span class="font-bold uppercase tracking-wider text-black block mb-0.5">Athletic Fit</span>
+            <p class="text-gray-500 leading-relaxed">Streamlined silhouette cut close to body for aerodynamic agility.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     // JS Logic
     const rawProducts = [
       {
-        id: "p1", slug: "oversized-active-tee", name: "Oversized Active Tee", subtitle: "Heavy Cotton | Boxy Fit", category: "Sports Garments", gender: "Mens", activity: "Everyday",
-        price: 22, comparePrice: 32, discount: "-30%", rating: 4.8, reviews: 128, isNew: true,
-        description: "The ultimate everyday tee. Crafted from heavy-weight 240 GSM combed cotton for a structured yet relaxed drape. Pre-shrunk and garment-dyed for a lived-in feel.",
+        id: "p1",
+        slug: "kocan-aeroflex-oversized-performance-tee",
+        name: "KOCAN AeroFlex Oversized Performance Tee",
+        style: "Oversized athletic fit",
+        subtitle: "Oversized Athletic Fit | 240 GSM Cotton",
+        category: "Sports T-Shirts",
+        gender: "Mens",
+        activity: "Training",
+        price: 26,
+        comparePrice: 34,
+        discount: "-24%",
+        rating: 4.9,
+        reviews: 142,
+        isNew: true,
+        description: "Lightweight, breathable performance tee designed for training and everyday streetwear. Engineered with pre-shrunk combed cotton for maximum durability and a clean boxy drop.",
         images: [
-          "https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=600",
-          "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=600"
+          "https://www.youngla.com/cdn/shop/files/3G0A6341.jpg?v=1763420958&width=1600",
+          "https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/6311687/pexels-photo-6311687.jpeg?auto=compress&cs=tinysrgb&w=800"
         ],
-        colors: ["#111111", "#f5f5f5", "#5c5c5c"], sizes: ["S", "M", "L", "XL"],
-        specs: ["100% Combed Cotton (240 GSM)", "Relaxed boxy fit", "Dropped shoulders", "Machine wash cold at 30°C"]
+        colors: ["#111111", "#e2e8f0", "#475569"],
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        fabric: "100% Combed Heavy Cotton (240 GSM) with micro-breathable knit",
+        fit: "Oversized athletic fit with dropped shoulders and relaxed torso drape",
+        care: "Machine wash cold at 30°C inside out. Do not tumble dry. Iron on reverse.",
+        specs: [
+          "100% Combed Heavy Cotton (240 GSM)",
+          "Oversized athletic boxy silhouette",
+          "Reinforced ribbed crewneck collar",
+          "Pre-shrunk with garment dye treatment"
+        ]
       },
       {
-        id: "p2", slug: "relaxed-sports-hoodie", name: "Relaxed Sports Hoodie", subtitle: "Brushed Fleece | Relaxed Fit", category: "Sports Garments", gender: "Mens", activity: "Everyday",
-        price: 38, comparePrice: 48, discount: "-20%", rating: 4.9, reviews: 162, isNew: true,
-        description: "Cozy heavy fleece hoodie with brushed interior. Double-layered hood and ribbed trims provide structured durability.",
+        id: "p2",
+        slug: "kocan-coremotion-training-t-shirt",
+        name: "KOCAN CoreMotion Training T-Shirt",
+        style: "Regular athletic fit",
+        subtitle: "Regular Athletic Fit | Anti-Odor Breathable",
+        category: "Sports T-Shirts",
+        gender: "Mens",
+        activity: "Gym",
+        price: 22,
+        comparePrice: 28,
+        discount: "-21%",
+        rating: 4.8,
+        reviews: 98,
+        isNew: true,
+        description: "Minimal performance T-shirt with breathable fabric and a comfortable training-focused fit. Moisture-wicking yarn keeps you cool through high-volume lifting sessions.",
         images: [
-          "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=600",
-          "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=600"
+          "https://styleunion.in/cdn/shop/files/WATHT00090BLUESLATE_1.jpg?v=1744058960&width=1200",
+          "https://images.pexels.com/photos/4761792/pexels-photo-4761792.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/6311475/pexels-photo-6311475.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=800"
         ],
-        colors: ["#7dd3fc", "#222222", "#f5f5f5"], sizes: ["S", "M", "L", "XL"],
-        specs: ["80% Organic Cotton, 20% Recycled Poly", "400 GSM heavy brushed fleece", "Kangaroo pocket", "Relaxed silhouette"]
+        colors: ["#18181b", "#3b82f6", "#ffffff"],
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        fabric: "90% Recycled Polyester, 10% Elastane QuickDry Micro-Knit",
+        fit: "Regular athletic fit contoured through chest and shoulders for unrestricted movement",
+        care: "Machine wash cold inside out. Tumble dry low or hang dry. Do not iron prints.",
+        specs: [
+          "Moisture-wicking QuickDry fabric technology",
+          "Regular athletic fit with side split hem",
+          "Anti-odor antimicrobial treatment",
+          "Ultralight 4-way stretch performance"
+        ]
       },
       {
-        id: "p3", slug: "performance-running-shorts", name: "Performance Running Shorts", subtitle: "Lightweight | 4-Way Stretch", category: "Sports Garments", gender: "Mens", activity: "Training",
-        price: 24, comparePrice: 32, discount: "-25%", rating: 4.9, reviews: 95, isNew: true,
-        description: "Engineered for high-intensity movement. Features moisture-wicking tech and 4-way stretch fabric with side split hem for maximum range.",
+        id: "p3",
+        slug: "kocan-velocity-pro-sports-jersey",
+        name: "KOCAN Velocity Pro Sports Jersey",
+        style: "Athletic fit",
+        subtitle: "Athletic Fit | Micro-Mesh Ventilation",
+        category: "Sports Jerseys",
+        gender: "Mens",
+        activity: "Running",
+        price: 28,
+        comparePrice: 38,
+        discount: "-26%",
+        rating: 4.9,
+        reviews: 116,
+        isNew: true,
+        description: "Lightweight sports jersey designed for mobility, breathability, and high-intensity sessions. Features targeted zoned micro-mesh mapping for continuous air cooling.",
         images: [
-          "https://images.pexels.com/photos/5037287/pexels-photo-5037287.jpeg?auto=compress&cs=tinysrgb&w=600",
-          "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=600"
+          "https://i8.amplience.net/i/jpl/jd_719125_a?qlt=85",
+          "https://images.pexels.com/photos/8436130/pexels-photo-8436130.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/8874672/pexels-photo-8874672.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/8874668/pexels-photo-8874668.jpeg?auto=compress&cs=tinysrgb&w=800"
         ],
-        colors: ["#111111", "#0284c7"], sizes: ["S", "M", "L", "XL"],
-        specs: ["88% Recycled Polyester, 12% Elastane", "Quick-dry moisture-wicking", "Zippered secure pockets", "Athletic 7-inch inseam"]
+        colors: ["#0f172a", "#d2fa3a", "#ef4444"],
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        fabric: "100% Engineered Aerolite Micro-Mesh (160 GSM) for extreme airflow",
+        fit: "Streamlined athletic fit with ergonomic raglan sleeves",
+        care: "Gentle cold wash at 30°C. Avoid fabric softeners. Line dry.",
+        specs: [
+          "160 GSM Aerolite open-weave micro mesh",
+          "Ergonomic raglan sleeves for arm drive",
+          "Reflective accents for low-light visibility",
+          "Chafe-free bonded flatlock seams"
+        ]
       },
       {
-        id: "p4", slug: "performance-training-tee", name: "Performance Training Tee", subtitle: "100% Cotton | Oversized", category: "Sports Garments", gender: "Mens", activity: "Everyday",
-        price: 26, comparePrice: null, discount: null, rating: 4.9, reviews: 48, isNew: true,
-        description: "Bold screen-printed typography on back with minimalist chest emblem. Premium 240 GSM heavy cotton jersey.",
+        id: "p4",
+        slug: "kocan-streetpulse-oversized-jersey",
+        name: "KOCAN StreetPulse Oversized Jersey",
+        style: "Oversized streetwear athletic fit",
+        subtitle: "Oversized Streetwear Fit | Heavy Mesh",
+        category: "Sports Jerseys",
+        gender: "Mens",
+        activity: "Streetwear",
+        price: 30,
+        comparePrice: null,
+        discount: null,
+        rating: 4.9,
+        reviews: 84,
+        isNew: true,
+        description: "Street-inspired sports jersey combining athletic mesh ventilation with a modern relaxed cut. Perfect for warmups, casual gym sessions, and streetwear layering.",
         images: [
-          "https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=600",
-          "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=600"
+          "https://groovypakistan.com/cdn/shop/files/3_62f6222a-c360-43bf-b030-a16672a3a3e1.jpg?v=1756898133",
+          "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/8436587/pexels-photo-8436587.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/7988086/pexels-photo-7988086.jpeg?auto=compress&cs=tinysrgb&w=800"
         ],
-        colors: ["#f5f5f5", "#111111"], sizes: ["S", "M", "L", "XL"],
-        specs: ["240 GSM Heavy Cotton", "Screen printed graphics", "Pre-shrunk", "Ribbed collar"]
+        colors: ["#111111", "#f8fafc", "#1e293b"],
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        fabric: "Double-layer open athletic mesh with jacquard ribbed V-neck collar",
+        fit: "Oversized boxy streetwear drape with extended sleeve length",
+        care: "Machine wash delicate at 30°C. Do not bleach or tumble dry.",
+        specs: [
+          "Heavy-duty double layer open mesh",
+          "Jacquard ribbed V-neck and arm trims",
+          "Relaxed streetwear silhouette",
+          "Subtle tonal silicone badge"
+        ]
       },
       {
-        id: "p5", slug: "womens-active-crop-top", name: "Women's Active Crop Top", subtitle: "Compressive | High Support", category: "Sports Garments", gender: "Womens", activity: "Gym",
-        price: 32, comparePrice: 42, discount: "-25%", rating: 4.8, reviews: 178, isNew: true,
-        description: "Uncompromising support for high-impact training. Features compressive fit, breathable mesh panels, and wide comfortable straps.",
+        id: "p5",
+        slug: "kocan-aerocore-performance-hoodie",
+        name: "KOCAN AeroCore Performance Hoodie",
+        style: "Regular athletic fit",
+        subtitle: "Regular Athletic Fit | Tech Spacer Fleece",
+        category: "Sports Hoodies",
+        gender: "Mens",
+        activity: "Training",
+        price: 42,
+        comparePrice: 55,
+        discount: "-24%",
+        rating: 4.9,
+        reviews: 188,
+        isNew: true,
+        description: "Technical performance hoodie engineered for warmups, outdoor training, and active recovery. Delivers thermal insulation without restricting movement.",
         images: [
-          "https://images.pexels.com/photos/8483390/pexels-photo-8483390.jpeg?auto=compress&cs=tinysrgb&w=600",
-          "https://images.pexels.com/photos/19435777/pexels-photo-19435777.jpeg?auto=compress&cs=tinysrgb&w=600"
+          "https://zandokh.com/image/catalog/products/2023-08/5152307005/Sport-Life-Hoodie%20%287%29.jpg",
+          "https://images.pexels.com/photos/6311549/pexels-photo-6311549.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/4066293/pexels-photo-4066293.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/7988089/pexels-photo-7988089.jpeg?auto=compress&cs=tinysrgb&w=800"
         ],
-        colors: ["#111111", "#8b5cf6", "#f43f5e"], sizes: ["XS", "S", "M", "L", "XL"],
-        specs: ["75% Nylon, 25% Spandex", "High impact support", "Removable pads", "Sweat-wicking"]
+        colors: ["#18181b", "#64748b", "#334155"],
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        fabric: "75% Cotton, 20% Polyester, 5% Elastane (340 GSM technical spacer fleece)",
+        fit: "Regular athletic silhouette with structured 3-panel scuba hood",
+        care: "Machine wash cold with like colors. Air dry. Do not iron hood cords.",
+        specs: [
+          "340 GSM bonded tech spacer fleece",
+          "Fitted 3-panel scuba hood with drawcords",
+          "Hidden concealed zippered phone pocket",
+          "Thumbhole cuff construction for warmth"
+        ]
       },
       {
-        id: "p6", slug: "performance-long-sleeve-top", name: "Performance Long Sleeve Top", subtitle: "Terry Cushion | Anti-Odor", category: "Sports Garments", gender: "Unisex", activity: "Training",
-        price: 12, comparePrice: 16, discount: "-25%", rating: 4.9, reviews: 86, isNew: true,
-        description: "Premium athletic long sleeve top. High-density cushioned comfort for impact absorption and ribbed compression.",
+        id: "p6",
+        slug: "kocan-shadowrun-essential-hoodie",
+        name: "KOCAN ShadowRun Essential Hoodie",
+        style: "Relaxed streetwear fit",
+        subtitle: "Relaxed Streetwear Fit | 420 GSM French Terry",
+        category: "Sports Hoodies",
+        gender: "Mens",
+        activity: "Everyday",
+        price: 45,
+        comparePrice: 58,
+        discount: "-22%",
+        rating: 5.0,
+        reviews: 205,
+        isNew: true,
+        description: "Heavyweight comfort hoodie featuring a structured silhouette and clean minimal branding. Crafted from dense loopback French terry for exceptional drape and longevity.",
         images: [
-          "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=600",
-          "https://images.pexels.com/photos/8436130/pexels-photo-8436130.jpeg?auto=compress&cs=tinysrgb&w=600"
+          "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/1040881/pexels-photo-1040881.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=800"
         ],
-        colors: ["#ffffff", "#94a3b8", "#111111"], sizes: ["M", "L"],
-        specs: ["Cotton/Nylon blend", "Terry loop cushioning", "Arch compression support", "Pack of 3"]
+        colors: ["#09090b", "#e4e4e7", "#71717a"],
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        fabric: "100% Organic Heavyweight French Terry (420 GSM) with brushed back",
+        fit: "Relaxed drop-shoulder street fit with thick ribbed hem and cuffs",
+        care: "Cold gentle cycle inside out. Do not tumble dry to preserve fleece loft.",
+        specs: [
+          "420 GSM ultra-heavy organic French terry",
+          "Double-lined hood with seamless finish",
+          "Heavyweight 2x2 ribbing at hem and cuffs",
+          "Kangaroo pocket with reinforced bar tacks"
+        ]
       },
       {
-        id: "p7", slug: "athletic-mesh-tank", name: "Athletic Mesh Tank", subtitle: "Washed Cotton | Adjustable", category: "Sports Garments", gender: "Unisex", activity: "Everyday",
-        price: 18, comparePrice: null, discount: null, rating: 4.7, reviews: 34, isNew: true,
-        description: "Classic mesh tank top crafted from vintage-washed cotton with exceptional breathability.",
+        id: "p7",
+        slug: "kocan-motionflex-training-joggers",
+        name: "KOCAN MotionFlex Training Joggers",
+        style: "Tapered athletic fit",
+        subtitle: "Tapered Athletic Fit | 4-Way Stretch Flex",
+        category: "Sports Joggers",
+        gender: "Mens",
+        activity: "Gym",
+        price: 36,
+        comparePrice: 48,
+        discount: "-25%",
+        rating: 4.8,
+        reviews: 154,
+        isNew: false,
+        description: "Flexible performance joggers built for gym workouts, runs, and everyday athletic comfort. Engineered with 4-way stretch weave and ankle zips for versatile styling.",
         images: [
-          "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=600",
-          "https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=600"
+          "https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/7988079/pexels-photo-7988079.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/7988087/pexels-photo-7988087.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/4753996/pexels-photo-4753996.jpeg?auto=compress&cs=tinysrgb&w=800"
         ],
-        colors: ["#d2fa3a", "#111111", "#e2e8f0"], sizes: ["ONE SIZE"],
-        specs: ["100% Washed Cotton Twill", "Antique brass buckle", "Low profile crown", "Embroidered eyelets"]
+        colors: ["#18181b", "#334155", "#0f172a"],
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        fabric: "85% Nylon, 15% Spandex durable 4-way stretch with water-repellent finish",
+        fit: "Tapered athletic fit with articulated knee darts and zippered ankles",
+        care: "Machine wash cold. Do not bleach or use softeners. Tumble dry low.",
+        specs: [
+          "4-way stretch flex weave construction",
+          "Articulated knees for deep squat mobility",
+          "Deep YKK zippered side security pockets",
+          "Custom elastic waistband with internal drawcord"
+        ]
       },
       {
-        id: "p8", slug: "training-zip-up-jacket", name: "Training Zip-Up Jacket", subtitle: "MicroModal | Anti-Chafe", category: "Sports Garments", gender: "Mens", activity: "Everyday",
-        price: 14, comparePrice: 20, discount: "-30%", rating: 4.9, reviews: 210, isNew: false,
-        description: "Engineered ergonomic training jacket with flatlock anti-chafing seams. Micro-modal waistband stays smooth all day.",
+        id: "p8",
+        slug: "kocan-urbansprint-track-pants",
+        name: "KOCAN UrbanSprint Track Pants",
+        style: "Relaxed athletic fit",
+        subtitle: "Relaxed Athletic Fit | Weather-Resistant",
+        category: "Track Pants",
+        gender: "Mens",
+        activity: "Running",
+        price: 34,
+        comparePrice: 44,
+        discount: "-23%",
+        rating: 4.7,
+        reviews: 92,
+        isNew: false,
+        description: "Lightweight track pants with clean lines, zip pockets, and weather-resistant fabric. Combines crisp street styling with wind and moisture protection.",
         images: [
-          "https://images.pexels.com/photos/8874672/pexels-photo-8874672.jpeg?auto=compress&cs=tinysrgb&w=600",
-          "https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=600"
+          "https://images.pexels.com/photos/5037287/pexels-photo-5037287.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/3775164/pexels-photo-3775164.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/3775156/pexels-photo-3775156.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/6311652/pexels-photo-6311652.jpeg?auto=compress&cs=tinysrgb&w=800"
         ],
-        colors: ["#111111", "#475569", "#ffffff"], sizes: ["S", "M", "L", "XL"],
-        specs: ["MicroModal & Spandex", "Anti-odor treatment", "No-roll waistband", "Stay-put leg design"]
+        colors: ["#09090b", "#1e293b", "#475569"],
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        fabric: "100% Ripstop Nylon with lightweight breathable mesh lining",
+        fit: "Relaxed athletic straight-leg cut with elastic drawcord cuffs",
+        care: "Cold machine wash. Fast air drying. Do not iron directly on nylon.",
+        specs: [
+          "Durable weather-resistant ripstop nylon",
+          "Breathable inner mesh cooling lining",
+          "Adjustable bungee toggle cuffs",
+          "Back zippered card and key pocket"
+        ]
       },
       {
-        id: "p9", slug: "everyday-performance-joggers", name: "Everyday Performance Joggers", subtitle: "Regular Fit | Zip Pockets", category: "Sports Garments", gender: "Mens", activity: "Training",
-        price: 36, comparePrice: 45, discount: "-20%", rating: 4.6, reviews: 110, isNew: false,
-        description: "Tapered joggers with ankle zippers for easy on-and-off over sneakers. Deep zippered side pockets keep phone secure.",
+        id: "p9",
+        slug: "kocan-corerush-performance-tracksuit",
+        name: "KOCAN CoreRush Performance Tracksuit",
+        style: "Athletic fit full set",
+        subtitle: "Full 2-Piece Set | Technical Zip & Pants",
+        category: "Tracksuits",
+        gender: "Mens",
+        activity: "Travel",
+        price: 68,
+        comparePrice: 90,
+        discount: "-24%",
+        rating: 4.9,
+        reviews: 130,
+        isNew: true,
+        description: "Matching technical jacket and track pants designed for training camps, travel, and warmups. Premium dual-knit fabric delivers warmth, agility, and a clean silhouette.",
         images: [
-          "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=600",
-          "https://images.pexels.com/photos/8436130/pexels-photo-8436130.jpeg?auto=compress&cs=tinysrgb&w=600"
+          "https://images.pexels.com/photos/8874672/pexels-photo-8874672.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/8874670/pexels-photo-8874670.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/8874668/pexels-photo-8874668.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/8436130/pexels-photo-8436130.jpeg?auto=compress&cs=tinysrgb&w=800"
         ],
-        colors: ["#111111", "#334155"], sizes: ["S", "M", "L", "XL"],
-        specs: ["Tapered leg fit", "YKK zip pockets", "Elastic drawstring waist", "Water-repellent finish"]
+        colors: ["#111111", "#1e3a8a", "#1e293b"],
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        fabric: "Performance Tricot Poly-Elastane blend (280 GSM) with brushed comfort backing",
+        fit: "Athletic ergonomic 2-piece set with stand collar jacket and tapered pants",
+        care: "Machine wash cold. Zip up before washing. Hang dry.",
+        specs: [
+          "Complete matching jacket & pants set",
+          "Stand collar full-zip jacket with chin guard",
+          "Tapered track pants with ankle zip vents",
+          "Premium matte hardware and silicone branding"
+        ]
       },
       {
-        id: "p10", slug: "womens-flex-training-leggings", name: "Women's Flex Training Leggings", subtitle: "High Waisted | Squat Proof", category: "Sports Garments", gender: "Womens", activity: "Gym",
-        price: 34, comparePrice: 45, discount: "-24%", rating: 4.9, reviews: 92, isNew: false,
-        description: "Buttery soft ribbed seamless fabric offering flattering compressive shaping with full opacity and zero roll-down.",
+        id: "p10",
+        slug: "kocan-velocity-elite-sports-set",
+        name: "KOCAN Velocity Elite Sports Set",
+        style: "Performance jersey + shorts set",
+        subtitle: "Performance Set | Match Jersey & Shorts",
+        category: "Sports Sets",
+        gender: "Mens",
+        activity: "Sports",
+        price: 48,
+        comparePrice: 65,
+        discount: "-26%",
+        rating: 5.0,
+        reviews: 175,
+        isNew: true,
+        description: "Complete high-performance matching kit engineered for peak agility and heat regulation. Includes an aerolite micro-mesh jersey and 4-way stretch training shorts.",
         images: [
-          "https://images.pexels.com/photos/19435777/pexels-photo-19435777.jpeg?auto=compress&cs=tinysrgb&w=600",
-          "https://images.pexels.com/photos/8483390/pexels-photo-8483390.jpeg?auto=compress&cs=tinysrgb&w=600"
+          "https://images.pexels.com/photos/8436130/pexels-photo-8436130.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/5037287/pexels-photo-5037287.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/3775164/pexels-photo-3775164.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=800"
         ],
-        colors: ["#111111", "#8b5cf6", "#475569"], sizes: ["XS", "S", "M", "L", "XL"],
-        specs: ["80% Polyamide, 20% Elastane", "High-rise compressive waistband", "100% squat proof", "Seamless ribbed knit"]
+        colors: ["#0a0a0a", "#1d4ed8", "#d2fa3a"],
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        fabric: "Pro-grade Aerolite Mesh (150 GSM jersey) + 4-way stretch flex woven (shorts)",
+        fit: "Performance match cut with split hem shorts (7\" inseam) and athletic jersey",
+        care: "Machine wash cold. Do not iron graphics. Quick dry.",
+        specs: [
+          "Full 2-piece match day jersey and shorts kit",
+          "Laser-cut perforated side heat vents",
+          "7-inch inseam shorts with inner compressive liner",
+          "Lightweight, ultra-fast drying moisture control"
+        ]
       }
     ];
 
@@ -1424,7 +1618,7 @@
     };
 
     let currentFilters = {
-      category: 'All',
+      category: 'Sports Garments',
       activity: 'All',
       price: 'All',
       sort: 'featured'
@@ -1436,7 +1630,7 @@
       currentFilters.sort = sort;
       currentFilters.price = 'All';
       
-      document.getElementById('filter-category').value = category === 'Sale' || category === 'New' ? 'All' : category;
+      document.getElementById('filter-category').value = category === 'Sale' || category === 'New' || category === 'All' ? 'Sports Garments' : category;
       document.getElementById('filter-activity').value = activity;
       document.getElementById('filter-price').value = 'All';
       document.getElementById('sort-select').value = sort;
@@ -1449,7 +1643,19 @@
       } else if (category === 'Sale') {
         title.innerText = 'Sale Collection';
         subtitle.innerText = 'Best prices of the season.';
-      } else if (category === 'All') {
+      } else if (category === 'Men') {
+        title.innerText = "Men's Sports Garments";
+        subtitle.innerText = 'Engineered athletic wear and performance fits for men.';
+      } else if (category === 'Women') {
+        title.innerText = "Women's Sports Garments";
+        subtitle.innerText = 'Engineered athletic wear and activewear for women.';
+      } else if (category === 'Innerwear') {
+        title.innerText = 'Innerwear & Base Layers';
+        subtitle.innerText = 'High-performance comfort, seamless fit, and breathable support.';
+      } else if (category === 'Bestsellers' || (category === 'All' && sort === 'featured')) {
+        title.innerText = 'Best Sellers';
+        subtitle.innerText = 'Our highest rated and most popular athletic performance wear.';
+      } else if (category === 'All' || category === 'Sports Garments') {
         title.innerText = 'All Products';
         subtitle.innerText = 'Explore our entire collection.';
       } else {
@@ -1505,8 +1711,16 @@
         filtered = filtered.filter(p => p.discount);
       } else if (activeCategory === 'New') {
         filtered = filtered.filter(p => p.isNew);
-      } else if (activeCategory !== 'All') {
-        filtered = filtered.filter(p => p.category === activeCategory || p.gender === activeCategory + 's');
+      } else if (activeCategory === 'Men') {
+        filtered = filtered.filter(p => p.gender === 'Mens' || p.gender === 'Men' || p.gender === 'Unisex');
+      } else if (activeCategory === 'Women') {
+        filtered = filtered.filter(p => p.gender === 'Womens' || p.gender === 'Women' || p.gender === 'Unisex');
+      } else if (activeCategory === 'Innerwear') {
+        filtered = filtered.filter(p => p.category === 'Innerwear' || (p.subtitle && p.subtitle.toLowerCase().includes('micromodal')) || (p.name && (p.name.toLowerCase().includes('crop') || p.name.toLowerCase().includes('tank') || p.name.toLowerCase().includes('top') || p.name.toLowerCase().includes('shorts'))) || p.id === 'p5' || p.id === 'p7' || p.id === 'p8');
+      } else if (activeCategory === 'Bestsellers') {
+        filtered.sort((a, b) => (b.rating * b.reviews) - (a.rating * a.reviews));
+      } else if (activeCategory !== 'All' && activeCategory !== 'Sports Garments') {
+        filtered = filtered.filter(p => p.category === activeCategory);
       }
       
       if (currentFilters.activity !== 'All') {
@@ -1855,46 +2069,68 @@
               <!-- Sizes -->
               <div class="mb-10">
                 <div class="flex justify-between items-center mb-4">
-                  <h4 class="font-bold text-xs uppercase tracking-widest">Select Size</h4>
-                  <button class="text-gray-400 text-[10px] uppercase font-bold tracking-widest hover:text-black underline transition-colors">Size Guide</button>
+                  <div class="flex items-center space-x-2">
+                    <h4 class="font-bold text-xs uppercase tracking-widest">Select Size</h4>
+                    <span class="text-[11px] text-gray-500 font-semibold bg-gray-100 px-2 py-0.5 rounded">Fit: ${product.style || 'Athletic'}</span>
+                  </div>
+                  <button onclick="openSizeGuide('${product.category}')" class="text-black text-xs uppercase font-bold tracking-wider hover:text-lime-600 underline flex items-center transition-colors">
+                    <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    Size Guide
+                  </button>
                 </div>
-                <div class="grid grid-cols-4 sm:grid-cols-5 gap-3" id="size-options">
+                <div class="grid grid-cols-5 gap-2.5" id="size-options">
                   ${product.sizes.map((s, i) => `
-                    <button onclick="selectSize(this)" class="size-btn border ${i === 0 ? 'border-black bg-black text-white' : 'border-gray-200 text-black hover:border-black'} py-4 text-sm font-bold transition">${s}</button>
+                    <button onclick="selectSize(this)" class="size-btn border ${i === 1 ? 'border-black bg-black text-white' : 'border-gray-200 text-black hover:border-black'} py-3.5 text-sm font-bold transition rounded-sm">${s}</button>
                   `).join('')}
                 </div>
               </div>
 
               <!-- Actions -->
-              <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                <button onclick="toggleSave('${product.id}'); renderProductPage('${product.slug}');" class="flex-1 border-2 border-black py-5 text-sm font-bold uppercase tracking-widest ${isSaved ? 'bg-gray-100' : 'hover:bg-gray-50'} transition-colors flex justify-center items-center">
+              <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                <button onclick="toggleSave('${product.id}'); renderProductPage('${product.slug}');" class="flex-1 border-2 border-black py-4 text-sm font-bold uppercase tracking-widest ${isSaved ? 'bg-gray-100' : 'hover:bg-gray-50'} transition-colors flex justify-center items-center">
                   ${saveIcon}
                   <span>${isSaved ? 'Saved' : 'Save Product'}</span>
                 </button>
-                <button class="flex-1 bg-[#d2fa3a] text-black py-5 text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors flex justify-center items-center">
+                <button onclick="alert('Order enquiry for ${product.name} received. Our team will contact you shortly.')" class="flex-1 bg-[#d2fa3a] text-black py-4 text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors flex justify-center items-center">
                   Enquire <span class="ml-2">&rarr;</span>
                 </button>
               </div>
 
+              <!-- Fabric, Fit & Care Box -->
+              <div class="bg-gray-50 p-5 rounded-lg border border-gray-100 mb-8 space-y-3.5 text-xs">
+                <div>
+                  <span class="font-bold uppercase tracking-wider text-black block mb-0.5">Material & Fabric</span>
+                  <p class="text-gray-600 leading-relaxed">${product.fabric || 'High-performance sports garment material.'}</p>
+                </div>
+                <div>
+                  <span class="font-bold uppercase tracking-wider text-black block mb-0.5">Fit & Silhouette</span>
+                  <p class="text-gray-600 leading-relaxed">${product.fit || product.style || 'Contoured athletic cut.'}</p>
+                </div>
+                <div>
+                  <span class="font-bold uppercase tracking-wider text-black block mb-0.5">Care Instructions</span>
+                  <p class="text-gray-600 leading-relaxed">${product.care || 'Machine wash cold. Do not tumble dry.'}</p>
+                </div>
+              </div>
+
               <!-- Specs & Features -->
-              <div class="space-y-6 pt-8 border-t border-gray-100">
-                <button class="w-full flex justify-between items-center py-4 group" onclick="document.getElementById('specs-content').classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                  <h4 class="font-bold text-sm uppercase tracking-widest group-hover:text-[#d2fa3a] transition-colors">Details & Specs</h4>
+              <div class="space-y-4 pt-4 border-t border-gray-100">
+                <button class="w-full flex justify-between items-center py-3 group" onclick="document.getElementById('specs-content').classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                  <h4 class="font-bold text-sm uppercase tracking-widest group-hover:text-black transition-colors">Details & Specs</h4>
                   <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div id="specs-content" class="pb-6">
-                  <ul class="space-y-3 text-sm text-gray-500 font-medium list-disc list-inside pl-2">
+                <div id="specs-content" class="pb-4">
+                  <ul class="space-y-2.5 text-xs text-gray-600 font-medium list-disc list-inside pl-2">
                     ${product.specs.map(s => `<li>${s}</li>`).join('')}
                   </ul>
                 </div>
                 
-                <button class="w-full flex justify-between items-center py-4 border-t border-gray-100 group" onclick="document.getElementById('shipping-content').classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                  <h4 class="font-bold text-sm uppercase tracking-widest group-hover:text-[#d2fa3a] transition-colors">Shipping & Returns</h4>
+                <button class="w-full flex justify-between items-center py-3 border-t border-gray-100 group" onclick="document.getElementById('shipping-content').classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                  <h4 class="font-bold text-sm uppercase tracking-widest group-hover:text-black transition-colors">Shipping & Returns</h4>
                   <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div id="shipping-content" class="pb-6 hidden text-sm text-gray-500 leading-relaxed">
-                  <p class="mb-2">Free standard shipping on all orders over £100.</p>
-                  <p>Returns are accepted within 30 days of purchase. Items must be unworn and in original condition.</p>
+                <div id="shipping-content" class="pb-4 hidden text-xs text-gray-600 leading-relaxed">
+                  <p class="mb-2">Free express UK & EU shipping on sports garment orders over £80.</p>
+                  <p>Hassle-free 30-day returns on unworn items with tags attached.</p>
                 </div>
               </div>
 
@@ -1986,6 +2222,119 @@
       if(!currentProduct) return;
       let newIdx = currentImageIndex === currentProduct.images.length - 1 ? 0 : currentImageIndex + 1;
       setProductPageImage(newIdx);
+    };
+
+    // --- Size Guide Logic ---
+    let sizeGuideTab = 'tops';
+    let sizeGuideUnit = 'in';
+
+    const sizeGuideData = {
+      tops: [
+        { size: 'S', in: { chest: '36 - 38', length: '28.5', shoulder: '18.0', sleeve: '8.5' }, cm: { chest: '91 - 96', length: '72.4', shoulder: '45.7', sleeve: '21.6' } },
+        { size: 'M', in: { chest: '39 - 41', length: '29.5', shoulder: '19.0', sleeve: '9.0' }, cm: { chest: '99 - 104', length: '74.9', shoulder: '48.3', sleeve: '22.9' } },
+        { size: 'L', in: { chest: '42 - 44', length: '30.5', shoulder: '20.0', sleeve: '9.5' }, cm: { chest: '107 - 112', length: '77.5', shoulder: '50.8', sleeve: '24.1' } },
+        { size: 'XL', in: { chest: '45 - 47', length: '31.5', shoulder: '21.0', sleeve: '10.0' }, cm: { chest: '114 - 119', length: '80.0', shoulder: '53.3', sleeve: '25.4' } },
+        { size: 'XXL', in: { chest: '48 - 50', length: '32.5', shoulder: '22.0', sleeve: '10.5' }, cm: { chest: '122 - 127', length: '82.5', shoulder: '55.9', sleeve: '26.7' } }
+      ],
+      bottoms: [
+        { size: 'S', in: { waist: '29 - 31', inseam: '29.0', hips: '37 - 39', thigh: '23.0' }, cm: { waist: '74 - 79', inseam: '73.7', hips: '94 - 99', thigh: '58.4' } },
+        { size: 'M', in: { waist: '32 - 34', inseam: '29.5', hips: '40 - 42', thigh: '24.5' }, cm: { waist: '81 - 86', inseam: '74.9', hips: '102 - 107', thigh: '62.2' } },
+        { size: 'L', in: { waist: '35 - 37', inseam: '30.0', hips: '43 - 45', thigh: '26.0' }, cm: { waist: '89 - 94', inseam: '76.2', hips: '109 - 114', thigh: '66.0' } },
+        { size: 'XL', in: { waist: '38 - 40', inseam: '30.5', hips: '46 - 48', thigh: '27.5' }, cm: { waist: '97 - 102', inseam: '77.5', hips: '117 - 122', thigh: '69.8' } },
+        { size: 'XXL', in: { waist: '41 - 43', inseam: '31.0', hips: '49 - 51', thigh: '29.0' }, cm: { waist: '104 - 109', inseam: '78.7', hips: '124 - 130', thigh: '73.7' } }
+      ]
+    };
+
+    const renderSizeGuideTables = () => {
+      const tbodyTops = document.getElementById('tbody-tops');
+      const tbodyBottoms = document.getElementById('tbody-bottoms');
+      if (!tbodyTops || !tbodyBottoms) return;
+
+      tbodyTops.innerHTML = sizeGuideData.tops.map(row => `
+        <tr class="hover:bg-gray-50/80 transition-colors">
+          <td class="py-3 px-4 font-bold text-black bg-gray-50/50">${row.size}</td>
+          <td class="py-3 px-4 text-gray-700">${row[sizeGuideUnit].chest}</td>
+          <td class="py-3 px-4 text-gray-700">${row[sizeGuideUnit].length}</td>
+          <td class="py-3 px-4 text-gray-700">${row[sizeGuideUnit].shoulder}</td>
+          <td class="py-3 px-4 text-gray-700">${row[sizeGuideUnit].sleeve}</td>
+        </tr>
+      `).join('');
+
+      tbodyBottoms.innerHTML = sizeGuideData.bottoms.map(row => `
+        <tr class="hover:bg-gray-50/80 transition-colors">
+          <td class="py-3 px-4 font-bold text-black bg-gray-50/50">${row.size}</td>
+          <td class="py-3 px-4 text-gray-700">${row[sizeGuideUnit].waist}</td>
+          <td class="py-3 px-4 text-gray-700">${row[sizeGuideUnit].inseam}</td>
+          <td class="py-3 px-4 text-gray-700">${row[sizeGuideUnit].hips}</td>
+          <td class="py-3 px-4 text-gray-700">${row[sizeGuideUnit].thigh}</td>
+        </tr>
+      `).join('');
+    };
+
+    window.openSizeGuide = (categoryHint = '') => {
+      const isBottom = categoryHint.includes('Jogger') || categoryHint.includes('Pant') || categoryHint.includes('Bottom');
+      switchSizeGuideTab(isBottom ? 'bottoms' : 'tops');
+      
+      const backdrop = document.getElementById('size-guide-backdrop');
+      const modal = document.getElementById('size-guide-modal');
+      if (!backdrop || !modal) return;
+      
+      backdrop.classList.remove('hidden');
+      modal.classList.remove('hidden');
+      void backdrop.offsetWidth;
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.classList.add('modal-open');
+      modal.focus();
+    };
+
+    window.closeSizeGuide = () => {
+      const backdrop = document.getElementById('size-guide-backdrop');
+      const modal = document.getElementById('size-guide-modal');
+      if (!backdrop || !modal) return;
+      
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        backdrop.classList.add('hidden');
+        modal.classList.add('hidden');
+        document.body.classList.remove('modal-open');
+      }, 300);
+    };
+
+    window.switchSizeGuideTab = (tab) => {
+      sizeGuideTab = tab;
+      const topsBtn = document.getElementById('size-tab-tops');
+      const bottomsBtn = document.getElementById('size-tab-bottoms');
+      const topsTable = document.getElementById('table-tops');
+      const bottomsTable = document.getElementById('table-bottoms');
+      
+      if (tab === 'tops') {
+        topsBtn.className = 'px-4 py-2 text-xs font-bold uppercase tracking-widest bg-black text-white transition';
+        bottomsBtn.className = 'px-4 py-2 text-xs font-bold uppercase tracking-widest bg-gray-100 text-gray-700 hover:bg-gray-200 transition';
+        topsTable.classList.remove('hidden');
+        bottomsTable.classList.add('hidden');
+      } else {
+        bottomsBtn.className = 'px-4 py-2 text-xs font-bold uppercase tracking-widest bg-black text-white transition';
+        topsBtn.className = 'px-4 py-2 text-xs font-bold uppercase tracking-widest bg-gray-100 text-gray-700 hover:bg-gray-200 transition';
+        bottomsTable.classList.remove('hidden');
+        topsTable.classList.add('hidden');
+      }
+      renderSizeGuideTables();
+    };
+
+    window.switchSizeGuideUnit = (unit) => {
+      sizeGuideUnit = unit;
+      const unitIn = document.getElementById('unit-in');
+      const unitCm = document.getElementById('unit-cm');
+      if (unit === 'in') {
+        unitIn.className = 'px-3 py-1 bg-white shadow-sm text-black rounded transition';
+        unitCm.className = 'px-3 py-1 text-gray-500 hover:text-black rounded transition';
+      } else {
+        unitCm.className = 'px-3 py-1 bg-white shadow-sm text-black rounded transition';
+        unitIn.className = 'px-3 py-1 text-gray-500 hover:text-black rounded transition';
+      }
+      renderSizeGuideTables();
     };
 
 
