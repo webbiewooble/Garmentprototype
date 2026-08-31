@@ -367,7 +367,21 @@
     .category-card .cat-title { transition: transform 0.3s ease; }
     .category-card:hover .cat-title { transform: translateY(-4px); }
 
-    /* Product Card Hover States */
+    /* Product Card Wishlist Button & Hover States */
+    .product-card .save-btn {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes heart-pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.35); }
+      100% { transform: scale(1); }
+    }
+    .heart-pop {
+      animation: heart-pop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
     @media (hover: hover) and (pointer: fine) {
       .product-card {
         transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -377,13 +391,12 @@
         box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1);
       }
       .product-card .save-btn {
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        opacity: 0.9;
+        transform: translateY(0);
       }
       .product-card:hover .save-btn {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1.05);
       }
       .product-card .primary-img {
         transition: transform 0.7s ease, opacity 0.4s ease;
@@ -523,15 +536,11 @@
       </div>
 
       <!-- Right Icons -->
-      <div class="flex items-center space-x-2 md:space-x-4 ml-auto">
+      <div class="flex items-center space-x-2 md:space-x-3 ml-auto">
         <button id="search-btn" class="hover:text-[#d2fa3a] transition-colors w-11 h-11 flex items-center justify-center" aria-label="Search"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
-        <button id="saved-btn" class="hover:text-[#d2fa3a] transition-colors relative w-11 h-11 flex items-center justify-center" aria-label="Saved">
+        <button id="saved-btn" class="hover:text-[#d2fa3a] transition-colors relative w-11 h-11 flex items-center justify-center" aria-label="Wishlist" title="Wishlist">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-          <span id="saved-badge" class="absolute top-1.5 right-1.5 bg-[#d2fa3a] text-black text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
-        </button>
-        <button class="hover:text-[#d2fa3a] transition-colors relative w-11 h-11 flex items-center justify-center" aria-label="Cart" onclick="openDrawer()">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-          <span class="absolute top-1.5 right-1.5 bg-[#d2fa3a] text-black text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+          <span id="saved-badge" class="absolute top-1.5 right-1.5 bg-[#d2fa3a] text-black text-[9px] font-black w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
         </button>
         <!-- Mobile Menu Button -->
         <button id="mobile-menu-btn" class="lg:hidden text-white hover:text-[#d2fa3a] transition-colors w-11 h-11 flex items-center justify-center" aria-label="Menu">
@@ -1062,6 +1071,10 @@
       <div class="space-y-4">
         <!-- Mobile Drawer Links -->
         <div class="space-y-3 pb-2 border-b border-gray-100">
+          <button onclick="closeMobileDrawer(); openWishlistDrawer();" class="flex items-center justify-between w-full text-left font-bold text-lg uppercase tracking-tight text-black hover:text-lime-500 transition-colors py-1">
+            <span class="flex items-center"><svg class="w-5 h-5 mr-2 text-black fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> My Wishlist</span>
+            <span id="mob-wishlist-count" class="bg-[#d2fa3a] text-black text-xs font-black px-2.5 py-0.5 rounded-full">0</span>
+          </button>
           <button onclick="applyCategoryFilter('Men')" class="block w-full text-left font-bold text-lg uppercase tracking-tight hover:text-lime-500 transition-colors">Men</button>
           <button onclick="applyCategoryFilter('Women')" class="block w-full text-left font-bold text-lg uppercase tracking-tight hover:text-lime-500 transition-colors">Women</button>
           <button onclick="applyCategoryFilter('Innerwear')" class="block w-full text-left font-bold text-lg uppercase tracking-tight hover:text-lime-500 transition-colors">Innerwear</button>
@@ -1093,17 +1106,28 @@
 
   <!-- Product Modal removed, replaced by page-based routing -->
 
-  <!-- Saved Drawer -->
+  <!-- Wishlist Drawer -->
   <div id="saved-drawer-backdrop" class="fixed inset-0 bg-black/60 z-[60] hidden opacity-0 pointer-events-none transition-opacity duration-300"></div>
-  <div id="saved-drawer" tabindex="-1" class="focus:outline-none fixed right-0 top-0 bottom-0 w-full sm:w-[400px] bg-white z-[70] translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
+  <div id="saved-drawer" tabindex="-1" class="focus:outline-none fixed right-0 top-0 bottom-0 w-full sm:w-[420px] bg-white z-[70] translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
     <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-white">
-      <h2 class="text-xl font-black uppercase tracking-tighter flex items-center">
-        Saved <span id="saved-drawer-count" class="ml-2 bg-gray-100 text-black text-xs px-2 py-0.5 rounded-full">0</span>
-      </h2>
-      <button id="saved-close" aria-label="Close saved" class="text-gray-400 hover:text-black transition w-11 h-11 flex items-center justify-center bg-gray-50 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+      <div>
+        <h2 class="text-xl font-black uppercase tracking-tighter flex items-center">
+          Wishlist <span id="saved-drawer-count" class="ml-2.5 bg-[#d2fa3a] text-black text-xs font-black px-2.5 py-0.5 rounded-full">0</span>
+        </h2>
+        <p class="text-[11px] text-gray-400 font-medium mt-0.5">Your saved sports garments</p>
+      </div>
+      <div class="flex items-center space-x-2">
+        <button id="clear-wishlist-btn" onclick="clearWishlist()" class="text-xs font-bold text-gray-400 hover:text-red-600 transition px-2.5 py-1 uppercase tracking-wider hidden">Clear All</button>
+        <button id="saved-close" aria-label="Close wishlist" class="text-gray-400 hover:text-black transition w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full hover:bg-gray-100"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+      </div>
     </div>
-    <div id="saved-items-container" class="flex-1 overflow-y-auto p-6 space-y-6">
+    <div id="saved-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
        <!-- Saved Items JS -->
+    </div>
+    <div id="saved-drawer-footer" class="p-5 border-t border-gray-100 bg-gray-50 hidden">
+      <button onclick="closeSavedDrawer(); window.location.hash=''; applyCategoryFilter('All');" class="w-full bg-black text-white py-3.5 text-xs font-black uppercase tracking-widest hover:bg-[#d2fa3a] hover:text-black transition-colors text-center block">
+        Explore More Garments &rarr;
+      </button>
     </div>
   </div>
 
@@ -1562,8 +1586,8 @@
         : `<span class="font-black text-lg md:text-xl text-black">${formatGBP(product.price)}</span>`;
         
       const saveIcon = isSaved 
-        ? `<svg class="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`
-        : `<svg class="w-4 h-4 text-gray-400 hover:text-black transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>`;
+        ? `<svg class="w-4 h-4 text-black fill-current heart-pop" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`
+        : `<svg class="w-4 h-4 text-gray-500 hover:text-black transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>`;
 
       const loadPriority = idx < 3 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
       const animClass = isImmediate ? 'active' : 'reveal-scale active';
@@ -1573,7 +1597,7 @@
         <a href="#product/${product.slug}" class="carousel-item w-[260px] md:w-[300px] flex-shrink-0 group flex flex-col h-full bg-white relative cursor-pointer product-card ${animClass}">
            <div class="relative bg-gray-100 aspect-[3/4] mb-4 overflow-hidden">
               ${badgeHtml}
-              <button class="save-btn absolute top-3 right-3 z-20 bg-white/90 hover:bg-white p-2.5 rounded-full shadow-sm" onclick="event.preventDefault(); event.stopPropagation(); toggleSave('${product.id}')" aria-label="Save">
+              <button class="save-btn absolute top-3 right-3 z-20 ${isSaved ? 'bg-white text-black ring-2 ring-black/10' : 'bg-white/90 hover:bg-white text-gray-700'} p-2.5 rounded-full shadow-sm" onclick="event.preventDefault(); event.stopPropagation(); toggleWishlist('${product.id}', event)" aria-label="${isSaved ? 'Remove from Wishlist' : 'Add to Wishlist'}" title="${isSaved ? 'In Wishlist' : 'Add to Wishlist'}">
                 ${saveIcon}
               </button>
               <img src="${product.images[0]}" class="primary-img w-full h-full object-cover object-top absolute inset-0 z-0" alt="${product.name}" ${loadPriority} decoding="async">
@@ -1605,9 +1629,16 @@
     };
 
     const renderNewArrivalCard = (product) => {
+      const isSaved = savedProductIds.includes(product.id);
       return `
         <a href="#product/${product.slug}" class="group relative rounded-xl overflow-hidden aspect-[3/4] bg-[#f5f5f7] cursor-pointer shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 block">
           <span class="absolute top-2.5 left-2.5 bg-[#d2fa3a] text-black text-[9px] font-black px-2 py-0.5 rounded-sm uppercase tracking-wider z-20">NEW</span>
+          <button class="absolute top-2.5 right-2.5 z-20 bg-white/90 hover:bg-white p-2 rounded-full shadow-sm" onclick="event.preventDefault(); event.stopPropagation(); toggleWishlist('${product.id}', event)" aria-label="${isSaved ? 'In Wishlist' : 'Add to Wishlist'}">
+            ${isSaved 
+              ? `<svg class="w-3.5 h-3.5 text-black fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`
+              : `<svg class="w-3.5 h-3.5 text-gray-500 hover:text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>`
+            }
+          </button>
           <img src="${product.images[0]}" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" alt="${product.name}" loading="lazy" decoding="async">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-3 flex flex-col justify-end text-white z-10">
             <h4 class="font-bold text-xs leading-tight line-clamp-1">${product.name}</h4>
@@ -1884,67 +1915,157 @@
       }
     };
 
-    // --- Save System ---
-    const toggleSave = (id) => {
+    // --- Toast Notification System ---
+    const showWishlistToast = (message, showViewBtn = true) => {
+      let toast = document.getElementById('wishlist-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'wishlist-toast';
+        toast.className = 'fixed bottom-6 right-6 z-[100] bg-black text-white px-5 py-3.5 rounded-lg shadow-2xl flex items-center space-x-3 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none text-xs font-bold uppercase tracking-wider';
+        document.body.appendChild(toast);
+      }
+      
+      toast.innerHTML = `
+        <div class="flex items-center space-x-3">
+          <svg class="w-4 h-4 text-[#d2fa3a] fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span>${message}</span>
+          ${showViewBtn ? `<button onclick="openWishlistDrawer()" class="ml-2 bg-[#d2fa3a] text-black px-2.5 py-1 rounded text-[10px] font-black uppercase tracking-wider hover:bg-white transition cursor-pointer">View Wishlist</button>` : ''}
+        </div>
+      `;
+      
+      toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+      
+      if (window._wishlistToastTimer) clearTimeout(window._wishlistToastTimer);
+      window._wishlistToastTimer = setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      }, 3500);
+    };
+
+    // --- Wishlist System ---
+    const toggleWishlist = (id, event = null) => {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
       const isSaving = !savedProductIds.includes(id);
+      const product = allProducts.find(p => p.id === id);
+      const productName = product ? product.name : 'Garment';
+      
       if (!isSaving) {
         savedProductIds = savedProductIds.filter(pid => pid !== id);
+        showWishlistToast(`Removed from Wishlist`, false);
       } else {
         savedProductIds.push(id);
+        showWishlistToast(`Added to Wishlist!`, true);
       }
       localStorage.setItem('kocan_saved', JSON.stringify(savedProductIds));
       
       // Re-render UI
       renderGrids();
       updateSavedBadge();
-      if(currentProduct && currentProduct.id === id) {
-        updateModalSaveBtn();
-        if (isSaving) {
-          const modalSaveIcon = document.getElementById('modal-save-icon');
-          if (modalSaveIcon) {
-            modalSaveIcon.classList.remove('heart-animate');
-            void modalSaveIcon.offsetWidth; // trigger reflow
-            modalSaveIcon.classList.add('heart-animate');
-          }
+      
+      // Update Product Page button if open
+      if (currentProduct && currentProduct.id === id) {
+        const pageWishlistBtn = document.getElementById('product-wishlist-btn');
+        if (pageWishlistBtn) {
+          const isNowSaved = savedProductIds.includes(id);
+          pageWishlistBtn.className = `flex-1 border-2 border-black py-4 px-6 text-sm font-bold uppercase tracking-widest ${isNowSaved ? 'bg-black text-white hover:bg-zinc-800' : 'bg-white text-black hover:bg-black hover:text-white'} transition-all flex justify-center items-center shadow-sm cursor-pointer`;
+          pageWishlistBtn.innerHTML = isNowSaved 
+            ? `<svg class="w-5 h-5 mr-2 text-[#d2fa3a] fill-current heart-pop" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> <span>In Wishlist (Saved)</span>`
+            : `<svg class="w-5 h-5 mr-2 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg> <span>Add to Wishlist</span>`;
         }
       }
-      if(!document.getElementById('saved-drawer').classList.contains('translate-x-full')) {
+      
+      const drawer = document.getElementById('saved-drawer');
+      if (drawer && !drawer.classList.contains('translate-x-full')) {
         renderSavedDrawer();
       }
     };
 
+    const clearWishlist = () => {
+      savedProductIds = [];
+      localStorage.setItem('kocan_saved', JSON.stringify([]));
+      renderGrids();
+      updateSavedBadge();
+      renderSavedDrawer();
+      showWishlistToast(`Wishlist cleared`, false);
+      if (currentProduct) {
+        const pageWishlistBtn = document.getElementById('product-wishlist-btn');
+        if (pageWishlistBtn) {
+          pageWishlistBtn.className = 'flex-1 border-2 border-black py-4 px-6 text-sm font-bold uppercase tracking-widest bg-white text-black hover:bg-black hover:text-white transition-all flex justify-center items-center shadow-sm cursor-pointer';
+          pageWishlistBtn.innerHTML = `<svg class="w-5 h-5 mr-2 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg> <span>Add to Wishlist</span>`;
+        }
+      }
+    };
+
+    window.toggleWishlist = toggleWishlist;
+    window.toggleSave = toggleWishlist; // backwards compatibility
+    window.clearWishlist = clearWishlist;
+
     const updateSavedBadge = () => {
       const badge = document.getElementById('saved-badge');
-      if (savedProductIds.length > 0) {
-        badge.innerText = savedProductIds.length;
-        badge.classList.remove('opacity-0', 'hidden');
-      } else {
-        badge.classList.add('opacity-0');
+      if (badge) {
+        if (savedProductIds.length > 0) {
+          badge.innerText = savedProductIds.length;
+          badge.classList.remove('opacity-0', 'hidden');
+        } else {
+          badge.classList.add('opacity-0');
+        }
       }
       
       const drawerCount = document.getElementById('saved-drawer-count');
       if(drawerCount) drawerCount.innerText = savedProductIds.length;
+      
+      const mobCount = document.getElementById('mob-wishlist-count');
+      if(mobCount) mobCount.innerText = savedProductIds.length;
     };
 
     const renderSavedDrawer = () => {
       const container = document.getElementById('saved-items-container');
+      const footer = document.getElementById('saved-drawer-footer');
+      const clearBtn = document.getElementById('clear-wishlist-btn');
+      
+      if (!container) return;
+
       if (savedProductIds.length === 0) {
-        container.innerHTML = `<div class="text-center text-gray-500 py-12 flex flex-col items-center"><svg class="w-12 h-12 text-gray-200 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg><p class="text-sm font-medium">Your saved items will appear here.</p></div>`;
+        if (footer) footer.classList.add('hidden');
+        if (clearBtn) clearBtn.classList.add('hidden');
+        container.innerHTML = `
+          <div class="text-center text-gray-500 py-16 px-4 flex flex-col items-center justify-center h-full">
+            <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4 text-gray-300">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            </div>
+            <h3 class="font-black text-lg text-black uppercase tracking-tight mb-1">Your wishlist is empty</h3>
+            <p class="text-xs text-gray-400 max-w-xs mb-6 leading-relaxed">Save your favorite sports performance garments here to view them anytime.</p>
+            <button onclick="closeSavedDrawer(); window.location.hash=''; applyCategoryFilter('All');" class="bg-black text-white px-6 py-3 text-xs font-black uppercase tracking-widest hover:bg-[#d2fa3a] hover:text-black transition-colors cursor-pointer">
+              Browse Collection &rarr;
+            </button>
+          </div>
+        `;
         return;
       }
       
+      if (footer) footer.classList.remove('hidden');
+      if (clearBtn) clearBtn.classList.remove('hidden');
+      
       const savedProducts = savedProductIds.map(id => allProducts.find(p => p.id === id)).filter(Boolean);
       container.innerHTML = savedProducts.map(product => `
-        <div class="flex items-center space-x-4">
-          <a href="#product/${product.slug}" class="block w-24 h-32 bg-gray-100 flex-shrink-0 cursor-pointer" onclick="closeSavedDrawer()">
-            <img loading="lazy" decoding="async" src="${product.images[0]}" class="w-full h-full object-cover object-top" alt="${product.name}">
+        <div class="flex items-center gap-4 p-3.5 bg-gray-50 hover:bg-gray-100/80 transition-colors rounded-lg border border-gray-100 relative group">
+          <a href="#product/${product.slug}" class="block w-20 h-24 bg-white flex-shrink-0 rounded overflow-hidden cursor-pointer" onclick="closeSavedDrawer()">
+            <img loading="lazy" decoding="async" src="${product.images[0]}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" alt="${product.name}">
           </a>
-          <div class="flex-1 min-w-0">
-            <h4 class="font-bold text-sm mb-1 truncate">${product.name}</h4>
-            <div class="text-xs text-gray-500 mb-2">${formatGBP(product.price)}</div>
-            <div class="flex space-x-3">
-              <a href="#product/${product.slug}" onclick="closeSavedDrawer()" class="text-[10px] font-bold uppercase tracking-widest border-b border-black pb-0.5 hover:text-[#d2fa3a]">View</a>
-              <button onclick="toggleSave('${product.id}')" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-black transition">Remove</button>
+          <div class="flex-1 min-w-0 pr-2">
+            <span class="text-[10px] uppercase font-bold text-gray-400 tracking-wider block">${product.category}</span>
+            <h4 class="font-bold text-sm text-black truncate mb-1"><a href="#product/${product.slug}" onclick="closeSavedDrawer()" class="hover:underline">${product.name}</a></h4>
+            <div class="font-black text-sm text-black mb-2">${formatGBP(product.price)}</div>
+            <div class="flex items-center space-x-3">
+              <a href="#product/${product.slug}" onclick="closeSavedDrawer()" class="text-[11px] font-black uppercase tracking-wider text-black bg-white border border-black/20 px-3 py-1 rounded hover:bg-black hover:text-white transition">
+                View Product
+              </a>
+              <button onclick="toggleWishlist('${product.id}')" class="text-[11px] font-bold text-red-500 hover:text-red-700 transition flex items-center cursor-pointer">
+                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                Remove
+              </button>
             </div>
           </div>
         </div>
@@ -2087,12 +2208,14 @@
 
               <!-- Actions -->
               <div class="flex flex-col sm:flex-row gap-4 mb-10">
-                <button onclick="toggleSave('${product.id}'); renderProductPage('${product.slug}');" class="flex-1 border-2 border-black py-4 text-sm font-bold uppercase tracking-widest ${isSaved ? 'bg-gray-100' : 'hover:bg-gray-50'} transition-colors flex justify-center items-center">
-                  ${saveIcon}
-                  <span>${isSaved ? 'Saved' : 'Save Product'}</span>
+                <button id="product-wishlist-btn" onclick="toggleWishlist('${product.id}')" class="flex-1 border-2 border-black py-4 px-6 text-sm font-bold uppercase tracking-widest ${isSaved ? 'bg-black text-white hover:bg-zinc-800' : 'bg-white text-black hover:bg-black hover:text-white'} transition-all flex justify-center items-center shadow-sm cursor-pointer">
+                  ${isSaved 
+                    ? `<svg class="w-5 h-5 mr-2 text-[#d2fa3a] fill-current heart-pop" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> <span>In Wishlist (Saved)</span>` 
+                    : `<svg class="w-5 h-5 mr-2 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg> <span>Add to Wishlist</span>`
+                  }
                 </button>
-                <button onclick="alert('Order enquiry for ${product.name} received. Our team will contact you shortly.')" class="flex-1 bg-[#d2fa3a] text-black py-4 text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors flex justify-center items-center">
-                  Enquire <span class="ml-2">&rarr;</span>
+                <button onclick="openWishlistDrawer()" class="flex-1 bg-[#d2fa3a] text-black py-4 px-6 text-sm font-black uppercase tracking-widest hover:bg-black hover:text-white transition-colors flex justify-center items-center cursor-pointer">
+                  <span>View Wishlist &rarr;</span>
                 </button>
               </div>
 
@@ -2481,7 +2604,7 @@
         savedBackdrop.classList.remove('opacity-0', 'pointer-events-none');
         savedDrawer.classList.remove('translate-x-full');
         document.body.classList.add('modal-open');
-      savedDrawer.focus();
+        savedDrawer.focus();
       };
       
       const closeDrawer = () => {
@@ -2495,6 +2618,9 @@
         }, 300);
       };
       
+      window.openWishlistDrawer = openDrawer;
+      window.closeWishlistDrawer = closeDrawer;
+      window.openSavedDrawer = openDrawer;
       window.closeSavedDrawer = closeDrawer;
       
       if(savedBtn) savedBtn.addEventListener('click', openDrawer);
