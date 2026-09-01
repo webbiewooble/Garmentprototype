@@ -926,7 +926,7 @@
     <div class="absolute inset-0 pointer-events-none z-0">
       <!-- Desktop right-aligned image, Mobile full-width background image -->
       <div class="absolute right-0 top-0 w-full lg:w-[45%] xl:w-[40%] h-full">
-        <img src="./product_1/p1.png" class="w-full h-full object-cover object-center lg:object-right opacity-30 lg:opacity-100" alt="Athletic Performance Wear">
+        <img src="https://images.pexels.com/photos/29079269/pexels-photo-29079269.jpeg?auto=compress&cs=tinysrgb&w=1600" class="w-full h-full object-cover object-center lg:object-right opacity-30 lg:opacity-100" alt="Athletic Performance Wear" referrerpolicy="no-referrer" loading="lazy" decoding="async">
         
         <!-- Gradient overlay to fade the left edge seamlessly into black (Desktop) -->
         <div class="hidden lg:block absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent w-full"></div>
@@ -1012,7 +1012,6 @@
             <li><a href="mailto:support@kocan.store" class="hover:text-white transition-colors">support@kocan.store</a></li>
             <li><a href="tel:+911234567890" class="hover:text-white transition-colors">+91 12345 67890</a></li>
             <li class="pt-2 text-gray-400">Mon - Sat | 10AM - 7PM</li>
-            <li class="pt-4"><a href="#" class="hover:text-white text-gray-300 transition-colors inline-block" aria-label="WhatsApp"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></li>
           </ul>
         </div>
       </div>
@@ -1181,16 +1180,45 @@
     </div>
     
     <!-- Success State Screen (hidden by default) -->
-    <div id="checkout-success-view" class="p-8 text-center hidden flex-col items-center justify-center space-y-4">
-      <div class="w-16 h-16 bg-lime-100 text-lime-600 rounded-full flex items-center justify-center mx-auto mb-2">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+    <div id="checkout-success-view" class="p-6 sm:p-8 text-center hidden flex-col items-center justify-center space-y-4 max-h-[85vh] overflow-y-auto">
+      <div class="w-14 h-14 bg-lime-100 text-lime-600 rounded-full flex items-center justify-center mx-auto">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
       </div>
-      <h3 class="text-2xl font-black uppercase tracking-tight">Order Confirmed!</h3>
-      <p class="text-sm text-gray-600 max-w-xs mx-auto">Thank you for your purchase. We have received your order and are preparing your gear.</p>
-      <div class="bg-gray-50 p-4 rounded-md border border-gray-100 text-xs font-mono text-gray-500 w-full text-center">
-        Order ID: <span id="checkout-order-id" class="font-bold text-black">KC-892147</span>
+      
+      <div>
+        <h3 class="text-2xl font-black uppercase tracking-tight">Order Placed Successfully!</h3>
+        <p class="text-xs text-gray-500 font-medium mt-1">Thank you for choosing KOCAN sportswear.</p>
       </div>
-      <button onclick="closeCheckoutModal(); window.location.hash=''; applyCategoryFilter('All');" class="w-full bg-black text-white py-3.5 text-xs font-black uppercase tracking-widest hover:bg-[#d2fa3a] hover:text-black transition-colors rounded-sm shadow-md">
+
+      <div class="bg-gray-100/80 px-4 py-2.5 rounded text-xs font-mono text-gray-600 w-full text-center border border-gray-200">
+        Order Reference: <span id="checkout-order-id" class="font-bold text-black">KC-892147</span>
+      </div>
+
+      <!-- Kind Pincode Serviceability Message -->
+      <div class="w-full bg-amber-50 border border-amber-200/80 rounded-lg p-4 sm:p-5 text-left text-xs text-amber-900 space-y-2.5 shadow-2xs">
+        <div class="flex items-start space-x-2.5">
+          <div class="w-7 h-7 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <div class="flex-1">
+            <h4 class="font-bold text-sm text-amber-950 uppercase tracking-wide">Pincode Serviceability Notice</h4>
+            <p class="mt-1 leading-relaxed text-amber-900/90 font-medium">
+              We appreciate your purchase! Please kindly note that your delivery pincode <strong id="checkout-pincode-display" class="font-bold font-mono text-amber-950 bg-amber-100/70 px-1.5 py-0.5 rounded"></strong> is currently <span class="font-bold underline">not directly serviceable</span> by our regular express courier network.
+            </p>
+          </div>
+        </div>
+
+        <div class="pl-9 text-[11px] leading-relaxed text-amber-800/90 border-t border-amber-200/60 pt-2.5 space-y-1.5">
+          <p>
+            <strong>What happens now:</strong> Our customer support and logistics team has safely received your order details and is arranging special alternative dispatch or will reach out to you within 24 hours to assist you.
+          </p>
+          <p class="text-gray-600">
+            For priority assistance, feel free to contact us at <a href="mailto:support@kocan.store" class="underline font-bold text-black">support@kocan.store</a> or call <a href="tel:+911234567890" class="underline font-bold text-black">+91 12345 67890</a>.
+          </p>
+        </div>
+      </div>
+
+      <button onclick="closeCheckoutModal(); window.location.hash=''; applyCategoryFilter('All');" class="w-full bg-black text-white py-3.5 text-xs font-black uppercase tracking-widest hover:bg-[#d2fa3a] hover:text-black transition-colors rounded-sm shadow-md cursor-pointer">
         Continue Shopping &rarr;
       </button>
     </div>
@@ -1215,21 +1243,31 @@
       <form id="checkout-form" class="space-y-4" onsubmit="handleCheckout(event)">
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Email Address</label>
-          <input type="email" required class="w-full border border-gray-300 bg-white p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" placeholder="you@example.com">
+          <input type="email" id="checkout-email" required class="w-full border border-gray-300 bg-white p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" placeholder="you@example.com">
         </div>
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">First Name</label>
-            <input type="text" required class="w-full border border-gray-300 bg-white p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" placeholder="Alex">
+            <input type="text" id="checkout-fname" required class="w-full border border-gray-300 bg-white p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" placeholder="Alex">
           </div>
           <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Last Name</label>
-            <input type="text" required class="w-full border border-gray-300 bg-white p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" placeholder="Morgan">
+            <input type="text" id="checkout-lname" required class="w-full border border-gray-300 bg-white p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" placeholder="Morgan">
           </div>
         </div>
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Delivery Address</label>
-          <input type="text" required class="w-full border border-gray-300 bg-white p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" placeholder="10 Downing Street, London">
+          <input type="text" id="checkout-address" required class="w-full border border-gray-300 bg-white p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" placeholder="Street address, apartment or suite">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">City / Town</label>
+            <input type="text" id="checkout-city" required class="w-full border border-gray-300 bg-white p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" placeholder="e.g. London / Bengaluru">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Pincode / Postcode</label>
+            <input type="text" id="checkout-pincode" required class="w-full border border-gray-300 bg-white p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition font-medium" placeholder="e.g. 560001 or SW1A 1AA">
+          </div>
         </div>
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Card Details</label>
@@ -2436,9 +2474,16 @@
       const mainView = document.getElementById('checkout-main-view');
       const successView = document.getElementById('checkout-success-view');
       const orderIdEl = document.getElementById('checkout-order-id');
+      const pincodeInput = document.getElementById('checkout-pincode');
+      const pincodeDisplay = document.getElementById('checkout-pincode-display');
 
       if (orderIdEl) {
         orderIdEl.textContent = 'KC-' + Math.floor(100000 + Math.random() * 900000);
+      }
+
+      if (pincodeDisplay) {
+        const val = pincodeInput ? pincodeInput.value.trim() : '';
+        pincodeDisplay.textContent = val ? `(${val})` : '';
       }
 
       if (mainView) mainView.classList.add('hidden');
