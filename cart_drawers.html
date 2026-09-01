@@ -1,0 +1,83 @@
+  <!-- Cart Drawer -->
+  <div id="cart-drawer-backdrop" class="fixed inset-0 bg-black/60 z-[60] hidden opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="cart-drawer" tabindex="-1" class="focus:outline-none fixed right-0 top-0 bottom-0 w-full sm:w-[420px] bg-white z-[70] translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
+    <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-white">
+      <div>
+        <h2 class="text-xl font-black uppercase tracking-tighter flex items-center">
+          Cart <span id="cart-drawer-count" class="ml-2.5 bg-black text-white text-xs font-black px-2.5 py-0.5 rounded-full">0</span>
+        </h2>
+        <p class="text-[11px] text-gray-400 font-medium mt-0.5">Your selected items</p>
+      </div>
+      <button id="cart-close" aria-label="Close cart" class="text-gray-400 hover:text-black transition w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full hover:bg-gray-100"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+    </div>
+    <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+       <!-- Cart Items JS -->
+    </div>
+    <div id="cart-drawer-footer" class="p-5 border-t border-gray-100 bg-gray-50">
+      <div class="flex justify-between items-center mb-4">
+        <span class="text-sm font-bold text-gray-600 uppercase tracking-wider">Subtotal</span>
+        <span id="cart-subtotal" class="font-black text-xl text-black">£0</span>
+      </div>
+      <button onclick="openCheckoutModal()" class="w-full bg-[#d2fa3a] text-black py-4 text-sm font-black uppercase tracking-widest hover:bg-black hover:text-white transition-colors text-center block shadow-md">
+        Proceed to Checkout
+      </button>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div id="checkout-modal-backdrop" class="fixed inset-0 bg-black/70 z-[80] hidden opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="checkout-modal" tabindex="-1" class="focus:outline-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[94%] max-w-lg bg-white z-[90] hidden opacity-0 pointer-events-none transition-all duration-300 shadow-2xl flex flex-col overflow-hidden">
+    <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0 z-10">
+      <div>
+        <h2 class="text-xl font-black uppercase tracking-tighter">Secure Checkout</h2>
+      </div>
+      <button onclick="closeCheckoutModal()" aria-label="Close checkout" class="text-gray-400 hover:text-black transition w-8 h-8 flex items-center justify-center bg-gray-50 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+    </div>
+    <div class="p-6 overflow-y-auto max-h-[70vh] bg-gray-50">
+      <form id="checkout-form" class="space-y-4" onsubmit="handleCheckout(event)">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Email Address</label>
+          <input type="email" required class="w-full border border-gray-300 p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" placeholder="you@example.com">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">First Name</label>
+            <input type="text" required class="w-full border border-gray-300 p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" placeholder="First">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Last Name</label>
+            <input type="text" required class="w-full border border-gray-300 p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" placeholder="Last">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Shipping Address</label>
+          <input type="text" required class="w-full border border-gray-300 p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" placeholder="123 Main St">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Card Information</label>
+          <div class="relative">
+            <input type="text" required class="w-full border border-gray-300 p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition font-mono" placeholder="0000 0000 0000 0000" maxlength="19">
+            <div class="absolute right-3 top-3 flex space-x-1">
+              <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 32 32"><path d="M2 10h28v12H2z" opacity=".2"/><path d="M4 10h24v12H4z"/><path fill="#fff" d="M4 10h24v12H4z"/><path d="M4 14h24v2H4zM6 18h6v2H6z" opacity=".2"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <input type="text" required class="w-full border border-gray-300 p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition font-mono" placeholder="MM/YY" maxlength="5">
+          </div>
+          <div>
+            <input type="text" required class="w-full border border-gray-300 p-3 text-sm rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition font-mono" placeholder="CVC" maxlength="3">
+          </div>
+        </div>
+        
+        <div class="pt-4 border-t border-gray-200 mt-6 flex justify-between items-center mb-4">
+           <span class="font-bold text-sm uppercase tracking-wider text-gray-800">Total</span>
+           <span id="checkout-total" class="font-black text-2xl text-black">£0</span>
+        </div>
+        <button type="submit" class="w-full bg-black text-white py-4 text-sm font-black uppercase tracking-widest hover:bg-[#d2fa3a] hover:text-black transition-colors block shadow-md">
+          Pay Now
+        </button>
+      </form>
+    </div>
+  </div>
