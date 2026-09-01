@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kocan — Modern Fashion, Activewear & Everyday Essentials</title>
+  <title>KOCAN — Modern Fashion, Activewear & Everyday Essentials</title>
   <meta name="description" content="Explore modern fashion, activewear, innerwear and everyday essentials designed for comfort, movement and everyday life." />
   <link rel="canonical" href="https://www.kocan-brand.com/" />
   
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.kocan-brand.com/" />
-  <meta property="og:title" content="Kocan — Modern Fashion, Activewear & Everyday Essentials" />
+  <meta property="og:title" content="KOCAN — Modern Fashion, Activewear & Everyday Essentials" />
   <meta property="og:description" content="Explore modern fashion, activewear, innerwear and everyday essentials designed for comfort, movement and everyday life." />
   <meta property="og:image" content="https://images.pexels.com/photos/20418295/pexels-photo-20418295.jpeg?auto=compress&cs=tinysrgb&w=1200" />
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://www.kocan-brand.com/" />
-  <meta name="twitter:title" content="Kocan — Modern Fashion, Activewear & Everyday Essentials" />
+  <meta name="twitter:title" content="KOCAN — Modern Fashion, Activewear & Everyday Essentials" />
   <meta name="twitter:description" content="Explore modern fashion, activewear, innerwear and everyday essentials designed for comfort, movement and everyday life." />
   <meta name="twitter:image" content="https://images.pexels.com/photos/20418295/pexels-photo-20418295.jpeg?auto=compress&cs=tinysrgb&w=1200" />
   
@@ -35,7 +35,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Kocan — Modern Fashion, Activewear & Everyday Essentials",
+    "name": "KOCAN — Modern Fashion, Activewear & Everyday Essentials",
     "url": "https://www.kocan-brand.com"
   }
   </script>
@@ -459,10 +459,12 @@
       
       <!-- Logo -->
       <a href="#" class="text-2xl md:text-3xl font-black tracking-tighter uppercase flex items-center shrink-0 space-x-2" aria-label="Home" onclick="applyCategoryFilter('All')">
-        <svg class="w-6 h-6 text-[#d2fa3a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 3v9a6 6 0 0012 0V3M9 6v6a3 3 0 006 0V6" />
+        <svg class="w-7 h-7 text-[#d2fa3a]" viewBox="0 0 24 24" fill="currentColor">
+          <g transform="matrix(1 0 -0.2 1 5 0)">
+            <path d="M3 2h5v20H3z M8 5l3-3h5l-8 8z M8 14l8 8h-5l-3-3z" />
+          </g>
         </svg>
-        <span>Kocan</span>
+        <span>KOCAN</span>
       </a>
       
       <!-- Desktop Nav -->
@@ -507,10 +509,10 @@
           <div>
             <h4 class="font-bold text-xs uppercase tracking-widest text-gray-400 mb-6">BOTTOMS & SETS</h4>
             <ul class="space-y-4 text-sm font-medium">
+              <li><button onclick="applyCategoryFilter('Sports Shorts')" class="hover:text-black transition">Sports Shorts</button></li>
               <li><button onclick="applyCategoryFilter('Sports Joggers')" class="hover:text-black transition">Sports Joggers</button></li>
               <li><button onclick="applyCategoryFilter('Track Pants')" class="hover:text-black transition">Track Pants</button></li>
               <li><button onclick="applyCategoryFilter('Tracksuits')" class="hover:text-black transition">Tracksuits</button></li>
-              <li><button onclick="applyCategoryFilter('Sports Sets')" class="hover:text-black transition">Sports Sets</button></li>
             </ul>
           </div>
           <div>
@@ -705,10 +707,10 @@
            <option value="Sports T-Shirts">Sports T-Shirts</option>
            <option value="Sports Jerseys">Sports Jerseys</option>
            <option value="Sports Hoodies">Sports Hoodies</option>
+           <option value="Sports Shorts">Sports Shorts</option>
            <option value="Sports Joggers">Sports Joggers</option>
            <option value="Track Pants">Track Pants</option>
            <option value="Tracksuits">Tracksuits</option>
-           <option value="Sports Sets">Sports Sets</option>
          </select>
        </div>
        <div>
@@ -920,7 +922,7 @@
     <div class="absolute inset-0 pointer-events-none z-0">
       <!-- Desktop right-aligned image, Mobile full-width background image -->
       <div class="absolute right-0 top-0 w-full lg:w-[45%] xl:w-[40%] h-full">
-        <img src="https://www.youngla.com/cdn/shop/files/3G0A6341.jpg?v=1763420958&width=2668&utm_source=chatgpt.com" class="w-full h-full object-cover object-center lg:object-right opacity-30 lg:opacity-100" alt="Athletic Performance Wear">
+        <img src="/product-front-image.png" class="w-full h-full object-cover object-center lg:object-right opacity-30 lg:opacity-100" alt="Athletic Performance Wear">
         
         <!-- Gradient overlay to fade the left edge seamlessly into black (Desktop) -->
         <div class="hidden lg:block absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent w-full"></div>
@@ -940,11 +942,13 @@
         
         <!-- Col 1: Logo & Info -->
         <div class="col-span-2 md:col-span-3 lg:col-span-1">
-          <a href="#" class="text-3xl font-black tracking-widest uppercase flex items-center mb-6">
-            <svg class="w-10 h-10 mr-3 fill-current" viewBox="0 0 24 24">
-              <path d="M7 4v6c0 1.1-.9 2-2 2s-2-.9-2-2V4H1v6c0 2.21 1.79 4 4 4s4-1.79 4-4V4H7zm7 0v6c0 1.1-.9 2-2 2s-2-.9-2-2V4H8v6c0 2.21 1.79 4 4 4s4-1.79 4-4V4h-2zm7 0v6c0 1.1-.9 2-2 2s-2-.9-2-2V4h-2v6c0 2.21 1.79 4 4 4s4-1.79 4-4V4h-2z"/>
+          <a href="#" class="text-3xl font-black tracking-widest uppercase flex items-center mb-6 text-white hover:text-[#d2fa3a] transition-colors">
+            <svg class="w-10 h-10 mr-3 text-[#d2fa3a] fill-current" viewBox="0 0 24 24">
+              <g transform="matrix(1 0 -0.2 1 5 0)">
+                <path d="M3 2h5v20H3z M8 5l3-3h5l-8 8z M8 14l8 8h-5l-3-3z" />
+              </g>
             </svg>
-            Kocan
+            KOCAN
           </a>
           <p class="text-gray-300 text-sm leading-relaxed font-medium mb-8">
             Essentials for your everyday.<br>
@@ -1011,7 +1015,7 @@
       
       <!-- Bottom Bar -->
       <div class="mt-16 pt-6 border-t border-white/20 flex items-center justify-between">
-        <p class="text-gray-400 text-sm font-medium">&copy; 2024 Kocan. All rights reserved.</p>
+        <p class="text-gray-400 text-sm font-medium">&copy; 2024 KOCAN. All rights reserved.</p>
       </div>
       
     </div>
@@ -1214,10 +1218,10 @@
     const rawProducts = [
       {
         id: "p1",
-        slug: "kocan-aeroflex-oversized-performance-tee",
-        name: "KOCAN AeroFlex Oversized Performance Tee",
-        style: "Oversized athletic fit",
-        subtitle: "Oversized Athletic Fit | 240 GSM Cotton",
+        slug: "kocan-prodry-sports-t-shirt",
+        name: "KOCAN ProDry Sports T-Shirt",
+        style: "Athletic fit performance tee",
+        subtitle: "Athletic Fit | ProDry Quick-Wicking Technology",
         category: "Sports T-Shirts",
         gender: "Mens",
         activity: "Training",
@@ -1227,41 +1231,41 @@
         rating: 4.9,
         reviews: 142,
         isNew: true,
-        description: "Lightweight, breathable performance tee designed for training and everyday streetwear. Engineered with pre-shrunk combed cotton for maximum durability and a clean boxy drop.",
+        description: "Engineered with ProDry moisture-wicking microfibers, this high-performance sports t-shirt accelerates sweat evaporation to keep you cool, dry, and focused through the most demanding workouts.",
         images: [
-          "https://www.youngla.com/cdn/shop/files/3G0A6341.jpg?v=1763420958&width=1600",
+          "/product-front-image.png",
           "https://images.pexels.com/photos/20417442/pexels-photo-20417442.jpeg?auto=compress&cs=tinysrgb&w=800",
           "https://images.pexels.com/photos/20418298/pexels-photo-20418298.jpeg?auto=compress&cs=tinysrgb&w=800",
           "https://images.pexels.com/photos/6311687/pexels-photo-6311687.jpeg?auto=compress&cs=tinysrgb&w=800"
         ],
         colors: ["#111111", "#e2e8f0", "#475569"],
         sizes: ["S", "M", "L", "XL", "XXL"],
-        fabric: "100% Combed Heavy Cotton (240 GSM) with micro-breathable knit",
-        fit: "Oversized athletic fit with dropped shoulders and relaxed torso drape",
-        care: "Machine wash cold at 30°C inside out. Do not tumble dry. Iron on reverse.",
+        fabric: "100% ProDry Micro-Knit Polyester (180 GSM) with antibacterial finish",
+        fit: "Athletic streamlined fit with ergonomic raglan shoulders for unrestricted range of motion",
+        care: "Machine wash cold at 30°C inside out. Do not tumble dry. Line dry.",
         specs: [
-          "100% Combed Heavy Cotton (240 GSM)",
-          "Oversized athletic boxy silhouette",
-          "Reinforced ribbed crewneck collar",
-          "Pre-shrunk with garment dye treatment"
+          "ProDry moisture-wicking rapid evaporation tech",
+          "Athletic ergonomic contour with flatlock anti-chafe seams",
+          "Ultralight breathable micro-perforated knit",
+          "Reflective chest logo for low-light visibility"
         ]
       },
       {
         id: "p2",
-        slug: "kocan-coremotion-training-t-shirt",
-        name: "KOCAN CoreMotion Training T-Shirt",
+        slug: "kocan-activefit-training-t-shirt",
+        name: "KOCAN ActiveFit Training T-Shirt",
         style: "Regular athletic fit",
-        subtitle: "Regular Athletic Fit | Anti-Odor Breathable",
+        subtitle: "Regular Athletic Fit | 4-Way Stretch Flex",
         category: "Sports T-Shirts",
         gender: "Mens",
         activity: "Gym",
-        price: 22,
-        comparePrice: 28,
-        discount: "-21%",
+        price: 24,
+        comparePrice: 30,
+        discount: "-20%",
         rating: 4.8,
-        reviews: 98,
+        reviews: 118,
         isNew: true,
-        description: "Minimal performance T-shirt with breathable fabric and a comfortable training-focused fit. Moisture-wicking yarn keeps you cool through high-volume lifting sessions.",
+        description: "Designed for high-output gym sessions, functional conditioning, and everyday activewear. Features an ultra-soft 4-way stretch blend that moves fluidly with every rep and stretch.",
         images: [
           "https://styleunion.in/cdn/shop/files/WATHT00090BLUESLATE_1.jpg?v=1744058960&width=1200",
           "https://images.pexels.com/photos/4761792/pexels-photo-4761792.jpeg?auto=compress&cs=tinysrgb&w=800",
@@ -1270,32 +1274,32 @@
         ],
         colors: ["#18181b", "#3b82f6", "#ffffff"],
         sizes: ["S", "M", "L", "XL", "XXL"],
-        fabric: "90% Recycled Polyester, 10% Elastane QuickDry Micro-Knit",
-        fit: "Regular athletic fit contoured through chest and shoulders for unrestricted movement",
-        care: "Machine wash cold inside out. Tumble dry low or hang dry. Do not iron prints.",
+        fabric: "92% Ring-Spun Performance Poly, 8% Elastane Stretch Knit",
+        fit: "ActiveFit athletic cut with contoured chest and relaxed waist drape",
+        care: "Machine wash cold inside out. Tumble dry low or hang dry.",
         specs: [
-          "Moisture-wicking QuickDry fabric technology",
-          "Regular athletic fit with side split hem",
-          "Anti-odor antimicrobial treatment",
-          "Ultralight 4-way stretch performance"
+          "4-way stretch elastane blend for complete freedom of motion",
+          "Anti-odor antimicrobial silver-ion weave",
+          "Split side hem for enhanced mobility and squatting depth",
+          "Silicone heat-sealed brand detailing"
         ]
       },
       {
         id: "p3",
-        slug: "kocan-velocity-pro-sports-jersey",
-        name: "KOCAN Velocity Pro Sports Jersey",
-        style: "Athletic fit",
-        subtitle: "Athletic Fit | Micro-Mesh Ventilation",
-        category: "Sports Jerseys",
+        slug: "kocan-performance-running-t-shirt",
+        name: "KOCAN Performance Running T-Shirt",
+        style: "Ultralight aerodynamic fit",
+        subtitle: "Ultralight Fit | Zoned Laser Ventilation",
+        category: "Sports T-Shirts",
         gender: "Mens",
         activity: "Running",
         price: 28,
-        comparePrice: 38,
-        discount: "-26%",
+        comparePrice: 36,
+        discount: "-22%",
         rating: 4.9,
-        reviews: 116,
+        reviews: 156,
         isNew: true,
-        description: "Lightweight sports jersey designed for mobility, breathability, and high-intensity sessions. Features targeted zoned micro-mesh mapping for continuous air cooling.",
+        description: "Featherlight running tee built for speed, endurance, and maximum breathability. Targeted laser-perforated cooling zones along the spine and underarms optimize airflow across long distances.",
         images: [
           "https://i8.amplience.net/i/jpl/jd_719125_a?qlt=85",
           "https://images.pexels.com/photos/8436130/pexels-photo-8436130.jpeg?auto=compress&cs=tinysrgb&w=800",
@@ -1304,134 +1308,134 @@
         ],
         colors: ["#0f172a", "#d2fa3a", "#ef4444"],
         sizes: ["S", "M", "L", "XL", "XXL"],
-        fabric: "100% Engineered Aerolite Micro-Mesh (160 GSM) for extreme airflow",
-        fit: "Streamlined athletic fit with ergonomic raglan sleeves",
-        care: "Gentle cold wash at 30°C. Avoid fabric softeners. Line dry.",
+        fabric: "100% Aerolite Featherweight Micro-Mesh (135 GSM)",
+        fit: "Aerodynamic race fit with dropped back hem for added stride coverage",
+        care: "Cold machine wash delicate. Do not use bleach or softeners.",
         specs: [
-          "160 GSM Aerolite open-weave micro mesh",
-          "Ergonomic raglan sleeves for arm drive",
-          "Reflective accents for low-light visibility",
-          "Chafe-free bonded flatlock seams"
+          "Ultralight 135 GSM open-cell micro-mesh construction",
+          "Laser-cut back ventilation matrix for nonstop heat dissipation",
+          "360-degree reflective accents for dawn and night running safety",
+          "Frictionless bonded collar and sleeve hems"
         ]
       },
       {
         id: "p4",
-        slug: "kocan-streetpulse-oversized-jersey",
-        name: "KOCAN StreetPulse Oversized Jersey",
-        style: "Oversized streetwear athletic fit",
-        subtitle: "Oversized Streetwear Fit | Heavy Mesh",
+        slug: "kocan-elite-sports-jersey",
+        name: "KOCAN Elite Sports Jersey",
+        style: "Pro athletic match fit",
+        subtitle: "Pro Match Fit | Heavy Double-Layer Air Mesh",
         category: "Sports Jerseys",
         gender: "Mens",
-        activity: "Streetwear",
-        price: 30,
-        comparePrice: null,
-        discount: null,
+        activity: "Sports",
+        price: 32,
+        comparePrice: 42,
+        discount: "-24%",
         rating: 4.9,
-        reviews: 84,
+        reviews: 96,
         isNew: true,
-        description: "Street-inspired sports jersey combining athletic mesh ventilation with a modern relaxed cut. Perfect for warmups, casual gym sessions, and streetwear layering.",
+        description: "Pro-caliber sports jersey built with heavy-duty double-layer airflow mesh. Combines elite game-day durability with a sleek athletic silhouette tailored for team sports and streetwear styling.",
         images: [
           "https://groovypakistan.com/cdn/shop/files/3_62f6222a-c360-43bf-b030-a16672a3a3e1.jpg?v=1756898133",
           "https://images.pexels.com/photos/17917199/pexels-photo-17917199.jpeg?auto=compress&cs=tinysrgb&w=800",
           "https://images.pexels.com/photos/8436587/pexels-photo-8436587.jpeg?auto=compress&cs=tinysrgb&w=800",
           "https://images.pexels.com/photos/7988086/pexels-photo-7988086.jpeg?auto=compress&cs=tinysrgb&w=800"
         ],
-        colors: ["#111111", "#f8fafc", "#1e293b"],
+        colors: ["#111111", "#1d4ed8", "#d2fa3a"],
         sizes: ["S", "M", "L", "XL", "XXL"],
-        fabric: "Double-layer open athletic mesh with jacquard ribbed V-neck collar",
-        fit: "Oversized boxy streetwear drape with extended sleeve length",
-        care: "Machine wash delicate at 30°C. Do not bleach or tumble dry.",
+        fabric: "100% Heavyweight Aerocell Diamond Mesh (210 GSM)",
+        fit: "Athletic match fit with reinforced rib-knit V-neck collar",
+        care: "Machine wash cold inside out. Hang dry. Do not iron prints.",
         specs: [
-          "Heavy-duty double layer open mesh",
-          "Jacquard ribbed V-neck and arm trims",
-          "Relaxed streetwear silhouette",
-          "Subtle tonal silicone badge"
+          "210 GSM heavy-duty dual-knit diamond air mesh",
+          "Reinforced flatlock side panels for collision resistance",
+          "Moisture-wicking yarn with quick-dry thermal balance",
+          "Reflective silicone high-density badge"
         ]
       },
       {
         id: "p5",
-        slug: "kocan-aerocore-performance-hoodie",
-        name: "KOCAN AeroCore Performance Hoodie",
-        style: "Regular athletic fit",
-        subtitle: "Regular Athletic Fit | Tech Spacer Fleece",
-        category: "Sports Hoodies",
+        slug: "kocan-flexrun-running-shorts",
+        name: "KOCAN FlexRun Running Shorts",
+        style: "5-inch athletic running fit",
+        subtitle: "5\" Inseam | Built-in Compression Liner & Phone Pocket",
+        category: "Sports Shorts",
         gender: "Mens",
-        activity: "Training",
-        price: 42,
-        comparePrice: 55,
-        discount: "-24%",
+        activity: "Running",
+        price: 30,
+        comparePrice: 40,
+        discount: "-25%",
         rating: 4.9,
-        reviews: 188,
+        reviews: 168,
         isNew: true,
-        description: "Technical performance hoodie engineered for warmups, outdoor training, and active recovery. Delivers thermal insulation without restricting movement.",
+        description: "Ultralight running shorts engineered with a supportive anti-chafe compression liner, bounce-free zip phone storage, and side split vents designed to liberate your natural running stride.",
         images: [
-          "https://zandokh.com/image/catalog/products/2023-08/5152307005/Sport-Life-Hoodie%20%287%29.jpg",
-          "https://images.pexels.com/photos/6311549/pexels-photo-6311549.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/4066293/pexels-photo-4066293.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/7988089/pexels-photo-7988089.jpeg?auto=compress&cs=tinysrgb&w=800"
+          "https://images.pexels.com/photos/5037287/pexels-photo-5037287.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/3775164/pexels-photo-3775164.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/3775156/pexels-photo-3775156.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/6311652/pexels-photo-6311652.jpeg?auto=compress&cs=tinysrgb&w=800"
         ],
-        colors: ["#18181b", "#64748b", "#334155"],
+        colors: ["#0f172a", "#18181b", "#475569"],
         sizes: ["S", "M", "L", "XL", "XXL"],
-        fabric: "75% Cotton, 20% Polyester, 5% Elastane (340 GSM technical spacer fleece)",
-        fit: "Regular athletic silhouette with structured 3-panel scuba hood",
-        care: "Machine wash cold with like colors. Air dry. Do not iron hood cords.",
+        fabric: "Shell: 88% Recycled Poly, 12% Spandex; Liner: 82% Nylon, 18% Elastane",
+        fit: "5-inch inseam athletic cut with supportive anti-chafing compression inner",
+        care: "Cold machine wash. Do not bleach. Air dry recommended.",
         specs: [
-          "340 GSM bonded tech spacer fleece",
-          "Fitted 3-panel scuba hood with drawcords",
-          "Hidden concealed zippered phone pocket",
-          "Thumbhole cuff construction for warmth"
+          "5\" inseam with deep side stride split vents",
+          "Integrated anti-friction supportive compression liner",
+          "Water-resistant bounce-free back zippered media pocket",
+          "Custom elastic waistband with infinite loop drawcord"
         ]
       },
       {
         id: "p6",
-        slug: "kocan-shadowrun-essential-hoodie",
-        name: "KOCAN ShadowRun Essential Hoodie",
-        style: "Relaxed streetwear fit",
-        subtitle: "Relaxed Streetwear Fit | 420 GSM French Terry",
-        category: "Sports Hoodies",
+        slug: "kocan-powerfit-training-shorts",
+        name: "KOCAN PowerFit Training Shorts",
+        style: "7-inch gym training fit",
+        subtitle: "7\" Inseam | Heavy-Duty 4-Way Stretch Woven",
+        category: "Sports Shorts",
         gender: "Mens",
-        activity: "Everyday",
-        price: 45,
-        comparePrice: 58,
-        discount: "-22%",
-        rating: 5.0,
-        reviews: 205,
+        activity: "Gym",
+        price: 32,
+        comparePrice: 42,
+        discount: "-24%",
+        rating: 4.8,
+        reviews: 134,
         isNew: true,
-        description: "Heavyweight comfort hoodie featuring a structured silhouette and clean minimal branding. Crafted from dense loopback French terry for exceptional drape and longevity.",
+        description: "Tough, high-stretch training shorts built to withstand barbell friction, heavy squats, and explosive HIIT circuits. Features zippered security pockets and a reinforced gusseted crotch.",
         images: [
-          "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/1040881/pexels-photo-1040881.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=800"
+          "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/4761792/pexels-photo-4761792.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/7988087/pexels-photo-7988087.jpeg?auto=compress&cs=tinysrgb&w=800"
         ],
-        colors: ["#09090b", "#e4e4e7", "#71717a"],
+        colors: ["#18181b", "#334155", "#0a0a0a"],
         sizes: ["S", "M", "L", "XL", "XXL"],
-        fabric: "100% Organic Heavyweight French Terry (420 GSM) with brushed back",
-        fit: "Relaxed drop-shoulder street fit with thick ribbed hem and cuffs",
-        care: "Cold gentle cycle inside out. Do not tumble dry to preserve fleece loft.",
+        fabric: "90% High-Tenacity Ripstop Nylon, 10% Spandex 4-Way Stretch",
+        fit: "7-inch inseam tailored athletic gym fit with gusseted mobility crotch",
+        care: "Machine wash cold with like colors. Tumble dry low.",
         specs: [
-          "420 GSM ultra-heavy organic French terry",
-          "Double-lined hood with seamless finish",
-          "Heavyweight 2x2 ribbing at hem and cuffs",
-          "Kangaroo pocket with reinforced bar tacks"
+          "High-tenacity abrasion-resistant stretch weave",
+          "Twin deep zippered pockets with locking pull tabs",
+          "Seamless ergonomic inner thigh gusset for deep squats",
+          "Sweat-wicking interior waistband with towel loop"
         ]
       },
       {
         id: "p7",
-        slug: "kocan-motionflex-training-joggers",
-        name: "KOCAN MotionFlex Training Joggers",
+        slug: "kocan-motionflex-sports-joggers",
+        name: "KOCAN MotionFlex Sports Joggers",
         style: "Tapered athletic fit",
         subtitle: "Tapered Athletic Fit | 4-Way Stretch Flex",
         category: "Sports Joggers",
         gender: "Mens",
         activity: "Gym",
-        price: 36,
-        comparePrice: 48,
-        discount: "-25%",
-        rating: 4.8,
-        reviews: 154,
+        price: 38,
+        comparePrice: 50,
+        discount: "-24%",
+        rating: 4.9,
+        reviews: 184,
         isNew: false,
-        description: "Flexible performance joggers built for gym workouts, runs, and everyday athletic comfort. Engineered with 4-way stretch weave and ankle zips for versatile styling.",
+        description: "Precision-tapered performance joggers crafted from a resilient 4-way stretch blend. Engineered with articulated knee darts, zippered ankle cuffs, and secure deep storage for training and travel.",
         images: [
           "https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=800",
           "https://images.pexels.com/photos/7988079/pexels-photo-7988079.jpeg?auto=compress&cs=tinysrgb&w=800",
@@ -1452,20 +1456,20 @@
       },
       {
         id: "p8",
-        slug: "kocan-urbansprint-track-pants",
-        name: "KOCAN UrbanSprint Track Pants",
-        style: "Relaxed athletic fit",
-        subtitle: "Relaxed Athletic Fit | Weather-Resistant",
+        slug: "kocan-aerorun-track-pants",
+        name: "KOCAN AeroRun Track Pants",
+        style: "Athletic straight-leg track fit",
+        subtitle: "Athletic Fit | Windproof Ripstop & Breathable Mesh",
         category: "Track Pants",
         gender: "Mens",
         activity: "Running",
-        price: 34,
-        comparePrice: 44,
-        discount: "-23%",
-        rating: 4.7,
-        reviews: 92,
+        price: 36,
+        comparePrice: 48,
+        discount: "-25%",
+        rating: 4.8,
+        reviews: 112,
         isNew: false,
-        description: "Lightweight track pants with clean lines, zip pockets, and weather-resistant fabric. Combines crisp street styling with wind and moisture protection.",
+        description: "Lightweight, weather-resistant track pants designed for warmups, outdoor distance running, and active streetwear. Features windproof micro-ripstop fabric lined with breathable cooling mesh.",
         images: [
           "https://images.pexels.com/photos/5037287/pexels-photo-5037287.jpeg?auto=compress&cs=tinysrgb&w=800",
           "https://images.pexels.com/photos/3775164/pexels-photo-3775164.jpeg?auto=compress&cs=tinysrgb&w=800",
@@ -1474,32 +1478,66 @@
         ],
         colors: ["#09090b", "#1e293b", "#475569"],
         sizes: ["S", "M", "L", "XL", "XXL"],
-        fabric: "100% Ripstop Nylon with lightweight breathable mesh lining",
-        fit: "Relaxed athletic straight-leg cut with elastic drawcord cuffs",
+        fabric: "100% Micro-Ripstop Nylon with lightweight breathable mesh lining",
+        fit: "Athletic straight-leg track cut with adjustable bungee toggle cuffs",
         care: "Cold machine wash. Fast air drying. Do not iron directly on nylon.",
         specs: [
-          "Durable weather-resistant ripstop nylon",
-          "Breathable inner mesh cooling lining",
-          "Adjustable bungee toggle cuffs",
-          "Back zippered card and key pocket"
+          "Durable weather-resistant micro-ripstop nylon shell",
+          "Breathable inner mesh cooling lining for temperature control",
+          "Adjustable bungee toggle cuffs with ankle zip access",
+          "Reflective side piping and secure zipped rear pocket"
         ]
       },
       {
         id: "p9",
-        slug: "kocan-corerush-performance-tracksuit",
-        name: "KOCAN CoreRush Performance Tracksuit",
-        style: "Athletic fit full set",
-        subtitle: "Full 2-Piece Set | Technical Zip & Pants",
+        slug: "kocan-corefit-performance-hoodie",
+        name: "KOCAN CoreFit Performance Hoodie",
+        style: "Athletic training fit",
+        subtitle: "Athletic Fit | 340 GSM Bonded Tech Fleece",
+        category: "Sports Hoodies",
+        gender: "Mens",
+        activity: "Training",
+        price: 44,
+        comparePrice: 58,
+        discount: "-24%",
+        rating: 4.9,
+        reviews: 210,
+        isNew: true,
+        description: "Premium technical hoodie built for pre-game warmups, cold-weather training, and post-session recovery. Crafted with bonded spacer fleece for lightweight thermal insulation and full range of motion.",
+        images: [
+          "https://zandokh.com/image/catalog/products/2023-08/5152307005/Sport-Life-Hoodie%20%287%29.jpg",
+          "https://images.pexels.com/photos/6311549/pexels-photo-6311549.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/4066293/pexels-photo-4066293.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/7988089/pexels-photo-7988089.jpeg?auto=compress&cs=tinysrgb&w=800"
+        ],
+        colors: ["#18181b", "#64748b", "#334155"],
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        fabric: "75% Cotton, 20% Polyester, 5% Elastane (340 GSM technical spacer fleece)",
+        fit: "Athletic silhouette with structured 3-panel scuba hood and thumbhole cuffs",
+        care: "Machine wash cold with like colors. Air dry. Do not iron hood cords.",
+        specs: [
+          "340 GSM bonded tech spacer fleece for core thermal regulation",
+          "Structured 3-panel scuba hood with matte metal aglets",
+          "Concealed zippered media pocket with internal headphone routing",
+          "Articulated raglan sleeves and ergonomic thumbhole cuffs"
+        ]
+      },
+      {
+        id: "p10",
+        slug: "kocan-proactive-sports-tracksuit",
+        name: "KOCAN ProActive Sports Tracksuit",
+        style: "Complete 2-piece athletic tracksuit",
+        subtitle: "Full 2-Piece Set | Stand-Collar Jacket & Tapered Pants",
         category: "Tracksuits",
         gender: "Mens",
         activity: "Travel",
         price: 68,
         comparePrice: 90,
         discount: "-24%",
-        rating: 4.9,
-        reviews: 130,
+        rating: 5.0,
+        reviews: 195,
         isNew: true,
-        description: "Matching technical jacket and track pants designed for training camps, travel, and warmups. Premium dual-knit fabric delivers warmth, agility, and a clean silhouette.",
+        description: "Complete two-piece performance tracksuit featuring a stand-collar zip jacket and matching tapered track pants. Engineered in brushed performance tricot for elite team travel, warmups, and athletic lifestyle.",
         images: [
           "https://images.pexels.com/photos/8874672/pexels-photo-8874672.jpeg?auto=compress&cs=tinysrgb&w=800",
           "https://images.pexels.com/photos/8874670/pexels-photo-8874670.jpeg?auto=compress&cs=tinysrgb&w=800",
@@ -1508,48 +1546,14 @@
         ],
         colors: ["#111111", "#1e3a8a", "#1e293b"],
         sizes: ["S", "M", "L", "XL", "XXL"],
-        fabric: "Performance Tricot Poly-Elastane blend (280 GSM) with brushed comfort backing",
-        fit: "Athletic ergonomic 2-piece set with stand collar jacket and tapered pants",
+        fabric: "Performance Tricot Poly-Elastane blend (290 GSM) with brushed comfort interior",
+        fit: "Ergonomic athletic 2-piece set with full-zip stand collar and tapered pants",
         care: "Machine wash cold. Zip up before washing. Hang dry.",
         specs: [
-          "Complete matching jacket & pants set",
-          "Stand collar full-zip jacket with chin guard",
-          "Tapered track pants with ankle zip vents",
-          "Premium matte hardware and silicone branding"
-        ]
-      },
-      {
-        id: "p10",
-        slug: "kocan-velocity-elite-sports-set",
-        name: "KOCAN Velocity Elite Sports Set",
-        style: "Performance jersey + shorts set",
-        subtitle: "Performance Set | Match Jersey & Shorts",
-        category: "Sports Sets",
-        gender: "Mens",
-        activity: "Sports",
-        price: 48,
-        comparePrice: 65,
-        discount: "-26%",
-        rating: 5.0,
-        reviews: 175,
-        isNew: true,
-        description: "Complete high-performance matching kit engineered for peak agility and heat regulation. Includes an aerolite micro-mesh jersey and 4-way stretch training shorts.",
-        images: [
-          "https://images.pexels.com/photos/8436130/pexels-photo-8436130.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/5037287/pexels-photo-5037287.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/3775164/pexels-photo-3775164.jpeg?auto=compress&cs=tinysrgb&w=800",
-          "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=800"
-        ],
-        colors: ["#0a0a0a", "#1d4ed8", "#d2fa3a"],
-        sizes: ["S", "M", "L", "XL", "XXL"],
-        fabric: "Pro-grade Aerolite Mesh (150 GSM jersey) + 4-way stretch flex woven (shorts)",
-        fit: "Performance match cut with split hem shorts (7\" inseam) and athletic jersey",
-        care: "Machine wash cold. Do not iron graphics. Quick dry.",
-        specs: [
-          "Full 2-piece match day jersey and shorts kit",
-          "Laser-cut perforated side heat vents",
-          "7-inch inseam shorts with inner compressive liner",
-          "Lightweight, ultra-fast drying moisture control"
+          "Complete 2-piece matching jacket and tapered pants kit",
+          "Full-zip stand collar jacket with protective soft chin guard",
+          "Tapered track pants with elasticated waistband and ankle zip vents",
+          "Deep zippered side security pockets with matte-black hardware"
         ]
       }
     ];
@@ -2090,7 +2094,7 @@
       } else {
         productView.classList.add('hidden');
         homeView.classList.remove('hidden');
-        document.title = "Kocan — Modern Fashion, Activewear & Everyday Essentials";
+        document.title = "KOCAN — Modern Fashion, Activewear & Everyday Essentials";
         const metaDesc = document.querySelector('meta[name="description"]');
         if(metaDesc) metaDesc.content = "Explore modern fashion, activewear, innerwear and everyday essentials designed for comfort, movement and everyday life.";
         window.scrollTo({ top: 0, behavior: 'auto' });
@@ -2109,13 +2113,13 @@
             <a href="#" onclick="window.location.hash=''; return false;" class="bg-black text-white px-8 py-4 font-bold uppercase tracking-widest text-xs hover:bg-[#d2fa3a] hover:text-black transition-colors">Return to Shop</a>
           </div>
         `;
-        document.title = "Product Not Found | Kocan";
+        document.title = "Product Not Found | KOCAN";
         return;
       }
 
       currentProduct = product;
       currentImageIndex = 0;
-      document.title = `${product.name} | Kocan`;
+      document.title = `${product.name} | KOCAN`;
       const metaDesc = document.querySelector('meta[name="description"]');
       if(metaDesc) metaDesc.content = product.description;
 
