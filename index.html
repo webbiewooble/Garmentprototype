@@ -458,7 +458,7 @@
     <div id="header-inner" class="flex justify-between items-center px-4 md:px-8 py-4 max-w-[1600px] mx-auto header-transition">
       
       <!-- Logo -->
-      <a href="#" class="group flex items-center shrink-0 space-x-2.5 text-white transition-all duration-300" aria-label="Home" onclick="applyCategoryFilter('All')">
+      <a href="#" class="group flex items-center shrink-0 space-x-1.5 text-white transition-all duration-300" aria-label="Home" onclick="applyCategoryFilter('All')">
         <svg class="w-10 h-10 md:w-12 md:h-12 text-[#d2fa3a] transform group-hover:scale-105 transition-transform duration-500 ease-out" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt">
           <line x1="28" y1="18" x2="28" y2="82" class="origin-bottom group-hover:scale-y-[1.05] transition-transform duration-500" />
           <line x1="28" y1="58" x2="72" y2="14" class="origin-bottom-left group-hover:rotate-[-2deg] transition-transform duration-500" />
@@ -574,9 +574,20 @@
     <div id="home-view">
       <!-- 3. Hero -->
       <section id="hero-section" class="relative bg-black text-white w-full h-[90vh] min-h-[640px] flex items-center overflow-hidden">
-    <div class="absolute inset-0 z-0">
-      <img id="hero-bg" src="https://images.pexels.com/photos/20418295/pexels-photo-20418295.jpeg?auto=compress&cs=tinysrgb&w=1600" fetchpriority="high" decoding="async" alt="Hero Lifestyle" class="w-[105%] h-[105%] max-w-none object-cover opacity-60 -ml-[2.5%] -mt-[2.5%] load-hero-img cursor-img transition-transform duration-75">
-      <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/20"></div>
+    <div class="absolute inset-0 z-0 bg-black">
+      <!-- Slide 1: Image -->
+      <div class="hero-slide absolute inset-0 opacity-100 transition-opacity duration-1000 z-10">
+        <img src="https://images.pexels.com/photos/20418295/pexels-photo-20418295.jpeg?auto=compress&cs=tinysrgb&w=1600" fetchpriority="high" decoding="async" alt="Hero Lifestyle" class="hero-bg-media w-[105%] h-[105%] max-w-none object-cover opacity-60 -ml-[2.5%] -mt-[2.5%] load-hero-img cursor-img transition-transform duration-75">
+      </div>
+      <!-- Slide 2: Video -->
+      <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000 z-0">
+        <video src="https://assets.mixkit.co/videos/preview/mixkit-man-runs-past-ground-level-shot-32809-large.mp4" autoplay loop muted playsinline class="hero-bg-media w-[105%] h-[105%] max-w-none object-cover opacity-60 -ml-[2.5%] -mt-[2.5%] load-hero-img cursor-img transition-transform duration-75"></video>
+      </div>
+      <!-- Slide 3: Video -->
+      <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000 z-0">
+        <video src="https://assets.mixkit.co/videos/preview/mixkit-man-training-on-the-bars-in-the-gym-23450-large.mp4" autoplay loop muted playsinline class="hero-bg-media w-[105%] h-[105%] max-w-none object-cover opacity-60 -ml-[2.5%] -mt-[2.5%] load-hero-img cursor-img transition-transform duration-75"></video>
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/20 z-20 pointer-events-none"></div>
     </div>
     
     <div class="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12 h-full flex flex-col justify-end pb-12 md:pb-16">
@@ -3311,19 +3322,36 @@
         document.querySelectorAll('.reveal, .reveal-scale').forEach(el => el.classList.add('active'));
       }
 
-      // 3. Hero Parallax
+      // 3. Hero Parallax & Slider
       const heroSection = document.getElementById('hero-section');
-      const heroBg = document.getElementById('hero-bg');
-      if (heroSection && heroBg) {
+      const heroMediaElements = document.querySelectorAll('.hero-bg-media');
+      const heroSlides = document.querySelectorAll('.hero-slide');
+      
+      if (heroSlides.length > 1) {
+        let currentSlide = 0;
+        setInterval(() => {
+          heroSlides[currentSlide].classList.remove('opacity-100', 'z-10');
+          heroSlides[currentSlide].classList.add('opacity-0', 'z-0');
+          currentSlide = (currentSlide + 1) % heroSlides.length;
+          heroSlides[currentSlide].classList.remove('opacity-0', 'z-0');
+          heroSlides[currentSlide].classList.add('opacity-100', 'z-10');
+        }, 5000);
+      }
+
+      if (heroSection && heroMediaElements.length > 0) {
         heroSection.addEventListener('mousemove', (e) => {
           if (window.innerWidth < 1024 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
           const rect = heroSection.getBoundingClientRect();
           const x = (e.clientX - rect.left) / rect.width - 0.5;
           const y = (e.clientY - rect.top) / rect.height - 0.5;
-          heroBg.style.transform = `translate(${x * 10}px, ${y * 10}px) scale(1.02)`;
+          heroMediaElements.forEach(media => {
+            media.style.transform = `translate(${x * 10}px, ${y * 10}px) scale(1.02)`;
+          });
         });
         heroSection.addEventListener('mouseleave', () => {
-          heroBg.style.transform = 'translate(0px, 0px) scale(1)';
+          heroMediaElements.forEach(media => {
+            media.style.transform = 'translate(0px, 0px) scale(1)';
+          });
         });
       }
 
