@@ -578,17 +578,17 @@
       <!-- 3. Hero -->
       <section id="hero-section" class="relative group bg-black text-white w-full h-[88svh] min-h-[580px] md:h-[90vh] md:min-h-[640px] flex items-end overflow-hidden">
     <div class="absolute inset-0 z-0 bg-black">
-      <!-- Slide 1: Unbranded High-Res Editorial Lifestyle -->
+      <!-- Slide 1: Squat Wolf Back To Gym // New Drop Hero Video -->
       <div class="hero-slide absolute inset-0 opacity-100 transition-opacity duration-1000 z-10">
-        <img src="https://images.pexels.com/photos/20418295/pexels-photo-20418295.jpeg?auto=compress&cs=tinysrgb&w=1600" fetchpriority="high" decoding="async" alt="Hero Lifestyle" class="hero-bg-media w-[105%] h-[105%] max-w-none object-cover opacity-60 -ml-[2.5%] -mt-[2.5%] load-hero-img cursor-img transition-transform duration-75">
+        <video src="https://cdn.shopify.com/videos/c/o/v/0302836a487d448bac48e6102d9394b3.mp4" poster="https://cdn.shopify.com/s/files/1/0618/9462/3460/files/2880x1620-BTG_STATIC.jpg?v=1786595073" autoplay loop muted playsinline preload="auto" class="hero-bg-media w-[105%] h-[105%] max-w-none object-cover opacity-65 -ml-[2.5%] -mt-[2.5%] load-hero-img cursor-img transition-transform duration-75"></video>
       </div>
-      <!-- Slide 2: Unbranded High-Res Athletic Gym Training Video -->
+      <!-- Slide 2: Squat Wolf New Collection // Now Live Hero Video -->
       <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000 z-0">
-        <video src="https://videos.pexels.com/video-files/3195394/3195394-uhd_2560_1440_25fps.mp4" autoplay loop muted playsinline class="hero-bg-media w-[105%] h-[105%] max-w-none object-cover opacity-60 -ml-[2.5%] -mt-[2.5%] load-hero-img cursor-img transition-transform duration-75"></video>
+        <video src="https://cdn.shopify.com/videos/c/o/v/10d84aede0e64882b1aacb594d157103.mp4" poster="https://cdn.shopify.com/s/files/1/0618/9462/3460/files/WEB_STATIC.jpg?v=1783396462" autoplay loop muted playsinline preload="none" class="hero-bg-media w-[105%] h-[105%] max-w-none object-cover opacity-65 -ml-[2.5%] -mt-[2.5%] load-hero-img cursor-img transition-transform duration-75"></video>
       </div>
-      <!-- Slide 3: Unbranded High-Res Athletic Power Workout Video -->
+      <!-- Slide 3: Squat Wolf Performance Drop Hero Video -->
       <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000 z-0">
-        <video src="https://videos.pexels.com/video-files/3255275/3255275-uhd_2560_1440_25fps.mp4" autoplay loop muted playsinline class="hero-bg-media w-[105%] h-[105%] max-w-none object-cover opacity-60 -ml-[2.5%] -mt-[2.5%] load-hero-img cursor-img transition-transform duration-75"></video>
+        <video src="https://cdn.shopify.com/videos/c/o/v/5115a5fab1454850b36a2edb91fcfa33.mp4" poster="https://cdn.shopify.com/s/files/1/0618/9462/3460/files/2880x1620_STATIC_55215f10-3b0c-43e2-86ba-c256cdcb2f92.jpg?v=1785919390" autoplay loop muted playsinline preload="none" class="hero-bg-media w-[105%] h-[105%] max-w-none object-cover opacity-65 -ml-[2.5%] -mt-[2.5%] load-hero-img cursor-img transition-transform duration-75"></video>
       </div>
       <div class="absolute inset-0 bg-gradient-to-t from-black via-black/45 via-45% to-transparent md:from-black/85 md:via-black/30 md:to-black/20 z-20 pointer-events-none"></div>
     </div>
@@ -3514,6 +3514,16 @@
           
           heroSlides[currentSlide].classList.remove('opacity-0', 'z-0');
           heroSlides[currentSlide].classList.add('opacity-100', 'z-10');
+
+          // Play active slide video if available
+          heroSlides.forEach((slide, idx) => {
+            const vid = slide.querySelector('video');
+            if (vid) {
+              if (idx === currentSlide) {
+                vid.play().catch(() => {});
+              }
+            }
+          });
 
           document.querySelectorAll('.hero-dot').forEach((dot) => {
             const dotIdx = parseInt(dot.getAttribute('data-slide') ?? '-1', 10);
