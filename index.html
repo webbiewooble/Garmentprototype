@@ -1782,6 +1782,142 @@
           "Tapered track pants with elasticated waistband and ankle zip vents",
           "Deep zippered side security pockets with matte-black hardware"
         ]
+      },
+      {
+        id: "p11",
+        slug: "kocan-premium-stretch-boxers",
+        name: "KOCAN Premium Stretch Boxers",
+        style: "Classic everyday fit",
+        subtitle: "Everyday Essential | Breathable Cotton",
+        category: "Innerwear",
+        gender: "Mens",
+        activity: "Lifestyle",
+        price: 24,
+        comparePrice: 32,
+        discount: "-25%",
+        rating: 4.8,
+        reviews: 312,
+        isNew: true,
+        description: "Experience all-day comfort with our premium stretch boxers. Designed with a soft, tag-free waistband and breathable fabric to keep you cool and supported.",
+        images: [
+          "./07-boxers.webp",
+          "./13-unreal-underwear.webp",
+          "./05-innerwear-box-sets.webp",
+          "./07-boxers.webp"
+        ],
+        colors: ["#111111", "#1e3a8a", "#64748b"],
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        fabric: "95% Premium Combed Cotton, 5% Elastane",
+        fit: "Contoured supportive pouch with anti-roll waistband",
+        care: "Machine wash warm. Tumble dry low.",
+        specs: [
+          "Super soft microfiber no-roll waistband",
+          "Contour pouch for support and comfort",
+          "Friction-free flatlock seams",
+          "Moisture-wicking breathable cotton blend"
+        ]
+      },
+      {
+        id: "p12",
+        slug: "kocan-innerwear-box-set",
+        name: "KOCAN Innerwear Box Set",
+        style: "3-Pack Essentials",
+        subtitle: "Value Pack | Essential Colors",
+        category: "Innerwear",
+        gender: "Mens",
+        activity: "Lifestyle",
+        price: 55,
+        comparePrice: 75,
+        discount: "-26%",
+        rating: 4.9,
+        reviews: 145,
+        isNew: false,
+        description: "The ultimate drawer refresh. Our signature innerwear box set features three pairs of our best-selling breathable trunks in core colors.",
+        images: [
+          "./05-innerwear-box-sets.webp",
+          "./07-boxers.webp",
+          "./13-unreal-underwear.webp",
+          "./05-innerwear-box-sets.webp"
+        ],
+        colors: ["#111111", "#ffffff"],
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        fabric: "MicroModal and Elastane blend for supreme softness",
+        fit: "Trunk fit, sitting mid-thigh with a stay-put leg",
+        care: "Machine wash cold. Do not bleach. Tumble dry low.",
+        specs: [
+          "Pack of 3 premium trunks",
+          "Silky soft MicroModal fabric",
+          "No-fly contoured pouch",
+          "Signature stay-put waistband"
+        ]
+      },
+      {
+        id: "p13",
+        slug: "kocan-unreal-underwear",
+        name: "KOCAN Unreal Underwear",
+        style: "Ultra-lightweight invisible fit",
+        subtitle: "Next-to-Skin | Weightless Feel",
+        category: "Innerwear",
+        gender: "Mens",
+        activity: "Training",
+        price: 28,
+        comparePrice: null,
+        discount: null,
+        rating: 4.7,
+        reviews: 89,
+        isNew: true,
+        description: "So light you'll forget they're there. The Unreal Underwear line utilizes an advanced featherweight microfiber that offers supreme breathability and support during intense activities.",
+        images: [
+          "./13-unreal-underwear.webp",
+          "./07-boxers.webp",
+          "./05-innerwear-box-sets.webp",
+          "./13-unreal-underwear.webp"
+        ],
+        colors: ["#000000", "#1c1c1c", "#ff4500"],
+        sizes: ["S", "M", "L", "XL"],
+        fabric: "88% Nylon Microfiber, 12% Spandex",
+        fit: "Athletic brief fit with maximum mobility",
+        care: "Machine wash cold on gentle cycle. Air dry recommended.",
+        specs: [
+          "Laser-cut seamless edges",
+          "4-way stretch for unrestricted movement",
+          "Anti-odor technology built in",
+          "Quick-drying performance fabric"
+        ]
+      },
+      {
+        id: "p14",
+        slug: "kocan-seamless-shapewear",
+        name: "KOCAN Seamless Shapewear",
+        style: "Core compression fit",
+        subtitle: "Core Support | Seamless Design",
+        category: "Innerwear",
+        gender: "Womens",
+        activity: "Training",
+        price: 42,
+        comparePrice: 60,
+        discount: "-30%",
+        rating: 4.9,
+        reviews: 412,
+        isNew: false,
+        description: "Engineered to smooth, support, and lift. Our seamless shapewear provides targeted core compression while remaining completely invisible under your workout gear or daily wear.",
+        images: [
+          "./03-shapewear.webp",
+          "./01-vests-tank-tops.webp",
+          "./03-shapewear.webp",
+          "./03-shapewear.webp"
+        ],
+        colors: ["#f5f5dc", "#111111"],
+        sizes: ["XS", "S", "M", "L", "XL"],
+        fabric: "75% Polyamide, 25% Elastane",
+        fit: "High-waisted firm compression fit",
+        care: "Hand wash cold. Lay flat to dry.",
+        specs: [
+          "Targeted ribbed compression zones",
+          "Seamless construction prevents chafing",
+          "High-waist design with anti-slip silicone grip",
+          "Breathable gusset for all-day comfort"
+        ]
       }
     ];
 
@@ -1978,7 +2114,7 @@
       } else if (activeCategory === 'Women') {
         filtered = filtered.filter(p => p.gender === 'Womens' || p.gender === 'Women' || p.gender === 'Unisex');
       } else if (activeCategory === 'Innerwear') {
-        filtered = filtered.filter(p => p.category === 'Innerwear' || (p.subtitle && p.subtitle.toLowerCase().includes('micromodal')) || (p.name && (p.name.toLowerCase().includes('crop') || p.name.toLowerCase().includes('tank') || p.name.toLowerCase().includes('top') || p.name.toLowerCase().includes('shorts'))) || p.id === 'p5' || p.id === 'p7' || p.id === 'p8');
+        filtered = filtered.filter(p => p.category === 'Innerwear');
       } else if (activeCategory === 'Bestsellers') {
         filtered.sort((a, b) => (b.rating * b.reviews) - (a.rating * a.reviews));
       } else if (activeCategory !== 'All' && activeCategory !== 'Sports Garments') {
