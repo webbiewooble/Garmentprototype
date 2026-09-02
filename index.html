@@ -573,7 +573,7 @@
   <main id="main-content">
     <div id="home-view">
       <!-- 3. Hero -->
-      <section id="hero-section" class="relative bg-black text-white w-full h-[90vh] min-h-[640px] flex items-center overflow-hidden">
+      <section id="hero-section" class="relative group bg-black text-white w-full h-[90vh] min-h-[640px] flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0 bg-black">
       <!-- Slide 1: Image -->
       <div class="hero-slide absolute inset-0 opacity-100 transition-opacity duration-1000 z-10">
@@ -581,30 +581,47 @@
       </div>
       <!-- Slide 2: Video -->
       <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000 z-0">
-        <video src="https://assets.mixkit.co/videos/preview/mixkit-man-runs-past-ground-level-shot-32809-large.mp4" autoplay loop muted playsinline class="hero-bg-media w-[105%] h-[105%] max-w-none object-cover opacity-60 -ml-[2.5%] -mt-[2.5%] load-hero-img cursor-img transition-transform duration-75"></video>
+        <video src="https://cdn.shopify.com/videos/c/o/v/0302836a487d448bac48e6102d9394b3.mp4" autoplay loop muted playsinline class="hero-bg-media w-[105%] h-[105%] max-w-none object-cover opacity-60 -ml-[2.5%] -mt-[2.5%] load-hero-img cursor-img transition-transform duration-75"></video>
       </div>
       <!-- Slide 3: Video -->
       <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000 z-0">
-        <video src="https://assets.mixkit.co/videos/preview/mixkit-man-training-on-the-bars-in-the-gym-23450-large.mp4" autoplay loop muted playsinline class="hero-bg-media w-[105%] h-[105%] max-w-none object-cover opacity-60 -ml-[2.5%] -mt-[2.5%] load-hero-img cursor-img transition-transform duration-75"></video>
+        <video src="https://cdn.shopify.com/videos/c/o/v/07b8a244c8e54411af247cd2811a931f.mp4" autoplay loop muted playsinline class="hero-bg-media w-[105%] h-[105%] max-w-none object-cover opacity-60 -ml-[2.5%] -mt-[2.5%] load-hero-img cursor-img transition-transform duration-75"></video>
       </div>
       <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/20 z-20 pointer-events-none"></div>
     </div>
     
     <div class="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12 h-full flex flex-col justify-end pb-12 md:pb-16">
-      <div class="max-w-3xl">
-        <p class="uppercase text-xs md:text-sm tracking-[0.25em] mb-4 font-bold text-gray-300 load-hidden" style="transition-delay: 100ms;">NEW SEASON '24</p>
-        <h1 class="text-[clamp(4rem,9vw,9.5rem)] font-black leading-none uppercase tracking-tighter mb-6">
-          <span class="load-line block pb-2"><span class="load-line-inner block" style="transition-delay: 200ms;">EVERYDAY</span></span>
-          <span class="load-line block pb-2"><span class="load-line-inner text-[#d2fa3a] block" style="transition-delay: 300ms;">BUT BETTER</span></span>
-        </h1>
-        <p class="text-base md:text-xl font-medium text-gray-200 mb-8 max-w-md leading-relaxed load-hidden" style="transition-delay: 400ms;">
-          Street. Sport. You.<br>
-          Essentials that move with your life.
-        </p>
-        
-        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-16">
-          <a href="#main-collection" onclick="applyCategoryFilter('All')" class="bg-[#d2fa3a] text-black px-8 py-4 font-bold text-xs md:text-sm uppercase tracking-widest text-center btn-hover-fx load-hidden cursor-btn" style="transition-delay: 500ms;">SHOP NOW <span class="arrow-fx">&rarr;</span></a>
-          <a href="#main-collection" onclick="applyCategoryFilter('All')" class="border border-white text-white px-8 py-4 font-bold text-xs md:text-sm uppercase tracking-widest text-center btn-hover-fx load-hidden cursor-btn" style="transition-delay: 600ms;">EXPLORE COLLECTIONS <span class="arrow-fx">&rarr;</span></a>
+      <div class="flex flex-col md:flex-row md:justify-between md:items-end w-full">
+        <div class="max-w-3xl">
+          <p class="uppercase text-xs md:text-sm tracking-[0.25em] mb-4 font-bold text-gray-300 load-hidden" style="transition-delay: 100ms;">NEW SEASON '24</p>
+          <h1 class="text-[clamp(4rem,9vw,9.5rem)] font-black leading-none uppercase tracking-tighter mb-6">
+            <span class="load-line block pb-2"><span class="load-line-inner block" style="transition-delay: 200ms;">EVERYDAY</span></span>
+            <span class="load-line block pb-2"><span class="load-line-inner text-[#d2fa3a] block" style="transition-delay: 300ms;">BUT BETTER</span></span>
+          </h1>
+          <p class="text-base md:text-xl font-medium text-gray-200 mb-8 max-w-md leading-relaxed load-hidden" style="transition-delay: 400ms;">
+            Street. Sport. You.<br>
+            Essentials that move with your life.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8 md:mb-12">
+            <a href="#main-collection" onclick="applyCategoryFilter('All')" class="bg-[#d2fa3a] text-black px-8 py-4 font-bold text-xs md:text-sm uppercase tracking-widest text-center btn-hover-fx load-hidden cursor-btn" style="transition-delay: 500ms;">SHOP NOW <span class="arrow-fx">&rarr;</span></a>
+            <a href="#main-collection" onclick="applyCategoryFilter('All')" class="border border-white text-white px-8 py-4 font-bold text-xs md:text-sm uppercase tracking-widest text-center btn-hover-fx load-hidden cursor-btn" style="transition-delay: 600ms;">EXPLORE COLLECTIONS <span class="arrow-fx">&rarr;</span></a>
+          </div>
+        </div>
+
+        <!-- Sleek Slide Navigation Pill -->
+        <div class="flex items-center space-x-4 md:space-x-6 bg-black/40 backdrop-blur-xl px-5 md:px-8 py-3 md:py-4 rounded-full border border-white/10 shadow-2xl shrink-0 mb-8 md:mb-12 load-hidden cursor-auto" style="transition-delay: 650ms;">
+          <button id="hero-prev" aria-label="Previous Slide" class="text-white/60 hover:text-[#d2fa3a] hover:scale-110 transition-all duration-300 cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+          </button>
+          <div class="flex space-x-2 md:space-x-3">
+            <button aria-label="Slide 1" class="hero-dot w-6 h-[3px] md:w-8 md:h-1 bg-white rounded-full transition-all duration-300 cursor-pointer"></button>
+            <button aria-label="Slide 2" class="hero-dot w-6 h-[3px] md:w-8 md:h-1 bg-white/30 hover:bg-white/60 rounded-full transition-all duration-300 cursor-pointer"></button>
+            <button aria-label="Slide 3" class="hero-dot w-6 h-[3px] md:w-8 md:h-1 bg-white/30 hover:bg-white/60 rounded-full transition-all duration-300 cursor-pointer"></button>
+          </div>
+          <button id="hero-next" aria-label="Next Slide" class="text-white/60 hover:text-[#d2fa3a] hover:scale-110 transition-all duration-300 cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </button>
         </div>
       </div>
       
@@ -3326,16 +3343,51 @@
       const heroSection = document.getElementById('hero-section');
       const heroMediaElements = document.querySelectorAll('.hero-bg-media');
       const heroSlides = document.querySelectorAll('.hero-slide');
+      const heroDots = document.querySelectorAll('.hero-dot');
+      const btnPrev = document.getElementById('hero-prev');
+      const btnNext = document.getElementById('hero-next');
       
       if (heroSlides.length > 1) {
         let currentSlide = 0;
-        setInterval(() => {
+        let slideInterval;
+
+        const updateSlide = (newIndex) => {
           heroSlides[currentSlide].classList.remove('opacity-100', 'z-10');
           heroSlides[currentSlide].classList.add('opacity-0', 'z-0');
-          currentSlide = (currentSlide + 1) % heroSlides.length;
+          if (heroDots[currentSlide]) {
+            heroDots[currentSlide].classList.remove('bg-white');
+            heroDots[currentSlide].classList.add('bg-white/30');
+          }
+          
+          currentSlide = newIndex;
+          
           heroSlides[currentSlide].classList.remove('opacity-0', 'z-0');
           heroSlides[currentSlide].classList.add('opacity-100', 'z-10');
-        }, 5000);
+          if (heroDots[currentSlide]) {
+            heroDots[currentSlide].classList.remove('bg-white/30');
+            heroDots[currentSlide].classList.add('bg-white');
+          }
+        };
+
+        const nextSlide = () => updateSlide((currentSlide + 1) % heroSlides.length);
+        const prevSlide = () => updateSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length);
+
+        const startSlider = () => {
+          clearInterval(slideInterval);
+          slideInterval = setInterval(nextSlide, 5000);
+        };
+
+        if (btnNext) btnNext.addEventListener('click', () => { nextSlide(); startSlider(); });
+        if (btnPrev) btnPrev.addEventListener('click', () => { prevSlide(); startSlider(); });
+        
+        heroDots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            updateSlide(index);
+            startSlider();
+          });
+        });
+
+        startSlider();
       }
 
       if (heroSection && heroMediaElements.length > 0) {
