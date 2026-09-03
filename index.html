@@ -632,13 +632,13 @@
           <p class="text-[11px] text-gray-300 font-medium leading-relaxed max-w-xs">Precision-engineered gymwear built for heavy lifts, maximum mobility, and zero distraction.</p>
         </div>
 
-        <!-- Touch-Optimized Dual Action Buttons (Squat Wolf Men / Women Split) -->
+        <!-- Touch-Optimized Dual Action Buttons (Shop Now & Explore Collection - Matching Desktop) -->
         <div class="grid grid-cols-2 gap-2.5 pt-0.5">
-          <a href="#main-collection" onclick="applyCategoryFilter('Men')" class="bg-[#d2fa3a] text-black h-12 flex items-center justify-center font-black text-xs uppercase tracking-wider active:scale-95 transition-transform shadow-lg cursor-btn">
-            SHOP MEN &rarr;
+          <a id="hero-mobile-shop-now" href="#main-collection" onclick="applyCategoryFilter('All'); document.getElementById('main-collection')?.scrollIntoView({ behavior: 'smooth' });" class="bg-[#d2fa3a] text-black h-12 flex items-center justify-center font-black text-xs uppercase tracking-wider min-[380px]:tracking-widest active:scale-95 transition-all shadow-lg cursor-btn whitespace-nowrap">
+            SHOP NOW <span class="ml-1.5">&rarr;</span>
           </a>
-          <a href="#main-collection" onclick="applyCategoryFilter('Women')" class="bg-white text-black hover:bg-gray-100 h-12 flex items-center justify-center font-black text-xs uppercase tracking-wider active:scale-95 transition-transform shadow-lg cursor-btn">
-            SHOP WOMEN &rarr;
+          <a id="hero-mobile-explore" href="#category-section" onclick="const target = document.getElementById('category-section') || document.getElementById('main-collection'); if(target){ target.scrollIntoView({ behavior: 'smooth' }); } applyCategoryFilter('All'); return false;" class="bg-black/40 backdrop-blur-md border border-white text-white hover:bg-white/10 active:bg-white/20 h-12 flex items-center justify-center font-bold text-[10px] min-[360px]:text-[11px] sm:text-xs uppercase tracking-tight min-[380px]:tracking-wider active:scale-95 transition-all shadow-lg cursor-btn whitespace-nowrap">
+            EXPLORE COLLECTION <span class="ml-1">&rarr;</span>
           </a>
         </div>
 
@@ -669,7 +669,7 @@
           
           <div class="flex space-x-4 mb-8 md:mb-12">
             <a href="#main-collection" onclick="applyCategoryFilter('All')" class="bg-[#d2fa3a] text-black px-8 py-4 font-bold text-xs md:text-sm uppercase tracking-widest text-center btn-hover-fx load-hidden cursor-btn" style="transition-delay: 500ms;">SHOP NOW <span class="arrow-fx">&rarr;</span></a>
-            <a href="#main-collection" onclick="applyCategoryFilter('All')" class="border border-white text-white px-8 py-4 font-bold text-xs md:text-sm uppercase tracking-widest text-center btn-hover-fx load-hidden cursor-btn" style="transition-delay: 600ms;">EXPLORE COLLECTIONS <span class="arrow-fx">&rarr;</span></a>
+            <a href="#category-section" onclick="const target = document.getElementById('category-section') || document.getElementById('main-collection'); if(target){ target.scrollIntoView({ behavior: 'smooth' }); } applyCategoryFilter('All'); return false;" class="border border-white text-white px-8 py-4 font-bold text-xs md:text-sm uppercase tracking-widest text-center btn-hover-fx load-hidden cursor-btn" style="transition-delay: 600ms;">EXPLORE COLLECTIONS <span class="arrow-fx">&rarr;</span></a>
           </div>
         </div>
 
@@ -742,7 +742,7 @@
 
 
   <!-- 5. Shop by Category (Damensch Inspired) -->
-  <section class="border-t border-gray-100 pt-8 md:pt-24 pb-8 md:pb-12 reveal bg-white">
+  <section id="category-section" class="border-t border-gray-100 pt-8 md:pt-24 pb-8 md:pb-12 reveal bg-white">
     <div class="max-w-[1600px] mx-auto px-6">
       <div class="flex justify-between items-end mb-6 md:mb-14">
         <h2 class="text-3xl md:text-5xl font-black tracking-tight text-gray-900">Shop By Category</h2>
